@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: medusa_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: medusa
+      POSTGRES_PASSWORD: medusa
+      POSTGRES_DB: medusa_store
+    ports:
+      - "5432:5432"
+    volumes:
+      - medusa_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U medusa -d medusa_store"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  medusa_pgdata:
+    name: medusa_pgdata
