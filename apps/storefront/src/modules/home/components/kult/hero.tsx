@@ -2,7 +2,7 @@ import KultCandle3D from "./candle-3d"
 
 const KultHero = () => {
   return (
-    <section className="relative overflow-hidden bg-ivory">
+    <section data-hero-pin className="relative overflow-hidden bg-ivory">
       <div className="kult-container grid items-center gap-12 py-16 small:grid-cols-2 small:py-24">
         {/* Colonne texte */}
         <div className="animate-kult-rise">
@@ -10,7 +10,7 @@ const KultHero = () => {
             <span className="text-soleil">✦</span> Nouvelle collection · Amore
           </span>
 
-          <h1 className="display text-6xl text-ink small:text-7xl">
+          <h1 data-split className="display text-6xl text-ink small:text-7xl">
             Une maison
             <br />
             pleine de{" "}

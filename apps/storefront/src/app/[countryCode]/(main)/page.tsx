@@ -1,41 +1,48 @@
 import { Metadata } from "next"
 
-import FeaturedProducts from "@modules/home/components/featured-products"
-import Hero from "@modules/home/components/hero"
-import { listCollections } from "@lib/data/collections"
-import { getRegion } from "@lib/data/regions"
+import { listProducts } from "@lib/data/products"
+import ScrollFX from "@modules/common/components/scroll/scroll-fx"
+import KultCollection from "@modules/home/components/kult/collection"
+import KultHero from "@modules/home/components/kult/hero"
+import KultManifeste from "@modules/home/components/kult/manifeste"
+import KultMotifs from "@modules/home/components/kult/motifs"
+import KultNewsletter from "@modules/home/components/kult/newsletter"
+import { toPieces } from "@modules/home/components/kult/pieces"
+import KultQuote from "@modules/home/components/kult/quote"
+import KultSavoirFaire from "@modules/home/components/kult/savoir-faire"
 
 export const metadata: Metadata = {
-  title: "Medusa Next.js Starter Template",
+  title: "Une maison pleine de soleil",
   description:
-    "A performant frontend ecommerce starter template with Next.js 15 and Medusa.",
+    "Bougies en céramique, faites main — entre le Sud de la France et la Californie. La couleur et la matière d'abord, la vente vient après.",
 }
 
-export default async function Home(props: {
+type Props = {
   params: Promise<{ countryCode: string }>
-}) {
-  const params = await props.params
+}
 
-  const { countryCode } = params
+export default async function Home(props: Props) {
+  const { countryCode } = await props.params
 
-  const region = await getRegion(countryCode)
-
-  const { collections } = await listCollections({
-    fields: "id, handle, title",
+  const {
+    response: { products },
+  } = await listProducts({
+    countryCode,
+    queryParams: { limit: 3 },
   })
 
-  if (!collections || !region) {
-    return null
-  }
+  const featured = toPieces(products)
 
   return (
     <>
-      <Hero />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      <ScrollFX />
+      <KultHero />
+      <KultManifeste />
+      <KultCollection pieces={featured} />
+      <KultMotifs />
+      <KultSavoirFaire />
+      <KultQuote />
+      <KultNewsletter />
     </>
   )
 }
