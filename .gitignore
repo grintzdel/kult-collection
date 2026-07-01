@@ -47,6 +47,15 @@ yarn-error.log*
 .vercel
 .idea
 
+# Build artifacts
+*.tsbuildinfo
+
+# Design exports (references, not source)
+*.pdf
+
+# Raw scrape intermediates (only the curated *.json is committed)
+**/data/**/_*-raw.json
+
 # macOS system files
 .DS_Store
 .DS_Store?
