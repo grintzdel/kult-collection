@@ -13,5 +13,8 @@ module.exports = defineConfig({
       cookieSecret: process.env.COOKIE_SECRET,
     }
   },
-  modules: [{ resolve: "./src/modules/pro-space" }],
+  modules: [
+    { resolve: "./src/modules/pro-space" },
+    { resolve: "./src/modules/product-attribute" },
+  ],
 })
