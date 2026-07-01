@@ -6,9 +6,13 @@ import { HttpTypes } from "@medusajs/types"
 export default function ProductPrice({
   product,
   variant,
+  proHt = false,
 }: {
   product: HttpTypes.StoreProduct
   variant?: HttpTypes.StoreProductVariant
+  // Affiche un suffixe « HT » — uniquement si le montant est réellement net
+  // (tax-exclusive). Piloté par le contexte pro côté appelant.
+  proHt?: boolean
 }) {
   const { cheapestPrice, variantPrice } = getProductPrice({
     product,
@@ -20,6 +24,8 @@ export default function ProductPrice({
   if (!selectedPrice) {
     return <div className="block w-32 h-9 bg-gray-100 animate-pulse" />
   }
+
+  const showHtSuffix = proHt && !selectedPrice.is_tax_inclusive
 
   return (
     <div className="flex flex-col text-ui-fg-base">
@@ -35,6 +41,9 @@ export default function ProductPrice({
         >
           {selectedPrice.calculated_price}
         </span>
+        {showHtSuffix && (
+          <span className="ml-1 text-sm text-ui-fg-subtle">HT</span>
+        )}
       </span>
       {selectedPrice.price_type === "sale" && (
         <>

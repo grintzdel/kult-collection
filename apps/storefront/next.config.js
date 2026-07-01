@@ -33,6 +33,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "static.wixstatic.com",
+      },
+      {
+        protocol: "https",
         hostname: "*.s3.*.amazonaws.com",
       },
       {

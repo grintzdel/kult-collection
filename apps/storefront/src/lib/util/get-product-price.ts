@@ -7,6 +7,7 @@ type VariantWithPrice = HttpTypes.StoreProductVariant & {
     calculated_amount: number
     original_amount: number
     currency_code: string
+    is_calculated_price_tax_inclusive?: boolean
     calculated_price: {
       price_list_type: string
     }
@@ -30,6 +31,9 @@ export const getPricesForVariant = (variant: VariantWithPrice) => {
       currency_code: variant.calculated_price.currency_code,
     }),
     currency_code: variant.calculated_price.currency_code,
+    // true = le montant inclut la taxe (TTC) ; false = montant net (HT).
+    is_tax_inclusive:
+      variant.calculated_price.is_calculated_price_tax_inclusive ?? false,
     price_type: variant.calculated_price.calculated_price.price_list_type,
     percentage_diff: getPercentageDiff(
       variant.calculated_price.original_amount,
