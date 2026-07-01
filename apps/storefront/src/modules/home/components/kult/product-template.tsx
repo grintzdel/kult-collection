@@ -1,25 +1,52 @@
+import type {
+  StoreAttribute,
+  StoreTrustBadge,
+} from "@lib/data/product-attributes"
 import KultLeGeste from "./le-geste"
 import KultNewsletter from "./newsletter"
 import KultProductAccordions from "./product-accordions"
 import KultProductBuyBox from "./product-buy-box"
 import KultProductGallery from "./product-gallery"
 import KultProductPrice from "./product-price"
+import KultProductSpecs from "./product-specs"
 import KultRelated from "./related"
 import type { Piece } from "./pieces"
 
-const TRUST = [
-  { icon: "♻", label: "Contenant réutilisable" },
-  { icon: "✺", label: "Fait main à Grasse" },
-  { icon: "↘", label: "Livraison soignée 2–4 j" },
-]
+/** Convertit une valeur d'attribut (texte ou groupe) en chaîne affichable. */
+const valueToText = (value: StoreAttribute["value"]): string => {
+  if (typeof value === "string") {
+    return value
+  }
+  if (value && typeof value === "object") {
+    return Object.values(value)
+      .filter((v) => v.trim().length > 0)
+      .join(" · ")
+  }
+  return ""
+}
 
 const KultProductTemplate = ({
   piece,
   related,
+  attributes,
+  trustBadges,
 }: {
   piece: Piece
   related: Piece[]
+  attributes: StoreAttribute[]
+  trustBadges: StoreTrustBadge[]
 }) => {
+  const accroche = attributes
+    .filter((a) => a.zone === "accroche")
+    .map((a) => valueToText(a.value))
+    .filter((text) => text.trim().length > 0)
+    .join(" · ")
+  const specs = attributes.filter((a) => a.zone === "specs")
+  const accordions = attributes
+    .filter((a) => a.zone === "accordeon")
+    .map((a) => ({ title: a.label, body: valueToText(a.value) }))
+    .filter((item) => item.body.trim().length > 0)
+
   return (
     <>
       <section className="bg-ivory">
@@ -43,9 +70,7 @@ const KultProductTemplate = ({
 
             {/* Infos */}
             <div>
-              <span className="badge">
-                {piece.categoryLabel} · Cire de soja
-              </span>
+              <span className="badge">{piece.categoryLabel}</span>
 
               <h1 className="display mt-6 text-6xl text-ink">
                 {piece.name}
@@ -59,49 +84,34 @@ const KultProductTemplate = ({
                   isTaxInclusive={piece.isTaxInclusive}
                   className="font-serif text-3xl text-ink"
                 />
-                <span className="eyebrow text-ink/50">{piece.notes}</span>
+                {accroche && (
+                  <span className="eyebrow text-ink/50">{accroche}</span>
+                )}
               </div>
 
               <p className="mt-6 max-w-md whitespace-pre-line text-base leading-[1.7] text-ink/70">
                 {piece.description}
               </p>
 
-              {/* Pyramide olfactive */}
-              <div className="mt-8 grid grid-cols-3 gap-4 rounded-large bg-cream p-6">
-                <div>
-                  <span className="eyebrow text-terracotta">Tête</span>
-                  <p className="mt-2 font-serif text-base text-ink">
-                    {piece.pyramid.tete}
-                  </p>
-                </div>
-                <div>
-                  <span className="eyebrow text-terracotta">Cœur</span>
-                  <p className="mt-2 font-serif text-base text-ink">
-                    {piece.pyramid.coeur}
-                  </p>
-                </div>
-                <div>
-                  <span className="eyebrow text-terracotta">Fond</span>
-                  <p className="mt-2 font-serif text-base text-ink">
-                    {piece.pyramid.fond}
-                  </p>
-                </div>
-              </div>
+              {/* Specs dynamiques (pyramide, matière…) */}
+              <KultProductSpecs specs={specs} />
 
               {/* Couleur + quantité + ajouter */}
               <KultProductBuyBox piece={piece} />
 
-              {/* Réassurance */}
-              <div className="mt-7 flex flex-wrap gap-3">
-                {TRUST.map((item) => (
-                  <span key={item.label} className="badge">
-                    <span>{item.icon}</span> {item.label}
-                  </span>
-                ))}
-              </div>
+              {/* Réassurance (global app) */}
+              {trustBadges.length > 0 && (
+                <div className="mt-7 flex flex-wrap gap-3">
+                  {trustBadges.map((item) => (
+                    <span key={item.id} className="badge">
+                      <span>{item.icon}</span> {item.label}
+                    </span>
+                  ))}
+                </div>
+              )}
 
-              {/* Accordéons */}
-              <KultProductAccordions sections={piece.sections} />
+              {/* Accordéons dynamiques */}
+              <KultProductAccordions sections={accordions} />
             </div>
           </div>
         </div>

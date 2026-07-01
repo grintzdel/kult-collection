@@ -35,21 +35,12 @@ export type Piece = {
   categoryLabel: string
   /** description réelle (texte) */
   description: string
-  /**
-   * Sections éditoriales de la fiche produit (accordéons), remplies dans
-   * `product.metadata` depuis l'admin. Seules les sections non-vides sont incluses.
-   */
-  sections: { title: string; body: string }[]
 
-  // --- Décorations éditoriales statiques (pas de source Medusa) ---
-  /** notes courtes génériques */
-  notes: string
-  /** sous-titre sous le nom */
+  // --- Décorations non éditoriales (cartes / galerie — pas la fiche produit) ---
+  /** sous-titre sous le nom (cartes de liste) */
   scent: string
-  /** légende sur la vignette */
+  /** légende sur la vignette (carte / fallback galerie) */
   caption: string
-  /** pyramide olfactive générique */
-  pyramid: { tete: string; coeur: string; fond: string }
   /** classe de fond de repli (si pas d'image) */
   surface: string
   /** halo solaire décoratif */
@@ -62,41 +53,6 @@ export const CATEGORY_LABEL: Record<string, string> = {
   "bougies-gold": "Bougies Gold",
   parfums: "Parfums",
 }
-
-/** Pyramide olfactive générique (décor — pas de source Medusa). */
-const GENERIC_PYRAMID = {
-  tete: "Bergamote, agrumes",
-  coeur: "Fleur d'oranger, figue",
-  fond: "Musc blanc, bois clair",
-} as const
-
-const GENERIC_NOTES = "Cire de soja · Fait main"
-
-/**
- * Sections éditoriales de la fiche produit, ordonnées, avec leur clé metadata.
- * Le contenu est saisi par produit depuis l'admin (widget « Contenu éditorial »).
- */
-const EDITORIAL_SECTIONS = [
-  { key: "details_matiere", title: "Détails & matière" },
-  { key: "utilisation", title: "Utilisation" },
-  { key: "livraison_retours", title: "Livraison & retours" },
-] as const
-
-/**
- * Construit les sections d'accordéon à partir de `product.metadata`.
- * N'inclut que les entrées dont la valeur est une chaîne non-vide.
- */
-const toSections = (
-  metadata?: Record<string, unknown> | null
-): { title: string; body: string }[] =>
-  EDITORIAL_SECTIONS.flatMap(({ key, title }) => {
-    const value = metadata?.[key]
-    if (typeof value !== "string") {
-      return []
-    }
-    const body = value.trim()
-    return body ? [{ title, body }] : []
-  })
 
 /** Surfaces de repli (rotation) quand un produit n'a pas d'image. */
 const FALLBACK_SURFACES = ["bg-soleil", "bg-terracotta", "bg-marine"] as const
@@ -162,15 +118,12 @@ export const toPiece = (
     description:
       cleanDescription(product.description) ||
       "Une pièce de la collection KULT, coulée et parfumée à la main.",
-    sections: toSections(product.metadata),
 
-    // Décorations statiques
-    notes: GENERIC_NOTES,
+    // Décorations non éditoriales (cartes / galerie)
     scent: category?.name
       ? `${category.name} · Cire de soja`
       : "Cire de soja · 220g",
     caption: `[ ${product.title ?? "Pièce"} ]`,
-    pyramid: GENERIC_PYRAMID,
     surface: FALLBACK_SURFACES[index % FALLBACK_SURFACES.length],
     halo: index % 3 === 0,
   }

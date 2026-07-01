@@ -1,6 +1,10 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import {
+  getProductAttributes,
+  getTrustBadges,
+} from "@lib/data/product-attributes"
 import { getProductByHandle, listProducts } from "@lib/data/products"
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
@@ -89,5 +93,17 @@ export default async function ProductPage(props: Props) {
     .filter((p) => p.handle !== piece.handle)
     .slice(0, 2)
 
-  return <KultProductTemplate piece={piece} related={related} />
+  const [attributes, trustBadges] = await Promise.all([
+    getProductAttributes(product.id),
+    getTrustBadges(),
+  ])
+
+  return (
+    <KultProductTemplate
+      piece={piece}
+      related={related}
+      attributes={attributes}
+      trustBadges={trustBadges}
+    />
+  )
 }
