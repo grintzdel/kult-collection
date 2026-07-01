@@ -35,6 +35,11 @@ export type Piece = {
   categoryLabel: string
   /** description réelle (texte) */
   description: string
+  /**
+   * Sections éditoriales de la fiche produit (accordéons), remplies dans
+   * `product.metadata` depuis l'admin. Seules les sections non-vides sont incluses.
+   */
+  sections: { title: string; body: string }[]
 
   // --- Décorations éditoriales statiques (pas de source Medusa) ---
   /** notes courtes génériques */
@@ -66,6 +71,32 @@ const GENERIC_PYRAMID = {
 } as const
 
 const GENERIC_NOTES = "Cire de soja · Fait main"
+
+/**
+ * Sections éditoriales de la fiche produit, ordonnées, avec leur clé metadata.
+ * Le contenu est saisi par produit depuis l'admin (widget « Contenu éditorial »).
+ */
+const EDITORIAL_SECTIONS = [
+  { key: "details_matiere", title: "Détails & matière" },
+  { key: "utilisation", title: "Utilisation" },
+  { key: "livraison_retours", title: "Livraison & retours" },
+] as const
+
+/**
+ * Construit les sections d'accordéon à partir de `product.metadata`.
+ * N'inclut que les entrées dont la valeur est une chaîne non-vide.
+ */
+const toSections = (
+  metadata?: Record<string, unknown> | null
+): { title: string; body: string }[] =>
+  EDITORIAL_SECTIONS.flatMap(({ key, title }) => {
+    const value = metadata?.[key]
+    if (typeof value !== "string") {
+      return []
+    }
+    const body = value.trim()
+    return body ? [{ title, body }] : []
+  })
 
 /** Surfaces de repli (rotation) quand un produit n'a pas d'image. */
 const FALLBACK_SURFACES = ["bg-soleil", "bg-terracotta", "bg-marine"] as const
@@ -131,6 +162,7 @@ export const toPiece = (
     description:
       cleanDescription(product.description) ||
       "Une pièce de la collection KULT, coulée et parfumée à la main.",
+    sections: toSections(product.metadata),
 
     // Décorations statiques
     notes: GENERIC_NOTES,

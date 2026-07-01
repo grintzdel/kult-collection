@@ -101,7 +101,7 @@ const KultProductTemplate = ({
               </div>
 
               {/* Accordéons */}
-              <KultProductAccordions />
+              <KultProductAccordions sections={piece.sections} />
             </div>
           </div>
         </div>
