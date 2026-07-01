@@ -5,6 +5,9 @@ import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@modules/common/components/ui"
 import Divider from "@modules/common/components/divider"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import QuantityStepper from "@modules/common/components/quantity-stepper"
+import { usePro } from "@modules/pro/context/pro-provider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
 import { isEqual } from "lodash"
 import { useParams, usePathname, useSearchParams } from "next/navigation"
@@ -35,9 +38,15 @@ export default function ProductActions({
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  const { isPro, config } = usePro()
+
+  // Mode contact/devis : le pro voit ses prix mais ne peut pas acheter en ligne.
+  const proContactOnly =
+    isPro && config.active && !config.online_purchase_enabled
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
+  const [quantity, setQuantity] = useState(1)
   const countryCode = useParams().countryCode as string
 
   // If there is only 1 variant, preselect the options
@@ -128,7 +137,7 @@ export default function ProductActions({
 
     await addToCart({
       variantId: selectedVariant.id,
-      quantity: 1,
+      quantity,
       countryCode,
     })
 
@@ -160,39 +169,61 @@ export default function ProductActions({
           )}
         </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
-
-        <Button
-          onClick={handleAddToCart}
-          disabled={
-            !inStock ||
-            !selectedVariant ||
-            !!disabled ||
-            isAdding ||
-            !isValidVariant
-          }
-          variant="primary"
-          className="w-full h-10"
-          isLoading={isAdding}
-          data-testid="add-product-button"
-        >
-          {!selectedVariant && !options
-            ? "Select variant"
-            : !inStock || !isValidVariant
-            ? "Out of stock"
-            : "Add to cart"}
-        </Button>
-        <MobileActions
+        <ProductPrice
           product={product}
           variant={selectedVariant}
-          options={options}
-          updateOptions={setOptionValue}
-          inStock={inStock}
-          handleAddToCart={handleAddToCart}
-          isAdding={isAdding}
-          show={!inView}
-          optionsDisabled={!!disabled || isAdding}
+          proHt={isPro && config.active && config.display_ht}
         />
+
+        {proContactOnly ? (
+          <LocalizedClientLink href="/pro" className="w-full">
+            <Button variant="primary" className="w-full h-10">
+              Demander un devis
+            </Button>
+          </LocalizedClientLink>
+        ) : (
+          <>
+            <div className="flex items-center gap-x-3">
+              <span className="text-sm text-neutral-600">Quantité</span>
+              <QuantityStepper
+                value={quantity}
+                onChange={setQuantity}
+                disabled={!!disabled || isAdding}
+              />
+            </div>
+            <Button
+              onClick={handleAddToCart}
+              disabled={
+                !inStock ||
+                !selectedVariant ||
+                !!disabled ||
+                isAdding ||
+                !isValidVariant
+              }
+              variant="primary"
+              className="w-full h-10"
+              isLoading={isAdding}
+              data-testid="add-product-button"
+            >
+              {!selectedVariant && !options
+                ? "Select variant"
+                : !inStock || !isValidVariant
+                ? "Out of stock"
+                : "Add to cart"}
+            </Button>
+            <MobileActions
+              product={product}
+              variant={selectedVariant}
+              options={options}
+              updateOptions={setOptionValue}
+              inStock={inStock}
+              handleAddToCart={handleAddToCart}
+              isAdding={isAdding}
+              show={!inView}
+              optionsDisabled={!!disabled || isAdding}
+            />
+          </>
+        )}
       </div>
     </>
   )

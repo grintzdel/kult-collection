@@ -1,131 +1,93 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { listProducts } from "@lib/data/products"
-import { getRegion, listRegions } from "@lib/data/regions"
-import ProductTemplate from "@modules/products/templates"
-import { HttpTypes } from "@medusajs/types"
+
+import { getProductByHandle, listProducts } from "@lib/data/products"
+import { listRegions } from "@lib/data/regions"
+import { StoreRegion } from "@medusajs/types"
+import {
+  toPiece,
+  toPieces,
+} from "@modules/home/components/kult/pieces"
+import KultProductTemplate from "@modules/home/components/kult/product-template"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
-  searchParams: Promise<{ v_id?: string }>
 }
+
+const DEFAULT_COUNTRY = process.env.NEXT_PUBLIC_DEFAULT_REGION || "dk"
 
 export async function generateStaticParams() {
   try {
-    const countryCodes = await listRegions().then((regions) =>
-      regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
+    const {
+      response: { products },
+    } = await listProducts({
+      countryCode: DEFAULT_COUNTRY,
+      queryParams: { limit: 100, fields: "handle" },
+    })
+
+    const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
+      regions
+        ?.flatMap((r) => r.countries?.map((c) => c.iso_2))
+        .filter((c): c is string => Boolean(c))
     )
 
-    if (!countryCodes) {
+    if (!countryCodes?.length) {
       return []
     }
 
-    const promises = countryCodes.map(async (country) => {
-      const { response } = await listProducts({
-        countryCode: country,
-        queryParams: { limit: 100, fields: "handle" },
-      })
-
-      return {
-        country,
-        products: response.products,
-      }
-    })
-
-    const countryProducts = await Promise.all(promises)
-
-    return countryProducts
-      .flatMap((countryData) =>
-        countryData.products.map((product) => ({
-          countryCode: countryData.country,
-          handle: product.handle,
-        }))
-      )
-      .filter((param) => param.handle)
-  } catch (error) {
-    console.error(
-      `Failed to generate static paths for product pages: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }.`
+    return countryCodes.flatMap((countryCode) =>
+      products
+        .map((p) => p.handle)
+        .filter((handle): handle is string => Boolean(handle))
+        .map((handle) => ({ countryCode, handle }))
     )
+  } catch {
     return []
   }
 }
 
-function getImagesForVariant(
-  product: HttpTypes.StoreProduct,
-  selectedVariantId?: string
-) {
-  if (!selectedVariantId || !product.variants) {
-    return product.images
-  }
-
-  const variant = product.variants!.find((v) => v.id === selectedVariantId)
-  if (!variant || !variant.images?.length) {
-    return product.images
-  }
-
-  const imageIdsMap = new Map(variant.images!.map((i) => [i.id, true]))
-  return product.images?.filter((i) => imageIdsMap.has(i.id)) ?? null
-}
-
 export async function generateMetadata(props: Props): Promise<Metadata> {
-  const params = await props.params
-  const { handle } = params
-  const region = await getRegion(params.countryCode)
-
-  if (!region) {
-    notFound()
-  }
-
-  const product = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle },
-  }).then(({ response }) => response.products[0])
+  const { handle, countryCode } = await props.params
+  const product = await getProductByHandle(handle, countryCode)
 
   if (!product) {
     notFound()
   }
 
+  const piece = toPiece(product)
+
   return {
-    title: `${product.title} | Medusa Store`,
-    description: `${product.title}`,
-    openGraph: {
-      title: `${product.title} | Medusa Store`,
-      description: `${product.title}`,
-      images: product.thumbnail ? [product.thumbnail] : [],
-    },
+    title: piece.name,
+    description: piece.description.slice(0, 160),
   }
 }
 
 export default async function ProductPage(props: Props) {
-  const params = await props.params
-  const region = await getRegion(params.countryCode)
-  const searchParams = await props.searchParams
+  const { handle, countryCode } = await props.params
 
-  const selectedVariantId = searchParams.v_id
+  const product = await getProductByHandle(handle, countryCode)
 
-  if (!region) {
+  if (!product) {
     notFound()
   }
 
-  const pricedProduct = await listProducts({
-    countryCode: params.countryCode,
-    queryParams: { handle: params.handle },
-  }).then(({ response }) => response.products[0])
+  const piece = toPiece(product)
 
-  const images = getImagesForVariant(pricedProduct, selectedVariantId)
+  // Pièces liées : même catégorie de préférence, sinon le reste de la collection.
+  const categoryId = product.categories?.[0]?.id
+  const {
+    response: { products: siblings },
+  } = await listProducts({
+    countryCode,
+    queryParams: {
+      limit: 6,
+      ...(categoryId ? { category_id: [categoryId] } : {}),
+    },
+  })
 
-  if (!pricedProduct) {
-    notFound()
-  }
+  const related = toPieces(siblings)
+    .filter((p) => p.handle !== piece.handle)
+    .slice(0, 2)
 
-  return (
-    <ProductTemplate
-      product={pricedProduct}
-      region={region}
-      countryCode={params.countryCode}
-      images={images ?? []}
-    />
-  )
+  return <KultProductTemplate piece={piece} related={related} />
 }

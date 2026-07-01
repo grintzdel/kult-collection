@@ -110,3 +110,136 @@
     @apply text-[32px] leading-[44px] font-semibold;
   }
 }
+
+/* ============================================================
+   KULT — Design System v1
+   Maison, pas marque. Lent et posé.
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #e7a93a;
+    color: #2b2018;
+  }
+}
+
+@layer components {
+  /* Conteneur de page */
+  .kult-container {
+    @apply mx-auto w-full max-w-[1240px] px-6 md:px-10;
+  }
+
+  /* Label mono — le repère (prix, eyebrows, méta) */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-label;
+  }
+
+  /* Titres serif — l'émotion */
+  .display {
+    @apply font-serif font-normal leading-[0.95] tracking-[-0.01em];
+  }
+
+  /* — Boutons : les primitives de la maison — */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-circle font-mono text-[11px]
+      uppercase tracking-label transition-all duration-300 ease-out;
+  }
+  .btn-lg {
+    @apply px-7 py-3.5;
+  }
+  .btn-sm {
+    @apply px-4 py-2;
+  }
+  .btn-dark {
+    @apply btn bg-ink text-ivory hover:-translate-y-0.5 hover:shadow-soft;
+  }
+  .btn-light {
+    @apply btn border border-ink/15 bg-ivory text-ink hover:bg-cream;
+  }
+  .btn-terracotta {
+    @apply btn bg-terracotta text-ivory hover:-translate-y-0.5 hover:shadow-soft;
+  }
+  .btn-soleil {
+    @apply btn bg-soleil text-ink hover:-translate-y-0.5 hover:shadow-soft;
+  }
+  .btn-link {
+    @apply inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-label
+      text-ink/70 transition-colors hover:text-ink;
+  }
+
+  /* — Badges / tags — */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-circle border border-terracotta/40
+      px-3 py-1.5 font-mono text-[10px] uppercase tracking-label text-terracotta;
+  }
+  .badge-solid {
+    @apply inline-flex items-center gap-1.5 rounded-circle bg-terracotta px-3 py-1.5
+      font-mono text-[10px] uppercase tracking-label text-ivory;
+  }
+
+  /* — Halo solaire : la lumière de la maison — */
+  .halo-soleil {
+    background: radial-gradient(
+      circle at 50% 40%,
+      rgba(231, 169, 58, 0.95) 0%,
+      rgba(196, 90, 60, 0.85) 52%,
+      rgba(196, 90, 60, 0) 74%
+    );
+  }
+
+  /* — Motifs : damier, léopard, rayures, amore — */
+  .motif-damier {
+    background-color: #efe6d4;
+    background-image: linear-gradient(45deg, #c45a3c 25%, transparent 25%, transparent 75%, #c45a3c 75%),
+      linear-gradient(45deg, #c45a3c 25%, transparent 25%, transparent 75%, #c45a3c 75%);
+    background-size: 44px 44px;
+    background-position: 0 0, 22px 22px;
+  }
+  .motif-leopard {
+    background-color: #c99a4e;
+    background-image: radial-gradient(circle, #2b2018 20%, transparent 22%),
+      radial-gradient(circle, #2b2018 20%, transparent 22%);
+    background-size: 56px 56px;
+    background-position: 0 0, 28px 28px;
+  }
+  .motif-rayures {
+    background: repeating-linear-gradient(
+      90deg,
+      #e7a93a 0,
+      #e7a93a 18px,
+      #c45a3c 18px,
+      #c45a3c 32px
+    );
+  }
+  .motif-amore {
+    background-color: #de8c76;
+  }
+  /* Damier soleil/encre — bandes & pastilles décoratives */
+  .motif-damier-soleil {
+    background-color: #e7a93a;
+    background-image: linear-gradient(45deg, #2b2018 25%, transparent 25%, transparent 75%, #2b2018 75%),
+      linear-gradient(45deg, #2b2018 25%, transparent 25%, transparent 75%, #2b2018 75%);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+
+  /* Texture diagonale subtile sur les contenants */
+  .tex-diagonal {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+  }
+}
+

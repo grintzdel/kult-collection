@@ -1,21 +1,12 @@
-import { retrieveCart } from "@lib/data/cart"
-import { retrieveCustomer } from "@lib/data/customer"
-import CartTemplate from "@modules/cart/templates"
 import { Metadata } from "next"
-import { notFound } from "next/navigation"
+
+import KultCartTemplate from "@modules/home/components/kult/cart-template"
 
 export const metadata: Metadata = {
-  title: "Cart",
-  description: "View your cart",
+  title: "Votre panier",
+  description: "Votre sélection KULT.",
 }
 
-export default async function Cart() {
-  const cart = await retrieveCart().catch((error) => {
-    console.error(error)
-    return notFound()
-  })
-
-  const customer = await retrieveCustomer()
-
-  return <CartTemplate cart={cart} customer={customer} />
+export default function CartPage() {
+  return <KultCartTemplate />
 }
