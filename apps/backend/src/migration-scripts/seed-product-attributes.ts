@@ -1,5 +1,6 @@
 import { MedusaContainer } from "@medusajs/framework"
 import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
+import { updateProductsWorkflow } from "@medusajs/medusa/core-flows"
 import { PRODUCT_ATTRIBUTE_MODULE } from "../modules/product-attribute"
 import { createAttributeDefinitionWorkflow } from "../workflows/product-attribute/create-attribute-definition"
 import { createTrustBadgeWorkflow } from "../workflows/product-attribute/manage-trust-badges"
@@ -63,6 +64,72 @@ const TRUST_BADGES = [
   { icon: "↘", label: "Livraison soignée 2–4 j", rank: 2 },
 ]
 
+/** Valeurs par défaut appliquées à tous les produits (démo). */
+type AttributeValues = {
+  notes: string
+  matiere: string
+  pyramide: { tete: string; coeur: string; fond: string }
+  details_matiere: string
+  utilisation: string
+  livraison_retours: string
+}
+
+const BASE_VALUES: AttributeValues = {
+  notes: "Cire de soja · Fait main",
+  matiere: "Cire de soja végétale",
+  pyramide: {
+    tete: "Bergamote, agrumes",
+    coeur: "Fleur d'oranger, figue",
+    fond: "Musc blanc, bois clair",
+  },
+  details_matiere:
+    "Coulée à la main. Cire de soja végétale, mèche en coton. Contenant réutilisable une fois la cire épuisée.",
+  utilisation:
+    "Première combustion : laissez fondre la cire jusqu'aux bords pour éviter le tunnel. Recoupez la mèche à 5 mm avant chaque usage. Ne jamais laisser brûler plus de 4 heures.",
+  livraison_retours:
+    "Expédition soignée sous 2 à 4 jours ouvrés. Retours acceptés sous 14 jours, contenant non utilisé.",
+}
+
+/** Ajustements par catégorie (le reste retombe sur BASE_VALUES). */
+const CATEGORY_OVERRIDES: Record<string, Partial<AttributeValues>> = {
+  "Bougies Gold": {
+    notes: "Édition Gold · Fait main à Grasse",
+    matiere: "Céramique émaillée · Cire de soja végétale",
+    details_matiere:
+      "Contenant en céramique émaillée coulé à la main. Cire de soja 100 % naturelle, mèche coton. Contenant réutilisable.",
+  },
+  Parfums: {
+    notes: "Parfum de Grasse · Sans alcool",
+    matiere: "Sans alcool · 100 % biodégradable",
+    pyramide: {
+      tete: "Agrumes, bergamote",
+      coeur: "Jasmin, fleur d'oranger",
+      fond: "Bois de cèdre, musc",
+    },
+    utilisation:
+      "Secouez avant emploi. Vaporisez dans la pièce et sur les textiles. Évitez le contact direct avec les surfaces fragiles.",
+  },
+}
+
+const valuesForCategory = (name?: string): AttributeValues => ({
+  ...BASE_VALUES,
+  ...(name ? CATEGORY_OVERRIDES[name] ?? {} : {}),
+})
+
+/** Une valeur metadata est-elle absente/vide (donc à remplir par le seed) ? */
+const isEmptyValue = (value: unknown): boolean => {
+  if (value == null) {
+    return true
+  }
+  if (typeof value === "string") {
+    return value.trim().length === 0
+  }
+  if (typeof value === "object") {
+    return Object.keys(value).length === 0
+  }
+  return false
+}
+
 export default async function seedProductAttributes({
   container,
 }: {
@@ -119,6 +186,44 @@ export default async function seedProductAttributes({
     logger.info(`  ✔ ${TRUST_BADGES.length} badges de réassurance créés`)
   } else {
     logger.info("  · Badges de réassurance déjà présents, ignorés")
+  }
+
+  logger.info("Seeding attribute values on products...")
+
+  const { data: products } = await query.graph({
+    entity: "product",
+    fields: ["id", "metadata", "categories.name"],
+  })
+
+  const updates: { id: string; metadata: Record<string, unknown> }[] = []
+  for (const product of products) {
+    const metadata = (product.metadata ?? {}) as Record<string, unknown>
+    const primaryCategory = (
+      product.categories as { name: string }[] | undefined
+    )?.[0]?.name
+    const defaults = valuesForCategory(primaryCategory)
+
+    const merged: Record<string, unknown> = { ...metadata }
+    let changed = false
+    for (const [key, value] of Object.entries(defaults)) {
+      // Ne remplit que les champs vides — préserve les valeurs déjà saisies.
+      if (isEmptyValue(metadata[key])) {
+        merged[key] = value
+        changed = true
+      }
+    }
+    if (changed) {
+      updates.push({ id: product.id as string, metadata: merged })
+    }
+  }
+
+  if (updates.length > 0) {
+    await updateProductsWorkflow(container).run({
+      input: { products: updates },
+    })
+    logger.info(`  ✔ Valeurs seedées sur ${updates.length} produit(s)`)
+  } else {
+    logger.info("  · Tous les produits ont déjà leurs valeurs, rien à faire")
   }
 
   logger.info("Finished seeding product attributes.")
