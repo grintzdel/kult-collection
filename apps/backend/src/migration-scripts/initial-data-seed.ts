@@ -8,7 +8,6 @@ import {
 import {
   createApiKeysWorkflow,
   createInventoryLevelsWorkflow,
-  createProductCategoriesWorkflow,
   createProductsWorkflow,
   createRegionsWorkflow,
   createSalesChannelsWorkflow,
@@ -20,6 +19,20 @@ import {
   linkSalesChannelsToStockLocationWorkflow,
 } from "@medusajs/medusa/core-flows";
 import productsData from "../../data/kult/products.json";
+import { buildProductOptionsAndVariants } from "../lib/seed/variant-scheme";
+import { applyScentWiring } from "../lib/seed/apply-scents";
+import { applyAmbianceWiring } from "../lib/seed/apply-ambiances";
+import {
+  querySubCategoryIdByName,
+  resolveProductCategoryIds,
+  seedCategoryTree,
+} from "../lib/seed/categories";
+
+// Base URL where the Medusa server exposes the local `static/` folder.
+// Images live in `static/kult/*` and are referenced as `<base>/static/kult/<file>`.
+const STATIC_BASE = (
+  process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"
+).replace(/\/$/, "");
 
 // Builds a clean, URL-safe handle/SKU base from a product name.
 // Strips accents, replaces "&" with "et" and apostrophes/spaces with dashes.
@@ -307,40 +320,10 @@ export default async function initial_data_seed({
 
   logger.info("Seeding product data...");
 
-  // Categories mirror the live kultcollection.com store menu.
-  const categoryDefs = [
-    {
-      name: "Bougies",
-      description:
-        "Bougies parfumées artisanales en cire de soja 100 % naturelle, fabriquées à la main dans le sud de la France.",
-    },
-    {
-      name: "Bougies Gold",
-      description:
-        "Bougies en céramique émaillée coulées à la main, cire de soja 100 % naturelle et parfums de Grasse.",
-    },
-    {
-      name: "Parfums",
-      description:
-        "Diffuseurs et parfums de maison sans alcool, 100 % biodégradables, parfums de Grasse.",
-    },
-  ];
-
-  const { result: categoryResult } = await createProductCategoriesWorkflow(
-    container
-  ).run({
-    input: {
-      product_categories: categoryDefs.map((c) => ({
-        name: c.name,
-        description: c.description,
-        is_active: true,
-      })),
-    },
-  });
-
-  const categoryIdByName = new Map(
-    categoryResult.map((cat) => [cat.name, cat.id])
-  );
+  // Arborescence : Bougies › (Bougie classique, Bougie céramique), Diffuseurs,
+  // Gamelles, Art de la table › (Tasse, Mug).
+  const categoryIdByDataKey = await seedCategoryTree(container);
+  const subCategoryIdByName = await querySubCategoryIdByName(container);
 
   await createProductsWorkflow(container).run({
     input: {
@@ -348,35 +331,21 @@ export default async function initial_data_seed({
         const handle = slugify(product.name);
         return {
           title: product.name,
-          category_ids: [categoryIdByName.get(product.category)!],
+          category_ids: resolveProductCategoryIds(
+            product.name,
+            product.category,
+            categoryIdByDataKey,
+            subCategoryIdByName
+          ),
           description: product.description,
           handle,
           weight: product.weight,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: product.images.map((url) => ({ url })),
-          options: [
-            {
-              title: "Format",
-              values: [product.format],
-            },
-          ],
-          variants: [
-            {
-              title: product.name,
-              sku: handle.toUpperCase(),
-              manage_inventory: true,
-              options: {
-                Format: product.format,
-              },
-              prices: [
-                {
-                  amount: product.price,
-                  currency_code: product.currency.toLowerCase(),
-                },
-              ],
-            },
-          ],
+          images: product.images.map((rel) => ({
+            url: `${STATIC_BASE}/static/${rel}`,
+          })),
+          ...buildProductOptionsAndVariants(product, handle),
           sales_channels: [
             {
               id: defaultSalesChannel.id,
@@ -387,6 +356,12 @@ export default async function initial_data_seed({
     },
   });
   logger.info(`Finished seeding ${productsData.length} products.`);
+
+  // Câblage des senteurs : collection "Bougies parfumées" + metadata.senteur.
+  await applyScentWiring(container);
+
+  // Câblage des ambiances : tags + couleurs + assignation catégories + surcharge démo.
+  await applyAmbianceWiring(container);
 
   logger.info("Seeding inventory levels.");
 

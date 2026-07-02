@@ -231,6 +231,21 @@
     background-position: 0 0, 12px 12px;
   }
 
+  /* Relief « céramique coulée » : halo clair en haut + vignette basse.
+     S'empile au-dessus de l'aplat de couleur, sous le chip et la légende. */
+  .piece-sheen {
+    background-image: radial-gradient(
+        120% 90% at 50% 12%,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 55%
+      ),
+      radial-gradient(
+        140% 120% at 50% 118%,
+        rgba(0, 0, 0, 0.24) 0%,
+        rgba(0, 0, 0, 0) 60%
+      );
+  }
+
   /* Texture diagonale subtile sur les contenants */
   .tex-diagonal {
     background-image: repeating-linear-gradient(
