@@ -10,6 +10,7 @@ import {
   createInventoryLevelsWorkflow,
   createProductCategoriesWorkflow,
   createProductsWorkflow,
+  createProductTagsWorkflow,
   createRegionsWorkflow,
   createSalesChannelsWorkflow,
   createShippingOptionsWorkflow,
@@ -18,8 +19,16 @@ import {
   createTaxRegionsWorkflow,
   linkSalesChannelsToApiKeyWorkflow,
   linkSalesChannelsToStockLocationWorkflow,
+  updateProductCategoriesWorkflow,
 } from "@medusajs/medusa/core-flows";
 import productsData from "../../data/kult/products.json";
+import { setProductAmbianceWorkflow } from "../workflows/ambiance/set-product-ambiance";
+
+// Base URL where the Medusa server exposes the local `static/` folder.
+// Images live in `static/kult/*` and are referenced as `<base>/static/kult/<file>`.
+const STATIC_BASE = (
+  process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"
+).replace(/\/$/, "");
 
 // Builds a clean, URL-safe handle/SKU base from a product name.
 // Strips accents, replaces "&" with "et" and apostrophes/spaces with dashes.
@@ -324,6 +333,11 @@ export default async function initial_data_seed({
       description:
         "Diffuseurs et parfums de maison sans alcool, 100 % biodégradables, parfums de Grasse.",
     },
+    {
+      name: "Céramiques",
+      description:
+        "Vaisselle et objets en faïence peints à la main, collection Riviera : tasses, assiettes, pichets, bougeoirs.",
+    },
   ];
 
   const { result: categoryResult } = await createProductCategoriesWorkflow(
@@ -342,6 +356,34 @@ export default async function initial_data_seed({
     categoryResult.map((cat) => [cat.name, cat.id])
   );
 
+  logger.info("Seeding ambiances (product tags).");
+  const ambianceValues = ["california", "palm beach", "cozy", "méditerranée"];
+  const { result: ambianceTags } = await createProductTagsWorkflow(container).run({
+    input: { product_tags: ambianceValues.map((value) => ({ value })) },
+  });
+  const tagIdByValue = new Map(
+    (ambianceTags as { id: string; value: string }[]).map((t) => [t.value, t.id])
+  );
+
+  const categoryAmbiance: Record<string, string> = {
+    Bougies: "cozy",
+    "Bougies Gold": "california",
+    Parfums: "méditerranée",
+    Céramiques: "palm beach",
+  };
+  for (const [categoryName, ambianceValue] of Object.entries(categoryAmbiance)) {
+    const categoryId = categoryIdByName.get(categoryName);
+    const tagId = tagIdByValue.get(ambianceValue);
+    if (categoryId && tagId) {
+      await updateProductCategoriesWorkflow(container).run({
+        input: {
+          selector: { id: categoryId },
+          update: { metadata: { ambiance_tag_id: tagId } },
+        },
+      });
+    }
+  }
+
   await createProductsWorkflow(container).run({
     input: {
       products: productsData.map((product) => {
@@ -354,7 +396,9 @@ export default async function initial_data_seed({
           weight: product.weight,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: product.images.map((url) => ({ url })),
+          images: product.images.map((rel) => ({
+            url: `${STATIC_BASE}/static/${rel}`,
+          })),
           options: [
             {
               title: "Format",
@@ -387,6 +431,23 @@ export default async function initial_data_seed({
     },
   });
   logger.info(`Finished seeding ${productsData.length} products.`);
+
+  // Démo : surcharge d'une bougie avec une ambiance différente de sa catégorie.
+  const demoProduct = productsData.find((p) => p.category === "Bougies");
+  const californiaId = tagIdByValue.get("california");
+  if (demoProduct && californiaId) {
+    const { data: demoRows } = await query.graph({
+      entity: "product",
+      fields: ["id"],
+      filters: { handle: slugify(demoProduct.name) },
+    });
+    const demoId = (demoRows[0] as { id: string } | undefined)?.id;
+    if (demoId) {
+      await setProductAmbianceWorkflow(container).run({
+        input: { product_id: demoId, tag_id: californiaId },
+      });
+    }
+  }
 
   logger.info("Seeding inventory levels.");
 
