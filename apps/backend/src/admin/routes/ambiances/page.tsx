@@ -22,12 +22,15 @@ import { sdk } from "../../lib/client"
 
 const CATEGORIES_KEY = ["ambiance-categories"]
 const NONE = "__none__"
+const DEFAULT_COLOR = "#FFCA42"
 
 const AmbiancesPage = () => {
   const queryClient = useQueryClient()
   const [newValue, setNewValue] = useState("")
+  const [newColor, setNewColor] = useState(DEFAULT_COLOR)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editingValue, setEditingValue] = useState("")
+  const [editingColor, setEditingColor] = useState(DEFAULT_COLOR)
 
   const { data: ambiancesData, isLoading } = useQuery<{ ambiances: Ambiance[] }>({
     queryKey: AMBIANCES_QUERY_KEY,
@@ -53,21 +56,33 @@ const AmbiancesPage = () => {
   }
 
   const createAmbiance = useMutation({
-    mutationFn: (value: string) =>
-      sdk.client.fetch("/admin/ambiances", { method: "POST", body: { value } }),
+    mutationFn: ({ value, color }: { value: string; color: string }) =>
+      sdk.client.fetch("/admin/ambiances", {
+        method: "POST",
+        body: { value, color },
+      }),
     onSuccess: () => {
       invalidate()
       setNewValue("")
+      setNewColor(DEFAULT_COLOR)
       toast.success("Ambiance créée")
     },
     onError: (e: Error) => toast.error(e.message || "Échec de la création"),
   })
 
   const updateAmbiance = useMutation({
-    mutationFn: ({ id, value }: { id: string; value: string }) =>
+    mutationFn: ({
+      id,
+      value,
+      color,
+    }: {
+      id: string
+      value: string
+      color: string
+    }) =>
       sdk.client.fetch(`/admin/ambiances/${id}`, {
         method: "POST",
-        body: { value },
+        body: { value, color },
       }),
     onSuccess: () => {
       invalidate()
@@ -135,12 +150,26 @@ const AmbiancesPage = () => {
               onChange={(e) => setNewValue(e.target.value)}
             />
           </div>
+          <div className="flex flex-col gap-y-2">
+            <Label size="small" weight="plus">
+              Couleur
+            </Label>
+            <input
+              type="color"
+              aria-label="Couleur de l'ambiance"
+              value={newColor}
+              onChange={(e) => setNewColor(e.target.value)}
+              className="h-8 w-12 cursor-pointer rounded-md border border-ui-border-base bg-ui-bg-field p-1"
+            />
+          </div>
           <Button
             size="small"
             variant="secondary"
             disabled={!newValue.trim() || createAmbiance.isPending}
             isLoading={createAmbiance.isPending}
-            onClick={() => createAmbiance.mutate(newValue.trim())}
+            onClick={() =>
+              createAmbiance.mutate({ value: newValue.trim(), color: newColor })
+            }
           >
             Ajouter
           </Button>
@@ -163,6 +192,7 @@ const AmbiancesPage = () => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Ambiance</Table.HeaderCell>
+                <Table.HeaderCell>Couleur</Table.HeaderCell>
                 <Table.HeaderCell>Catégories</Table.HeaderCell>
                 <Table.HeaderCell>Produits surchargés</Table.HeaderCell>
                 <Table.HeaderCell />
@@ -184,6 +214,29 @@ const AmbiancesPage = () => {
                       </Text>
                     )}
                   </Table.Cell>
+                  <Table.Cell>
+                    {editingId === a.id ? (
+                      <input
+                        type="color"
+                        aria-label="Couleur de l'ambiance"
+                        value={editingColor}
+                        onChange={(e) => setEditingColor(e.target.value)}
+                        className="h-8 w-12 cursor-pointer rounded-md border border-ui-border-base bg-ui-bg-field p-1"
+                      />
+                    ) : a.color ? (
+                      <div className="flex items-center gap-x-2">
+                        <span
+                          className="inline-block h-5 w-5 rounded-full border border-ui-border-base"
+                          style={{ backgroundColor: a.color }}
+                        />
+                        <code className="text-ui-fg-subtle">{a.color}</code>
+                      </div>
+                    ) : (
+                      <Text size="small" className="text-ui-fg-muted">
+                        —
+                      </Text>
+                    )}
+                  </Table.Cell>
                   <Table.Cell>{a.category_count}</Table.Cell>
                   <Table.Cell>{a.product_count}</Table.Cell>
                   <Table.Cell>
@@ -199,6 +252,7 @@ const AmbiancesPage = () => {
                               updateAmbiance.mutate({
                                 id: a.id,
                                 value: editingValue.trim(),
+                                color: editingColor,
                               })
                             }
                           >
@@ -220,6 +274,7 @@ const AmbiancesPage = () => {
                             onClick={() => {
                               setEditingId(a.id)
                               setEditingValue(a.value)
+                              setEditingColor(a.color ?? DEFAULT_COLOR)
                             }}
                           >
                             Modifier

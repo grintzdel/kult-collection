@@ -11,7 +11,7 @@ export async function GET(req: AuthenticatedMedusaRequest, res: MedusaResponse) 
 
   const { data: tags } = await query.graph({
     entity: "product_tag",
-    fields: ["id", "value", "products.id"],
+    fields: ["id", "value", "metadata", "products.id"],
   })
 
   const { data: categories } = await query.graph({
@@ -28,10 +28,16 @@ export async function GET(req: AuthenticatedMedusaRequest, res: MedusaResponse) 
   }
 
   const ambiances = (
-    tags as { id: string; value: string; products?: unknown[] }[]
+    tags as {
+      id: string
+      value: string
+      metadata?: Record<string, unknown> | null
+      products?: unknown[]
+    }[]
   ).map((t) => ({
     id: t.id,
     value: t.value,
+    color: typeof t.metadata?.color === "string" ? t.metadata.color : null,
     product_count: t.products?.length ?? 0,
     category_count: categoryCountByTag.get(t.id) ?? 0,
   }))
@@ -43,8 +49,11 @@ export async function POST(
   req: AuthenticatedMedusaRequest<CreateAmbianceSchema>,
   res: MedusaResponse
 ) {
+  const { value, color } = req.validatedBody
   const { result } = await createProductTagsWorkflow(req.scope).run({
-    input: { product_tags: [{ value: req.validatedBody.value }] },
+    input: {
+      product_tags: [{ value, ...(color ? { metadata: { color } } : {}) }],
+    },
   })
 
   return res.status(201).json({ ambiance: result[0] })

@@ -13,10 +13,11 @@ export async function POST(
   res: MedusaResponse
 ) {
   const { id } = req.params
+  const { value, color } = req.validatedBody
   const { result } = await updateProductTagsWorkflow(req.scope).run({
     input: {
       selector: { id },
-      update: { value: req.validatedBody.value },
+      update: { value, ...(color ? { metadata: { color } } : {}) },
     },
   })
 

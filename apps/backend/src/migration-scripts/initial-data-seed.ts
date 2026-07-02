@@ -8,9 +8,7 @@ import {
 import {
   createApiKeysWorkflow,
   createInventoryLevelsWorkflow,
-  createProductCategoriesWorkflow,
   createProductsWorkflow,
-  createProductTagsWorkflow,
   createRegionsWorkflow,
   createSalesChannelsWorkflow,
   createShippingOptionsWorkflow,
@@ -19,10 +17,16 @@ import {
   createTaxRegionsWorkflow,
   linkSalesChannelsToApiKeyWorkflow,
   linkSalesChannelsToStockLocationWorkflow,
-  updateProductCategoriesWorkflow,
 } from "@medusajs/medusa/core-flows";
 import productsData from "../../data/kult/products.json";
-import { setProductAmbianceWorkflow } from "../workflows/ambiance/set-product-ambiance";
+import { buildProductOptionsAndVariants } from "../lib/seed/variant-scheme";
+import { applyScentWiring } from "../lib/seed/apply-scents";
+import { applyAmbianceWiring } from "../lib/seed/apply-ambiances";
+import {
+  querySubCategoryIdByName,
+  resolveProductCategoryIds,
+  seedCategoryTree,
+} from "../lib/seed/categories";
 
 // Base URL where the Medusa server exposes the local `static/` folder.
 // Images live in `static/kult/*` and are referenced as `<base>/static/kult/<file>`.
@@ -316,73 +320,10 @@ export default async function initial_data_seed({
 
   logger.info("Seeding product data...");
 
-  // Categories mirror the live kultcollection.com store menu.
-  const categoryDefs = [
-    {
-      name: "Bougies",
-      description:
-        "Bougies parfumées artisanales en cire de soja 100 % naturelle, fabriquées à la main dans le sud de la France.",
-    },
-    {
-      name: "Bougies Gold",
-      description:
-        "Bougies en céramique émaillée coulées à la main, cire de soja 100 % naturelle et parfums de Grasse.",
-    },
-    {
-      name: "Parfums",
-      description:
-        "Diffuseurs et parfums de maison sans alcool, 100 % biodégradables, parfums de Grasse.",
-    },
-    {
-      name: "Céramiques",
-      description:
-        "Vaisselle et objets en faïence peints à la main, collection Riviera : tasses, assiettes, pichets, bougeoirs.",
-    },
-  ];
-
-  const { result: categoryResult } = await createProductCategoriesWorkflow(
-    container
-  ).run({
-    input: {
-      product_categories: categoryDefs.map((c) => ({
-        name: c.name,
-        description: c.description,
-        is_active: true,
-      })),
-    },
-  });
-
-  const categoryIdByName = new Map(
-    categoryResult.map((cat) => [cat.name, cat.id])
-  );
-
-  logger.info("Seeding ambiances (product tags).");
-  const ambianceValues = ["california", "palm beach", "cozy", "méditerranée"];
-  const { result: ambianceTags } = await createProductTagsWorkflow(container).run({
-    input: { product_tags: ambianceValues.map((value) => ({ value })) },
-  });
-  const tagIdByValue = new Map(
-    (ambianceTags as { id: string; value: string }[]).map((t) => [t.value, t.id])
-  );
-
-  const categoryAmbiance: Record<string, string> = {
-    Bougies: "cozy",
-    "Bougies Gold": "california",
-    Parfums: "méditerranée",
-    Céramiques: "palm beach",
-  };
-  for (const [categoryName, ambianceValue] of Object.entries(categoryAmbiance)) {
-    const categoryId = categoryIdByName.get(categoryName);
-    const tagId = tagIdByValue.get(ambianceValue);
-    if (categoryId && tagId) {
-      await updateProductCategoriesWorkflow(container).run({
-        input: {
-          selector: { id: categoryId },
-          update: { metadata: { ambiance_tag_id: tagId } },
-        },
-      });
-    }
-  }
+  // Arborescence : Bougies › (Bougie classique, Bougie céramique), Diffuseurs,
+  // Gamelles, Art de la table › (Tasse, Mug).
+  const categoryIdByDataKey = await seedCategoryTree(container);
+  const subCategoryIdByName = await querySubCategoryIdByName(container);
 
   await createProductsWorkflow(container).run({
     input: {
@@ -390,7 +331,12 @@ export default async function initial_data_seed({
         const handle = slugify(product.name);
         return {
           title: product.name,
-          category_ids: [categoryIdByName.get(product.category)!],
+          category_ids: resolveProductCategoryIds(
+            product.name,
+            product.category,
+            categoryIdByDataKey,
+            subCategoryIdByName
+          ),
           description: product.description,
           handle,
           weight: product.weight,
@@ -399,28 +345,7 @@ export default async function initial_data_seed({
           images: product.images.map((rel) => ({
             url: `${STATIC_BASE}/static/${rel}`,
           })),
-          options: [
-            {
-              title: "Format",
-              values: [product.format],
-            },
-          ],
-          variants: [
-            {
-              title: product.name,
-              sku: handle.toUpperCase(),
-              manage_inventory: true,
-              options: {
-                Format: product.format,
-              },
-              prices: [
-                {
-                  amount: product.price,
-                  currency_code: product.currency.toLowerCase(),
-                },
-              ],
-            },
-          ],
+          ...buildProductOptionsAndVariants(product, handle),
           sales_channels: [
             {
               id: defaultSalesChannel.id,
@@ -432,22 +357,11 @@ export default async function initial_data_seed({
   });
   logger.info(`Finished seeding ${productsData.length} products.`);
 
-  // Démo : surcharge d'une bougie avec une ambiance différente de sa catégorie.
-  const demoProduct = productsData.find((p) => p.category === "Bougies");
-  const californiaId = tagIdByValue.get("california");
-  if (demoProduct && californiaId) {
-    const { data: demoRows } = await query.graph({
-      entity: "product",
-      fields: ["id"],
-      filters: { handle: slugify(demoProduct.name) },
-    });
-    const demoId = (demoRows[0] as { id: string } | undefined)?.id;
-    if (demoId) {
-      await setProductAmbianceWorkflow(container).run({
-        input: { product_id: demoId, tag_id: californiaId },
-      });
-    }
-  }
+  // Câblage des senteurs : collection "Bougies parfumées" + metadata.senteur.
+  await applyScentWiring(container);
+
+  // Câblage des ambiances : tags + couleurs + assignation catégories + surcharge démo.
+  await applyAmbianceWiring(container);
 
   logger.info("Seeding inventory levels.");
 

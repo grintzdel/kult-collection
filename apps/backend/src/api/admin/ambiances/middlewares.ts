@@ -4,13 +4,19 @@ import {
 } from "@medusajs/framework/http"
 import { z } from "@medusajs/framework/zod"
 
+const HexColorSchema = z
+  .string()
+  .regex(/^#[0-9a-fA-F]{6}$/, "Couleur hex invalide (ex. #FCA4E0)")
+
 export const CreateAmbianceSchema = z.object({
   value: z.string().min(1),
+  color: HexColorSchema.optional(),
 })
 export type CreateAmbianceSchema = z.infer<typeof CreateAmbianceSchema>
 
 export const UpdateAmbianceSchema = z.object({
   value: z.string().min(1),
+  color: HexColorSchema.optional(),
 })
 export type UpdateAmbianceSchema = z.infer<typeof UpdateAmbianceSchema>
 

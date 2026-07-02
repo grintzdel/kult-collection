@@ -1,1318 +1,665 @@
 [
- {
-  "name": "AMBRE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie AMBRE\nFragrance : Ambre\nPyramide olfactive de tête : Ambre, bergamote.\nPyramide olfactive de coeur : Musc, bois de teck.\nPyramide olfactive de fond : Ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_71382a1cf85e480fb9314c339b85185f~mv2.jpg"
-  ],
-  "wix_id": "4f8e20f3-0fcb-e6b0-b648-9c6302e65fee",
-  "wix_slug": "ambre"
- },
- {
-  "name": "BOUGIE BAIES ROUGES",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie BAIES ROUGES\nFragrance : Baies rouges\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_4a37bdd71a204220b999ea03f3bdbf37~mv2.jpg"
-  ],
-  "wix_id": "dd3a3853-2ad8-104f-4f85-9982e0b18233",
-  "wix_slug": "bougie-baies-rouges"
- },
- {
-  "name": "BOUGIE COCO",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie COCO\nPyramide olfactive de tête : Tonka, lait de coco\nPyramide olfactive de coeur : Vanille de madagascar\nPyramide olfactive de fond : Noisette, coco\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_b6884ce8126e4978b5f170710651e1a1~mv2.jpg"
-  ],
-  "wix_id": "70ab882f-9f2b-686a-e849-a6fd98370b27",
-  "wix_slug": "cuir-de-russie"
- },
- {
-  "name": "BOUGIE CUIR DE RUSSIE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie CUIR DE RUSSIE\nFragrance : Cuir de Russie\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_6b8f03ab19454fd7898f73e4039467bc~mv2.jpg"
-  ],
-  "wix_id": "52af55c7-6afa-a796-2994-a7acfd715393",
-  "wix_slug": "bougie-cuir-de-russie"
- },
- {
-  "name": "BOUGIE FLEURS DE COTON",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_69ceb5c0197343b390682f7eba14b6b2~mv2.jpg"
-  ],
-  "wix_id": "61419578-7545-b179-9f5c-e107ce4cf202",
-  "wix_slug": "bougie-fleurs-de-coton-1"
- },
- {
-  "name": "BOUGIE JASMIN",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie JASMIN\nFragrance : Jasmin\nPyramide olfactive de tête : Fleurs blanches.\nPyramide olfactive de coeur : Clous de girofles.\nPyramide olfactive de fond : Abricot confit.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c9fb9309f897416ab9dfc29ca1b7a910~mv2.jpg"
-  ],
-  "wix_id": "808fc576-3e01-8bc1-7280-0ee6e4ce84fc",
-  "wix_slug": "jasmin"
- },
- {
-  "name": "BOUGIE LAIT D'AMANDE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f7469c0f2f004f31abae389c7185651c~mv2.jpg"
-  ],
-  "wix_id": "ff0d922b-63cb-a3ef-f4a9-3713a61d2004",
-  "wix_slug": "bougie-lait-d-amande"
- },
- {
-  "name": "BOUGIE LAIT DE FIGUE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie LAIT DE FIGUE\nFragrance : Lait de figue\nPyramide olfactive de tête : Bergamote, mandarine, baies roses.\nPyramide olfactive de coeur : Figue, violette, cannelle.\nPyramide olfactive de fond : Musc, ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_e037bcc4ed774d968271183ab81b52ca~mv2.jpg"
-  ],
-  "wix_id": "3255d9ab-e83e-daa5-4610-4f74eca57b93",
-  "wix_slug": "bougie-lait-de-figue"
- },
- {
-  "name": "BOUGIE LAVANDE & CAMOMILLE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie LAVANDE & CAMOMILLE\nFragrance : Lavande & camomille\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f746b8c77ad14eecb12bb79dfe43537e~mv2.jpg"
-  ],
-  "wix_id": "e598c5b5-23c1-d27f-1ee4-baab2aaca0ec",
-  "wix_slug": "bougie-lavande-camomille"
- },
- {
-  "name": "BOUGIE MENTHE & BASILIC",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie MENTHE & BASILIC\nPyramide olfactive de tête : Menthe, verveine\nPyramide olfactive de coeur : Basilic, citron\nPyramide olfactive de fond : Mandarine\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_5988298b6ab3402db86e040048c6f10b~mv2.jpg"
-  ],
-  "wix_id": "2eabd667-dfd7-ad05-86d7-c44ba0e2d390",
-  "wix_slug": "cuir-iris"
- },
- {
-  "name": "BOUGIE MIMOSA",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_ad819964a3464c9eb2f4f7c284ef5a80~mv2.jpg"
-  ],
-  "wix_id": "e85f0c0f-4797-8ca2-7f4f-17a9c4407315",
-  "wix_slug": "bougie-citron-de-sicile-1"
- },
- {
-  "name": "BOUGIE MONOÏ",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f6af0c6824414b90a647a70abd82bad9~mv2.jpg"
-  ],
-  "wix_id": "369e9466-3d43-87e5-9318-1f57d7a427a0",
-  "wix_slug": "bougie-monoï-1"
- },
- {
-  "name": "BOUGIE PAMPLEMOUSSE ROSE & VANILLE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_683c9dfa23a84e57ba16202d18c99cae~mv2.jpg"
-  ],
-  "wix_id": "3b891ad0-ac6d-5aa8-db3a-c8937b106ce1",
-  "wix_slug": "bougie-cassis-figue"
- },
- {
-  "name": "BOUGIE ROSE & OUD",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie ROSE & OUD\nFragrance : Rose & Oud\nPyramide olfactive de tête : Rose noire, jasmin, baies roses.\nPyramide olfactive de coeur : Bois de teck, cannelle.\nPyramide olfactive de fond : Bois de oud, ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f7d52053808640078e713c62b95ba296~mv2.jpg"
-  ],
-  "wix_id": "1c854f51-1a52-cf9d-6d85-264d462978cf",
-  "wix_slug": "bougie-rose-oud"
- },
- {
-  "name": "BOUGIE TABAC & TONKA",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_93c81973d789478cb909524d233c0326~mv2.jpg"
-  ],
-  "wix_id": "92c99f2e-deb5-9f8e-139d-816386e5a103",
-  "wix_slug": "bougie-tomate-basilic"
- },
- {
-  "name": "BOUGIE VANILLE & PATCHOULI",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie VANILLE & PATCHOULI\nFragrance : Vanille & Patchouli\nPyramide olfactive de tête : Bergamote, patchouli, poivre.\nPyramide olfactive de coeur : vanille, musc blanc, cannelle.\nPyramide olfactive de fond : Ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_845c1bc3f3e14cb88c33f6114c595562~mv2.jpg"
-  ],
-  "wix_id": "56aa71cf-a769-313d-d939-aacf783a01e3",
-  "wix_slug": "bougie-vanille-patchouli"
- },
- {
-  "name": "BOUGIE VIOLETTE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Fabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_4c1b2925d255409a85c3e9434981e299~mv2.jpg"
-  ],
-  "wix_id": "1cebee0d-5953-405d-5f77-da2cf15fcf6b",
-  "wix_slug": "bougie-patchouli"
- },
- {
-  "name": "CÈDRE DU LIBAN",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie CÈDRE DU LIBAN\nFragrance : Cèdre du Liban\nPyramide olfactive de tête : Iris, frésia blanc.\nPyramide olfactive de coeur : Cèdre, bois de teck.\nPyramide olfactive de fond : Musc, santal.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_097ab962a51c42afa945161ea6de38da~mv2.jpg"
-  ],
-  "wix_id": "ff60b50b-f61f-bc58-43bf-d83887886b55",
-  "wix_slug": "cèdre-du-liban-1"
- },
- {
-  "name": "FIGUIER",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie FEUILLES DE FIGUIER\nFragrance : Feuilles de Figuier\nPyramide olfactive de tête : Bergamote, mandarine, baies roses.\nPyramide olfactive de coeur : Figue, violette, cannelle.\nPyramide olfactive de fond : Musc, ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_ad15195c1e3948759b5ddbfe46646cbf~mv2.jpg"
-  ],
-  "wix_id": "a747d264-eb43-030d-0429-e2444c6d0d3a",
-  "wix_slug": "figuier"
- },
- {
-  "name": "FLEURS D'ORANGER",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie FLEURS D'ORANGER\nFragrance : Fleurs d'oranger\nPyramide olfactive de tête : Cardamome, orange.\nPyramide olfactive de coeur : Vétiver, accord d'agrumes.\nPyramide olfactive de fond : Mandarine, écorces d'orange.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_4b5e3e02b10c4e9891adf3a6a34ca289~mv2.jpg"
-  ],
-  "wix_id": "990c680a-1f79-0f81-cf93-d838e0b77616",
-  "wix_slug": "fleurs-d-oranger"
- },
- {
-  "name": "FLEURS DE CERISIER",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie FLEURS DE CERISIER\nFragrance : Fleurs de cerisier\nPyramide olfactive de tête : Bergamote, mandarine.\nPyramide olfactive de coeur : Jasmin, rose, fleurs de pommier.\nPyramide olfactive de fond : Santal, vanille, musc blanc.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_6a67735caec640b9a6ae35059eea872b~mv2.jpg"
-  ],
-  "wix_id": "a596283a-e9af-1f56-3cba-89b1efd10e45",
-  "wix_slug": "fleurs-de-cerisier-2"
- },
- {
-  "name": "ROSE DE L'ATLAS",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie ROSE DE L'ATLAS\nFragrance : Rose de l'Atlas\nPyramide olfactive de tête : Cassis, grenade, bergamote.\nPyramide olfactive de coeur : Cèdre, rose, frésia.\nPyramide olfactive de fond : Vanille, santal, framboise.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_14bfe1d3f9594dd8950ab95909edf8d4~mv2.jpg"
-  ],
-  "wix_id": "822e0df4-f0f2-abb0-b08b-a0c3893d7476",
-  "wix_slug": "rose-de-l-atlas-1"
- },
- {
-  "name": "SANTAL",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie SANTAL WOOD\nFragrance : Santal wood\nPyramide olfactive de tête : Cardamome, safran.\nPyramide olfactive de coeur : Patchouli, cèdre, iris.\nPyramide olfactive de fond : Musc, santal, ambre.\nFabrication artisanale à la main en région Parisienne.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_ed6a032ea441484d91c4ad071692f6ae~mv2.jpg"
-  ],
-  "wix_id": "c418d6f9-87ab-1479-2a3b-620aa054f4fa",
-  "wix_slug": "santal"
- },
- {
-  "name": "TUBÉREUSE",
-  "category": "Bougies",
-  "price": 23,
-  "currency": "EUR",
-  "format": "250 g",
-  "weight": 250,
-  "description": "Bougie TUBÉREUSE\nFragrance : Tubéreuse\nPyramide olfactive de tête : Orangé, fleurs blanches\nPyramide olfactive de coeur : Jasmin, fleurs d'oranger.\nPyramide olfactive de fond : Accord florale.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_7d32d54d3c1144ef94ebbf89f680cd97~mv2.jpg"
-  ],
-  "wix_id": "6c7a3959-6ba8-0155-8653-4fc4e811d868",
-  "wix_slug": "tubéreuse"
- },
- {
-  "name": "BOUGIE CERAMIQUE AMBRE & CERISE ÉPCÉE",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a2584e75f0ea40e79e63208629a67d48~mv2.webp",
-   "https://static.wixstatic.com/media/4b7690_9d1f605641df4ba097768a5e6163dd85~mv2.webp"
-  ],
-  "wix_id": "e383fddf-11d6-f98c-a345-1b59d4d5905b",
-  "wix_slug": "bougie-monoï"
- },
- {
-  "name": "BOUGIE CERAMIQUE BAIES ROUGES",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_19a13aff1ba940a0992ab11090ffc683~mv2.webp",
-   "https://static.wixstatic.com/media/4b7690_9d1f605641df4ba097768a5e6163dd85~mv2.webp"
-  ],
-  "wix_id": "3c6222f4-0703-7aa7-9763-7d4e7ed759ad",
-  "wix_slug": "bougie-pina-colada"
- },
- {
-  "name": "BOUGIE CERAMIQUE FIGUIER",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c3999857a41e4bbda704bb43b79df708~mv2.webp"
-  ],
-  "wix_id": "b3928707-3d62-066c-70d7-2d5a73d18d35",
-  "wix_slug": "bougie-menthe-romarin"
- },
- {
-  "name": "BOUGIE CERAMIQUE FLEURS D'ABRICOTIER",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_84822fabe480467cb21f93aacdfdba64~mv2.webp",
-   "https://static.wixstatic.com/media/4b7690_9d1f605641df4ba097768a5e6163dd85~mv2.webp"
-  ],
-  "wix_id": "609a1710-0cc8-8f3a-8263-47dc4ba9a37d",
-  "wix_slug": "bougie-citron-de-sicile"
- },
- {
-  "name": "BOUGIE CERAMIQUE FLEURS D'ORANGER",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c996fe9489114757857dbc64ef217961~mv2.webp"
-  ],
-  "wix_id": "053374c3-bd2e-14aa-1be4-e341f8963d2b",
-  "wix_slug": "bougie-fleurs-d-oranger"
- },
- {
-  "name": "BOUGIE CERAMIQUE MENTHE & BASILIC",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a1c9b17411674d6ea7849fb77b861e5a~mv2.webp"
-  ],
-  "wix_id": "009c5722-2f29-0964-0fd1-8cea9dad3b6c",
-  "wix_slug": "bougie-crème-solaire"
- },
- {
-  "name": "BOUGIE CERAMIQUE MONOÏ",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_47b12bb5bf034ed3a6e53345dc5522cb~mv2.webp"
-  ],
-  "wix_id": "74c2eac5-acdf-4670-33e6-35de1372372a",
-  "wix_slug": "bougie-figue"
- },
- {
-  "name": "BOUGIE CERAMIQUE PAMPLEMOUSSE ROSE & VANILLE",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_2beda23fac254d799255becccc688e72~mv2.webp"
-  ],
-  "wix_id": "a40bda6f-24e2-08a3-a90b-da762344ec7a",
-  "wix_slug": "bougie-lavande-camomille-2"
- },
- {
-  "name": "BOUGIE CERAMIQUE TABAC & TONKA",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_902b5c4d32714ab8acae144ac7773cda~mv2.webp",
-   "https://static.wixstatic.com/media/4b7690_9d1f605641df4ba097768a5e6163dd85~mv2.webp"
-  ],
-  "wix_id": "e97c89cc-e7c0-9549-31af-7ea0757de22b",
-  "wix_slug": "bougie-musc-blanc"
- },
- {
-  "name": "BOUGIE CERAMIQUELAIT DE FIGUE",
-  "category": "Bougies Gold",
-  "price": 39,
-  "currency": "EUR",
-  "format": "220 g",
-  "weight": 220,
-  "description": "Bougie en céramique émaillée coulée à la main en région Parisienne.Contenant : 220 grammesDurée de combustion : 60 à 80 heures.Composition : Cire de soja 100% naturelle, mèche en coton sans plomb, parfums Français de Grasse. (Vegan, sans ogm).Pot en céramique fabriqué en Espagne.Bougie vendue dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_746579ac78884606bc63667bd81a853e~mv2.webp"
-  ],
-  "wix_id": "f003fa83-8c51-1408-9a66-4d33ad431f17",
-  "wix_slug": "bougie-fleurs-d-abricotier"
- },
- {
-  "name": "DIFFUSEUR AMBRE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_b1d151f557cb4287b388baa150d843f2~mv2.jpg"
-  ],
-  "wix_id": "30187b89-59eb-2faf-dd0a-b417f4868056",
-  "wix_slug": "diffuseur-ambre"
- },
- {
-  "name": "DIFFUSEUR BAIES ROUGES",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Dans sa jolie bouteille en verre, profitez d'une composition sans alcool et 100% bio-dégradable.\nIdéal dans toutes les pièces de l'habitat / Durée de vie minimum 3 mois.\nVendue dans son pochon en coton Bio, accompagné de ses tiges en bois noir.\nContenance : 150 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_551b19920c154e8297d5ab3a4b929d86~mv2.jpg"
-  ],
-  "wix_id": "69ace1b3-2801-32d0-5b62-00c232b2dba1",
-  "wix_slug": "diffuseur-baies-rouges"
- },
- {
-  "name": "DIFFUSEUR CERISE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_66e5664d8f7c4046bc35b0dac20c271b~mv2.jpg"
-  ],
-  "wix_id": "d78185a6-202d-65ad-0062-4611b1020106",
-  "wix_slug": "diffuseur-cerise"
- },
- {
-  "name": "DIFFUSEUR COCO & TONKA",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_6157ab4e04134bd4b28fe460aa1db7cb~mv2.jpg"
-  ],
-  "wix_id": "63ab00ca-f011-a070-5092-1b4d1f502c4f",
-  "wix_slug": "diffuseur-coco-tonka"
- },
- {
-  "name": "DIFFUSEUR CUIR DE RUSSIE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_be10b69c74fc4b6ba50810626b835995~mv2.jpg"
-  ],
-  "wix_id": "99c181d0-c54c-cf75-58b0-494e72aa9702",
-  "wix_slug": "diffuseur-cuir-de-russie"
- },
- {
-  "name": "DIFFUSEUR CÈDRE DU LIBAN",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c62a888e3b034281b95570a94c45aae0~mv2.jpg"
-  ],
-  "wix_id": "7f623c51-969d-f95f-8df1-f740c4b0572a",
-  "wix_slug": "diffuseur-cèdre-du-liban"
- },
- {
-  "name": "DIFFUSEUR FIGUIER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_5601d9d5c8524258bed55b24b7a46a70~mv2.jpg"
-  ],
-  "wix_id": "f0f99774-f253-efe7-66f3-68f18167237f",
-  "wix_slug": "diffuseur-figuier"
- },
- {
-  "name": "DIFFUSEUR FLEUR DE COTON",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_3e4a4f9c2b7142fea05ee5cd09ea834d~mv2.jpg"
-  ],
-  "wix_id": "afa41758-d760-e1cd-6481-8439a9350de8",
-  "wix_slug": "diffuseur-fleurd-de-coton"
- },
- {
-  "name": "DIFFUSEUR FLEURS D'ORANGER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_cdca7a53417842a5af8dc571b9180e67~mv2.jpg"
-  ],
-  "wix_id": "e51f80ca-7cf0-b172-fabf-66013e451919",
-  "wix_slug": "diffuseur-fleurs-d-oranger"
- },
- {
-  "name": "DIFFUSEUR FLEURS DE CERISIER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_82aac150c1024315bf421e0187bad4f9~mv2.jpg"
-  ],
-  "wix_id": "24d43384-2dda-eab3-c0d0-cb9354ed20a2",
-  "wix_slug": "diffuseur-fleurs-de-cerisier"
- },
- {
-  "name": "DIFFUSEUR FLORAL FLEURDS D'ORANGER",
-  "category": "Parfums",
-  "price": 30,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur floral dans son contenant en verre de 200ML.\nDurée de diffusion : 4 à 6 mois\nComposition : Solution biodégradable sans alcool / parfum de Grasse / Fleurs séchées en France / Fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c90199ed44da499bada6dedeeb679bd9~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_10bd8c4d63204d18b222fbd1907c7035~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_02d8a2f99fce414f9ec575092b6c5173~mv2.jpg"
-  ],
-  "wix_id": "e3e54ed4-6350-5d29-7848-c8e54c04b6ad",
-  "wix_slug": "diffuseur-floral-fleurds-d-oranger"
- },
- {
-  "name": "DIFFUSEUR FLORAL FLEURS DE CERISIER",
-  "category": "Parfums",
-  "price": 30,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur floral dans son contenant en verre de 200ML.\nDurée de diffusion : 4 à 6 mois\nComposition : Solution biodégradable sans alcool / parfum de Grasse / Fleurs séchées en France / Fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c90199ed44da499bada6dedeeb679bd9~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_f40b1848d2b5413cbe845aa1623bf659~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_02d8a2f99fce414f9ec575092b6c5173~mv2.jpg"
-  ],
-  "wix_id": "6a721c30-35c0-f2d4-7792-b64709f78af2",
-  "wix_slug": "diffuseur-floral-fleurs-de-cerisier"
- },
- {
-  "name": "DIFFUSEUR FLORAL FLEURS DE COTON",
-  "category": "Parfums",
-  "price": 30,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur floral dans son contenant en verre de 200ML.\nDurée de diffusion : 4 à 6 mois\nComposition : Solution biodégradable sans alcool / parfum de Grasse / Fleurs séchées en France / Fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c90199ed44da499bada6dedeeb679bd9~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_b673eabf52c94138a2e565aaf0a96521~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_02d8a2f99fce414f9ec575092b6c5173~mv2.jpg"
-  ],
-  "wix_id": "40b8ad8e-c074-de56-8cd8-3d3930e1966c",
-  "wix_slug": "diffuseur-floral-fleurs-de-coton"
- },
- {
-  "name": "DIFFUSEUR FLORAL LAIT DE FIGUE",
-  "category": "Parfums",
-  "price": 30,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur floral dans son contenant en verre de 200ML.\nDurée de diffusion : 4 à 6 mois\nComposition : Solution biodégradable sans alcool / parfum de Grasse / Fleurs séchées en France / Fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c90199ed44da499bada6dedeeb679bd9~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_2f648e2691e740f0b1027f00ad4ef4b4~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_02d8a2f99fce414f9ec575092b6c5173~mv2.jpg"
-  ],
-  "wix_id": "ea7c5cf7-7254-1ef8-cc71-2f4b5164a9e9",
-  "wix_slug": "diffuseur-floral-lait-de-figue"
- },
- {
-  "name": "DIFFUSEUR FLORAL MONOÏ",
-  "category": "Parfums",
-  "price": 30,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur floral dans son contenant en verre de 200ML.\nDurée de diffusion : 4 à 6 mois\nComposition : Solution biodégradable sans alcool / parfum de Grasse / Fleurs séchées en France / Fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c90199ed44da499bada6dedeeb679bd9~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_3dbc4213488d42d1923e8d85e93e8235~mv2.png",
-   "https://static.wixstatic.com/media/4b7690_02d8a2f99fce414f9ec575092b6c5173~mv2.jpg"
-  ],
-  "wix_id": "7f9c0a99-bb1b-8586-c179-ab9bacc78dd0",
-  "wix_slug": "diffuseur-floral-monoï"
- },
- {
-  "name": "DIFFUSEUR LAIT D'AMANDE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_eb390e99e8d043809f269dbf9a98f1a7~mv2.jpg"
-  ],
-  "wix_id": "ddcb67be-4b52-95d1-5cf0-88d90b3fdd6e",
-  "wix_slug": "diffuseur-citron-de-sicile"
- },
- {
-  "name": "DIFFUSEUR LAIT DE FIGUE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_aaeb318890224820a86004e9dad66200~mv2.jpg"
-  ],
-  "wix_id": "e5c1f532-3de2-659d-8bb1-80054ab0c607",
-  "wix_slug": "diffuseur-lait-de-figue"
- },
- {
-  "name": "DIFFUSEUR LAVANDE & CAMOMILLE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_d82dbe45cd96414890ba867e96a3f1a8~mv2.jpg"
-  ],
-  "wix_id": "061345bd-18ab-19c8-549b-77a5b1df43f2",
-  "wix_slug": "diffuseur-lavande-camomille"
- },
- {
-  "name": "DIFFUSEUR LINGE FRAIS",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Dans sa jolie bouteille en verre, profitez d'une composition sans alcool et 100% bio-dégradable.\nIdéal dans toutes les pièces de l'habitat / Durée de vie minimum 3 mois.\nVendue dans son pochon en coton Bio, accompagné de ses tiges en bois noir.\nContenance : 150 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_b817c4d1a0414e9b854b65cf1cc3076e~mv2.jpg"
-  ],
-  "wix_id": "83eda11b-fcdb-fad0-983f-e4d53c77ff84",
-  "wix_slug": "diffuseur-pamplemousse-yuzu"
- },
- {
-  "name": "DIFFUSEUR MENTHE & ROMARIN",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_d3d64a7011a443b79a97130cf826107f~mv2.jpg"
-  ],
-  "wix_id": "6c772674-f56e-ee92-5059-4910b6c804da",
-  "wix_slug": "diffuseur-menthe-romarin"
- },
- {
-  "name": "DIFFUSEUR MIMOSA",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Dans sa jolie bouteille en verre, profitez d'une composition sans alcool et 100% bio-dégradable.\nIdéal dans toutes les pièces de l'habitat / Durée de vie minimum 3 mois.\nVendue dans son pochon en coton Bio, accompagné de ses tiges en bois noir.\nContenance : 150 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_e6f02ee706fe473b8aab1d3a9e2b3e14~mv2.jpg"
-  ],
-  "wix_id": "eb1c6775-de5f-c934-6323-199964ec8d52",
-  "wix_slug": "diffuseur-lait-d-amande"
- },
- {
-  "name": "DIFFUSEUR MONOÏ",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_4f74b9d12f894f6cb43d8b5bcf703371~mv2.jpg"
-  ],
-  "wix_id": "81b753ba-a7f3-32cd-7690-1f94e489d894",
-  "wix_slug": "diffuseur-monoï-1"
- },
- {
-  "name": "DIFFUSEUR MUSC BLANC",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_8cfe970065344a62a3ff31bff854518b~mv2.jpg"
-  ],
-  "wix_id": "29cfbd4d-58dc-5cd7-61c5-095a2e69ab36",
-  "wix_slug": "diffuseur-musc-blanc"
- },
- {
-  "name": "DIFFUSEUR PAMPLEMOUSE ROSE & VANILLE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_371f30f533744c17a6d08c0b44088de3~mv2.jpg"
-  ],
-  "wix_id": "fd52d7b2-db73-7f4b-5524-3148b8b88d11",
-  "wix_slug": "diffuseur-pamplemouse-rose-vanille"
- },
- {
-  "name": "DIFFUSEUR PATCHOULI",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Dans sa jolie bouteille en verre, profitez d'une composition sans alcool et 100% bio-dégradable.\nIdéal dans toutes les pièces de l'habitat / Durée de vie minimum 3 mois.\nVendue dans son pochon en coton Bio, accompagné de ses tiges en bois noir.\nContenance : 150 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_86acb3f86cb8485dad6edc2c72d80eb0~mv2.jpg"
-  ],
-  "wix_id": "7d725d5f-263f-f47c-cacb-c47e57ae12c1",
-  "wix_slug": "diffuseur-patchouli"
- },
- {
-  "name": "DIFFUSEUR ROSE & OUD",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a321aaf8ea314103b6ac79d904ab9c69~mv2.jpg"
-  ],
-  "wix_id": "f3db1016-5081-7004-9d90-a87545e349ff",
-  "wix_slug": "diffuseur-rose-oud"
- },
- {
-  "name": "DIFFUSEUR ROSE DE L'ATLAS",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Diffuseur ROSE DE L'TALAS\nDurée de diffusion : 3 mois\nFormat : 150 ml\nVendu dans son pochon en coton.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_738e6c4cac2348228225211eba1dfa75~mv2.jpg"
-  ],
-  "wix_id": "066ba158-1210-6e26-9e50-9992d6830ff5",
-  "wix_slug": "diffuseur-orchidée"
- },
- {
-  "name": "DIFFUSEUR SANTAL",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "Dans sa jolie bouteille en verre, profitez d'une composition sans alcool et 100% bio-dégradable.\nIdéal dans toutes les pièces de l'habitat / Durée de vie minimum 3 mois.\nVendue dans son pochon en coton Bio, accompagné de ses tiges en bois noir.\nContenance : 150 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_dd9702cdb7cb43139aaffd1eb286eec3~mv2.jpg"
-  ],
-  "wix_id": "77e62ad0-68c4-a129-3e6c-df534602cd6d",
-  "wix_slug": "diffuseur-linge-frais"
- },
- {
-  "name": "DIFFUSEUR TABAC & VANILLE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_b4d6e957f0304a7f9cb5b831d4225f33~mv2.jpg"
-  ],
-  "wix_id": "7c4d81f5-fd65-2fa3-bc12-f42bac0c81c3",
-  "wix_slug": "diffuseur-tabac-vanille"
- },
- {
-  "name": "DIFFUSEUR TUBÉREUSE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_670ff0c5297140bebc15dc54286d7727~mv2.jpg"
-  ],
-  "wix_id": "0cdb0bb4-77c1-a407-ca92-1a00e601e7ee",
-  "wix_slug": "diffuseur-pina-colada"
- },
- {
-  "name": "DIFFUSEUR VANILLE & PATCHOULI",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_afaf607edbda49499715437254c18673~mv2.jpg"
-  ],
-  "wix_id": "48498bca-b816-3377-f1e6-382f229d7a3b",
-  "wix_slug": "diffuseur-vanille-patchouli"
- },
- {
-  "name": "DIFFUSEUR VIOLETTE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "DIFFUSEUR DE PARFUMSolution biodégradable sans alcool.Durée de diffusion minimum : 3 moisVendu dans son pochon en coton avec ses bâtonnets.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f91e817ea60347ef84133c56d3d614f7~mv2.jpg"
-  ],
-  "wix_id": "80e2b72c-0491-5746-2eb0-2c0f6b59ef56",
-  "wix_slug": "diffuseur-fleurs-d-abricotier"
- },
- {
-  "name": "PARFUM AMBRE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON AMBRE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_1d5505ab50d441d5b94dd49592c07181~mv2.jpg"
-  ],
-  "wix_id": "cc2ea245-f628-97e4-3ac3-375551a73331",
-  "wix_slug": "parfum-patchouli"
- },
- {
-  "name": "PARFUM BAIES ROUGES",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON BAIES ROUGES\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_8405bb74032546a08a99f0d135e84ead~mv2.jpg"
-  ],
-  "wix_id": "07fa9769-058d-1227-4b39-3f04b32ba98c",
-  "wix_slug": "parfum-baies-rouges"
- },
- {
-  "name": "PARFUM CÉDRE DU LIBAN",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON CÉDRE DU LIBAN\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_cd848b2d987f4c21a4da6d0c916ca9ba~mv2.jpg"
-  ],
-  "wix_id": "941eac9d-05ce-ec2a-8cd6-d17225b3ef06",
-  "wix_slug": "parfum-orchidée"
- },
- {
-  "name": "PARFUM DE MAISON AMBRE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON AMBRE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_1d5505ab50d441d5b94dd49592c07181~mv2.jpg"
-  ],
-  "wix_id": "a5d47d8e-b32d-6258-8f71-1bf038b8dd13",
-  "wix_slug": "parfum-de-maison-ambre"
- },
- {
-  "name": "PARFUM DE MAISON BOIS DE SANTAL",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON BOIS DE SANTAL\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_ee6e7d8b3e034e70a948749ec7e1d669~mv2.jpg"
-  ],
-  "wix_id": "21c0b365-a754-a700-bfcc-d0b8742fd546",
-  "wix_slug": "parfum-de-maison-bois-de-santal"
- },
- {
-  "name": "PARFUM DE MAISON CÈDRE DU LIBAN",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON CÈDRE DU LIBAN\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_cd848b2d987f4c21a4da6d0c916ca9ba~mv2.jpg"
-  ],
-  "wix_id": "f9865ef3-2a46-9e97-af64-56dc87ac1b0c",
-  "wix_slug": "parfum-de-maison-cèdre-du-liban"
- },
- {
-  "name": "PARFUM DE MAISON FIGUIER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON FIGUIER\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_670c5b1f60c646379094ac008530a6a4~mv2.jpg"
-  ],
-  "wix_id": "d3c58ced-9902-3e67-217d-c068ef69ae7c",
-  "wix_slug": "parfum-de-maison-figuier"
- },
- {
-  "name": "PARFUM DE MAISON FLEURS D'ORANGER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON FLEURS D'ORANGER\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_29f518429a1e4427b15747a7ac19da46~mv2.jpg"
-  ],
-  "wix_id": "377533b9-ad22-f530-ea45-bce7f596506c",
-  "wix_slug": "parfum-de-maison-fleurs-d-oranger"
- },
- {
-  "name": "PARFUM DE MAISON FLEURS DE CERISIER",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON FLEURS DE CERISIER\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_afd481e742ae4743ad6f4e8b95447d54~mv2.jpg"
-  ],
-  "wix_id": "917208d8-fce6-7dbe-5933-2f91873cf6a2",
-  "wix_slug": "parfum-de-maison-fleurs-de-cerisier"
- },
- {
-  "name": "PARFUM DE MAISON LAIT DE COCO",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON LAIT DE COCO\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_1a986b4d3033447a85d7310678dce2e1~mv2.jpg"
-  ],
-  "wix_id": "102dedbd-df4b-f280-59db-a522b1df6e95",
-  "wix_slug": "parfum-de-maison-lait-de-coco"
- },
- {
-  "name": "PARFUM DE MAISON LAIT DE FIGUE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON LAIT DE FIGUE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c0f6e485029445ed981eaa4d14267c46~mv2.jpg"
-  ],
-  "wix_id": "c2dd335c-526a-f3d3-aa80-dd610184908e",
-  "wix_slug": "parfum-de-maison-lait-de-figue"
- },
- {
-  "name": "PARFUM DE MAISON MONOÏ",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON MONOÏ\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a217c0bbc4954e04bfcacfefc3496380~mv2.jpg"
-  ],
-  "wix_id": "bc965814-f172-803e-7cad-d0f13d771c82",
-  "wix_slug": "parfum-de-maison-monoï"
- },
- {
-  "name": "PARFUM DE MAISON ROSE DE L'ATLAS",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON ROSE DE L'ATLAS\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_31e9a41042cf42009bf1f22df218abc9~mv2.jpg"
-  ],
-  "wix_id": "7225e674-ed4f-7d60-7c7e-87b4053880a3",
-  "wix_slug": "parfum-de-maison-rose-de-l-atlas"
- },
- {
-  "name": "PARFUM DE MAISON TUBEREUSE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON TUBEREUSE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_e126444d15ab442dac9018ac39e0656b~mv2.jpg"
-  ],
-  "wix_id": "34f20c66-ed5a-ca07-b42f-5537ea437319",
-  "wix_slug": "parfum-de-maison-tubereuse"
- },
- {
-  "name": "PARFUM DE MAISON VANILLE & PATCHOULI",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON VANILLE & PATCHOULI\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_e8c917275ab24c7293558d79f1432c16~mv2.jpg"
-  ],
-  "wix_id": "016836ed-6590-d341-58ec-670906b54bd8",
-  "wix_slug": "parfum-de-maison-vanille-patchouli"
- },
- {
-  "name": "PARFUM DE MAISON VIOLETTE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON VIOLETTE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_861ead7746b44fd0a0979166ace12afd~mv2.jpg"
-  ],
-  "wix_id": "819914ae-3c93-0efe-4c4a-64a9c17de53e",
-  "wix_slug": "parfum-de-maison-cuir-iris"
- },
- {
-  "name": "PARFUM FLEURS DE COTON",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON FLEURS DE COTON\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_f1f0ebfa9b094ba4bd8a068791272bdc~mv2.jpg"
-  ],
-  "wix_id": "aea93842-1035-550d-b2e1-0f2fbaccc83e",
-  "wix_slug": "parfum-fleurs-de-coton"
- },
- {
-  "name": "PARFUM LAIT D'AMANDE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON LAIT D'AMANDE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c3c6d215697f4114abeed29b184cf4e3~mv2.jpg"
-  ],
-  "wix_id": "1cf57182-5e46-11ba-56e1-3eb8dd2fe0b6",
-  "wix_slug": "parfum-lait-d-amande"
- },
- {
-  "name": "PARFUM LAVANDE & CAMOMILLE",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON LAVANDE & CAMOMILLE\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_32d1beaea0044dd6bb38644cd734091b~mv2.jpg"
-  ],
-  "wix_id": "8b7279a3-3076-ac14-dd81-a9fbe90cb9d0",
-  "wix_slug": "parfum-pastèque"
- },
- {
-  "name": "PARFUM LINGE FRAIS",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON LINGE FRAIS\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_abe2bd6311ab40d583739772b3901fd6~mv2.jpg"
-  ],
-  "wix_id": "65fe6e65-aeb3-12c1-c704-a57d9d2e379d",
-  "wix_slug": "parfum-linge-frais"
- },
- {
-  "name": "PARFUM MENTHE & BASILIC",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON MENTHE & BASILIC\nDans sa jolie bouteille en verre ambré, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_c2d75415e7604bf19f9a5577d70442be~mv2.jpg"
-  ],
-  "wix_id": "4aab7e22-ec15-2a8d-7b92-5ed6b22ac342",
-  "wix_slug": "parfum-tomate-basilic"
- },
- {
-  "name": "PARFUM MIMOSA",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON MIMOSA\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a54e8d7a37884214856921450e7d8c2e~mv2.jpg"
-  ],
-  "wix_id": "d234f399-eecf-72da-9c43-7b5b03ce023f",
-  "wix_slug": "parfum-mimosa"
- },
- {
-  "name": "PARFUM MUSC BLANC",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON MUSC BLANC\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_a217c0bbc4954e04bfcacfefc3496380~mv2.jpg"
-  ],
-  "wix_id": "6e5143c3-5107-d6ca-0e28-cd5ee8394b06",
-  "wix_slug": "parfum-musc-blanc"
- },
- {
-  "name": "PARFUM PAMPLEMOUSSE & YUZU",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON PAMPLEMOUSSE & YUZU\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_b20ca6bf023d451d801b4570bb0f0f12~mv2.jpg"
-  ],
-  "wix_id": "ff04f136-1808-0b53-1e4b-075fc825ac7c",
-  "wix_slug": "parfum-pamplemousse-yuzu"
- },
- {
-  "name": "PARFUM ROSE & OUD",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON ROSE & OUD\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_7c97fb8149fb4ff7bdcf1daed6dacd80~mv2.jpg"
-  ],
-  "wix_id": "6bd7be5f-9308-81fd-7116-8d3361ea593c",
-  "wix_slug": "parfum-thym-figue"
- },
- {
-  "name": "PARFUM TABAC & TONKA",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON TABAC & TONKA\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_1f17346e2595467199cf085df920f664~mv2.jpg"
-  ],
-  "wix_id": "a52a9dea-3096-75d5-b35c-0f7e80a5a86d",
-  "wix_slug": "parfum-melon-figuier"
- },
- {
-  "name": "PARFUM VANILLE & PATCHOULI",
-  "category": "Parfums",
-  "price": 25,
-  "currency": "EUR",
-  "format": "100 ml",
-  "weight": 200,
-  "description": "PARFUM DE MAISON VANILLE & PATCHOULI\nDans sa jolie bouteille en verre ambré dépoli, profitez d'une composition sans alcool et 100% bio-dégradable.\nS'utilise directement sur le linge de maison ( canapé, rideaux, vêtement...), et dans l'air ambiant.\nContenant : 100 ML.",
-  "images": [
-   "https://static.wixstatic.com/media/4b7690_26f2cd2030fa43e39a35cd062a96e695~mv2.jpg"
-  ],
-  "wix_id": "1ecbcd3b-b039-65be-9e1e-a3c78e10577f",
-  "wix_slug": "parfum-mangue"
- }
+  {
+    "name": "Bougie Bergamote de Calabre",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie BERGAMOTE DE CALABRE\nPyramide olfactive de tête : Bergamote, citron.\nPyramide olfactive de coeur : Néroli, petit grain.\nPyramide olfactive de fond : Musc, cèdre.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-bergamote-de-calabre.png"
+    ]
+  },
+  {
+    "name": "Bougie Violette",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie VIOLETTE\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-violette.png"
+    ]
+  },
+  {
+    "name": "Bougie Monoï",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie MONOÏ\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-monoi.png"
+    ]
+  },
+  {
+    "name": "Bougie Lait d'amande",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie LAIT D'AMANDE\nPyramide olfactive de tête : Amande.\nPyramide olfactive de coeur : Héliotrope, fleur d'oranger.\nPyramide olfactive de fond : Vanille, musc.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-lait-d-amande.png"
+    ]
+  },
+  {
+    "name": "Bougie Fleurs de coton",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie FLEURS DE COTON\nPyramide olfactive de tête : Note aldéhydée, bergamote.\nPyramide olfactive de coeur : Muguet, jasmin.\nPyramide olfactive de fond : Musc blanc, ambre.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-fleurs-de-coton.png"
+    ]
+  },
+  {
+    "name": "Bougie Mimosa",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie MIMOSA\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-mimosa.png"
+    ]
+  },
+  {
+    "name": "Bougie Fleurs d'oranger",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie FLEURS D'ORANGER\nPyramide olfactive de tête : Cardamome, orange.\nPyramide olfactive de coeur : Vétiver, accord d'agrumes.\nPyramide olfactive de fond : Mandarine, écorces d'orange.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-fleurs-d-oranger.png"
+    ]
+  },
+  {
+    "name": "Bougie Menthe & Basilic",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie MENTHE & BASILIC\nPyramide olfactive de tête : Menthe, verveine.\nPyramide olfactive de coeur : Basilic, citron.\nPyramide olfactive de fond : Mandarine.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-menthe-et-basilic.png"
+    ]
+  },
+  {
+    "name": "Bougie Fleurs de cerisier",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie FLEURS DE CERISIER\nPyramide olfactive de tête : Bergamote, mandarine.\nPyramide olfactive de coeur : Jasmin, rose, fleurs de pommier.\nPyramide olfactive de fond : Santal, vanille, musc blanc.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-fleurs-de-cerisier.png"
+    ]
+  },
+  {
+    "name": "Bougie Feuilles de figuier",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie FEUILLES DE FIGUIER\nPyramide olfactive de tête : Bergamote, mandarine, baies roses.\nPyramide olfactive de coeur : Figue, violette, cannelle.\nPyramide olfactive de fond : Musc, ambre, vanille.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-feuilles-de-figuier.png"
+    ]
+  },
+  {
+    "name": "Bougie Coco",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie COCO\nPyramide olfactive de tête : Tonka, lait de coco.\nPyramide olfactive de coeur : Vanille de Madagascar.\nPyramide olfactive de fond : Noisette, coco.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-coco.png"
+    ]
+  },
+  {
+    "name": "Bougie Cèdre du Liban",
+    "category": "Bougies",
+    "price": 23,
+    "currency": "EUR",
+    "format": "250 g",
+    "weight": 250,
+    "description": "Bougie CÈDRE DU LIBAN\nPyramide olfactive de tête : Bergamote, cyprès.\nPyramide olfactive de coeur : Cèdre, vétiver.\nPyramide olfactive de fond : Ambre, musc.\nFabrication artisanale à la main dans le sud de la France.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nDurée de combustion : Entre 50 & 60 heures.\nContenance : 250 grammes.",
+    "images": [
+      "kult/bougie-cedre-du-liban.png"
+    ]
+  },
+  {
+    "name": "Diffuseur Floral Fleurs d'oranger",
+    "category": "Parfums",
+    "price": 30,
+    "currency": "EUR",
+    "format": "200 ml",
+    "weight": 200,
+    "description": "Diffuseur floral Fleurs d'oranger dans son contenant en verre de 200 ML.\nDurée de diffusion : 4 à 6 mois.\nComposition : solution biodégradable sans alcool / parfum de Grasse / fleurs séchées en France / fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
+    "images": [
+      "kult/diffuseur-floral-fleurs-d-oranger.png"
+    ]
+  },
+  {
+    "name": "Diffuseur Floral Monoï",
+    "category": "Parfums",
+    "price": 30,
+    "currency": "EUR",
+    "format": "200 ml",
+    "weight": 200,
+    "description": "Diffuseur floral Monoï dans son contenant en verre de 200 ML.\nDurée de diffusion : 4 à 6 mois.\nComposition : solution biodégradable sans alcool / parfum de Grasse / fleurs séchées en France / fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
+    "images": [
+      "kult/diffuseur-floral-monoi.png",
+      "kult/diffuseur-floral-monoi-2.png"
+    ]
+  },
+  {
+    "name": "Diffuseur Floral Fleurs de cerisier",
+    "category": "Parfums",
+    "price": 30,
+    "currency": "EUR",
+    "format": "200 ml",
+    "weight": 200,
+    "description": "Diffuseur floral Fleurs de cerisier dans son contenant en verre de 200 ML.\nDurée de diffusion : 4 à 6 mois.\nComposition : solution biodégradable sans alcool / parfum de Grasse / fleurs séchées en France / fabrication à la main.\nVendu dans son pochon en coton et ses tiges en rotin rose pastel.",
+    "images": [
+      "kult/diffuseur-floral-fleurs-de-cerisier.png"
+    ]
+  },
+  {
+    "name": "Bougie Céramique Cocktail Club",
+    "category": "Bougies Gold",
+    "price": 39,
+    "currency": "EUR",
+    "format": "180 g",
+    "weight": 300,
+    "description": "Bougie céramique Cocktail Club, contenant en faïence émaillée peinte à la main.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nLe contenant se réutilise une fois la bougie consumée.",
+    "images": [
+      "kult/bougie-ceramique-cocktail-club.png"
+    ]
+  },
+  {
+    "name": "Bougie Céramique Beach Club",
+    "category": "Bougies Gold",
+    "price": 39,
+    "currency": "EUR",
+    "format": "180 g",
+    "weight": 300,
+    "description": "Bougie céramique Beach Club, contenant en faïence émaillée peinte à la main.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nLe contenant se réutilise une fois la bougie consumée.",
+    "images": [
+      "kult/bougie-ceramique-beach-club.png"
+    ]
+  },
+  {
+    "name": "Bougie Céramique Signature",
+    "category": "Bougies Gold",
+    "price": 39,
+    "currency": "EUR",
+    "format": "180 g",
+    "weight": 300,
+    "description": "Bougie céramique Signature, contenant en faïence émaillée peinte à la main.\nCire de soja 100 % naturelle, mèche en coton sans plomb, parfums Français de Grasse.\nLe contenant se réutilise une fois la bougie consumée.",
+    "images": [
+      "kult/bougie-ceramique-signature.png"
+    ]
+  },
+  {
+    "name": "Tasse Cerises",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-cerises.png"
+    ]
+  },
+  {
+    "name": "Tasse Citron",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-citron.png"
+    ]
+  },
+  {
+    "name": "Tasse L'Amour au Soleil",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-l-amour-au-soleil.png"
+    ]
+  },
+  {
+    "name": "Tasse Tulipe",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-tulipe.png"
+    ]
+  },
+  {
+    "name": "Tasse La Dolce Vita",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-la-dolce-vita.png"
+    ]
+  },
+  {
+    "name": "Tasse Amore",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-amore.png"
+    ]
+  },
+  {
+    "name": "Tasse Orange",
+    "category": "Céramiques",
+    "price": 18,
+    "currency": "EUR",
+    "format": "25 cl",
+    "weight": 300,
+    "description": "Tasse en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/tasse-orange.png"
+    ]
+  },
+  {
+    "name": "Assiette Amore",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-amore.png"
+    ]
+  },
+  {
+    "name": "Assiette L'Amour au Soleil",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-l-amour-au-soleil.png"
+    ]
+  },
+  {
+    "name": "Assiette La Bella Vita",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-la-bella-vita.png"
+    ]
+  },
+  {
+    "name": "Assiette C'est la Vie",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-c-est-la-vie.png"
+    ]
+  },
+  {
+    "name": "Assiette Cœur",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-c-ur.png"
+    ]
+  },
+  {
+    "name": "Assiette Citron",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-citron.png"
+    ]
+  },
+  {
+    "name": "Assiette Cerises",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-cerises.png"
+    ]
+  },
+  {
+    "name": "Assiette La Dolce Vita",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-la-dolce-vita.png"
+    ]
+  },
+  {
+    "name": "Assiette Cocktail Club",
+    "category": "Céramiques",
+    "price": 24,
+    "currency": "EUR",
+    "format": "Ø 21 cm",
+    "weight": 500,
+    "description": "Assiette en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/assiette-cocktail-club.png"
+    ]
+  },
+  {
+    "name": "Vide-poche Palmier",
+    "category": "Céramiques",
+    "price": 16,
+    "currency": "EUR",
+    "format": "Ø 10 cm",
+    "weight": 200,
+    "description": "Vide-poche en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/vide-poche-palmier.png"
+    ]
+  },
+  {
+    "name": "Râpe à Citron",
+    "category": "Céramiques",
+    "price": 22,
+    "currency": "EUR",
+    "format": "Ø 14 cm",
+    "weight": 300,
+    "description": "Râpe à agrumes en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/rape-a-citron.png"
+    ]
+  },
+  {
+    "name": "Pichet Rayé Rose & Vert",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-raye-rose-et-vert.png"
+    ]
+  },
+  {
+    "name": "Pichet Rayé Vert",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-raye-vert.png"
+    ]
+  },
+  {
+    "name": "Pichet Cœur",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-c-ur.png"
+    ]
+  },
+  {
+    "name": "Pichet Beach Club",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-beach-club.png"
+    ]
+  },
+  {
+    "name": "Pichet Cocktail Club",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-cocktail-club.png",
+      "kult/pichet-cocktail-club-2.png"
+    ]
+  },
+  {
+    "name": "Pichet Rayé Orange",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-raye-orange.png"
+    ]
+  },
+  {
+    "name": "Pichet Rayé Jaune",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-raye-jaune.png"
+    ]
+  },
+  {
+    "name": "Pichet Rayé Bleu",
+    "category": "Céramiques",
+    "price": 45,
+    "currency": "EUR",
+    "format": "1 L",
+    "weight": 900,
+    "description": "Pichet en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/pichet-raye-bleu.png"
+    ]
+  },
+  {
+    "name": "Mug Beach Club",
+    "category": "Céramiques",
+    "price": 20,
+    "currency": "EUR",
+    "format": "35 cl",
+    "weight": 400,
+    "description": "Mug en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/mug-beach-club.png",
+      "kult/mug-beach-club-2.png"
+    ]
+  },
+  {
+    "name": "Mug Bisous",
+    "category": "Céramiques",
+    "price": 20,
+    "currency": "EUR",
+    "format": "35 cl",
+    "weight": 400,
+    "description": "Mug en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/mug-bisous.png"
+    ]
+  },
+  {
+    "name": "Beurrier Agrumes",
+    "category": "Céramiques",
+    "price": 38,
+    "currency": "EUR",
+    "format": "Ø 12 cm",
+    "weight": 600,
+    "description": "Beurrier en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/beurrier-agrumes.png"
+    ]
+  },
+  {
+    "name": "Beurrier Framboise",
+    "category": "Céramiques",
+    "price": 38,
+    "currency": "EUR",
+    "format": "Ø 12 cm",
+    "weight": 600,
+    "description": "Beurrier en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/beurrier-framboise.png"
+    ]
+  },
+  {
+    "name": "Bougeoir Rose & Vert",
+    "category": "Céramiques",
+    "price": 28,
+    "currency": "EUR",
+    "format": "H 15 cm",
+    "weight": 400,
+    "description": "Bougeoir en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/bougeoir-rose-et-vert.png"
+    ]
+  },
+  {
+    "name": "Bougeoir Bleu",
+    "category": "Céramiques",
+    "price": 28,
+    "currency": "EUR",
+    "format": "H 15 cm",
+    "weight": 400,
+    "description": "Bougeoir en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/bougeoir-bleu.png"
+    ]
+  },
+  {
+    "name": "Bougeoir Tricolore",
+    "category": "Céramiques",
+    "price": 28,
+    "currency": "EUR",
+    "format": "H 15 cm",
+    "weight": 400,
+    "description": "Bougeoir en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/bougeoir-tricolore.png"
+    ]
+  },
+  {
+    "name": "Bougeoir Rose",
+    "category": "Céramiques",
+    "price": 28,
+    "currency": "EUR",
+    "format": "H 15 cm",
+    "weight": 400,
+    "description": "Bougeoir en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/bougeoir-rose.png"
+    ]
+  },
+  {
+    "name": "Bougeoir Rayé",
+    "category": "Céramiques",
+    "price": 28,
+    "currency": "EUR",
+    "format": "H 15 cm",
+    "weight": 400,
+    "description": "Bougeoir en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/bougeoir-raye.png"
+    ]
+  },
+  {
+    "name": "Gamelle Dog Bar",
+    "category": "Gamelles",
+    "price": 32,
+    "currency": "EUR",
+    "format": "Ø 15 cm",
+    "weight": 700,
+    "description": "Gamelle en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/gamelle-dog-bar.png"
+    ]
+  },
+  {
+    "name": "Gamelle Cat Bar",
+    "category": "Gamelles",
+    "price": 32,
+    "currency": "EUR",
+    "format": "Ø 15 cm",
+    "weight": 700,
+    "description": "Gamelle en faïence peinte à la main, collection Riviera.\nPièce artisanale : de légères variations de traits et de teintes font son caractère unique.\nApte au contact alimentaire. Lavage à la main recommandé.",
+    "images": [
+      "kult/gamelle-cat-bar.png"
+    ]
+  }
 ]

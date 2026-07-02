@@ -51,7 +51,7 @@ yarn-error.log*
 *.tsbuildinfo
 
 # Design exports (references, not source)
-*.pdf
+
 
 # Raw scrape intermediates (only the curated *.json is committed)
 **/data/**/_*-raw.json

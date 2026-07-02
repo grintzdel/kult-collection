@@ -1,18 +1,14 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
-import {
-  getProductAttributes,
-  getTrustBadges,
-} from "@lib/data/product-attributes"
+import { getProductAmbiances } from "@lib/data/collection-ambiances"
+import { getProductAttributes } from "@lib/data/product-attributes"
 import { getProductByHandle, listProducts } from "@lib/data/products"
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
-import {
-  toPiece,
-  toPieces,
-} from "@modules/home/components/kult/pieces"
-import KultProductTemplate from "@modules/home/components/kult/product-template"
+import { toPiece } from "@modules/home/components/kult/pieces"
+import { pickLeafCategoryId, sameTypeSiblings } from "@modules/products/lib/siblings"
+import ProductTemplate from "@modules/products/templates/product-template"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -75,35 +71,49 @@ export default async function ProductPage(props: Props) {
     notFound()
   }
 
-  const piece = toPiece(product)
+  // Frères : même collection (« bougies parfumées ») de préférence, sinon la
+  // SOUS-catégorie feuille du produit (ex. « Assiette » et non tout « Vaisselle »
+  // quand les catégories sont imbriquées).
+  const collectionId = product.collection_id
+  const categoryId = pickLeafCategoryId(product.categories)
+  const scentFilter = collectionId
+    ? { collection_id: [collectionId] }
+    : categoryId
+      ? { category_id: [categoryId] }
+      : {}
 
-  // Pièces liées : même catégorie de préférence, sinon le reste de la collection.
-  const categoryId = product.categories?.[0]?.id
+  // Pas de limite en dur : on lit d'abord le total du groupe, puis on récupère
+  // tous les frères (limite = total réel).
   const {
-    response: { products: siblings },
+    response: { count: siblingsCount },
   } = await listProducts({
     countryCode,
-    queryParams: {
-      limit: 6,
-      ...(categoryId ? { category_id: [categoryId] } : {}),
-    },
+    queryParams: { limit: 1, fields: "id", ...scentFilter },
   })
 
-  const related = toPieces(siblings)
-    .filter((p) => p.handle !== piece.handle)
-    .slice(0, 2)
+  const [{ response: siblingsResponse }, attributes, ambiances] =
+    await Promise.all([
+      listProducts({
+        countryCode,
+        queryParams: { limit: Math.max(siblingsCount, 1), ...scentFilter },
+      }),
+      getProductAttributes(product.id),
+      getProductAmbiances([product.id]),
+    ])
 
-  const [attributes, trustBadges] = await Promise.all([
-    getProductAttributes(product.id),
-    getTrustBadges(),
-  ])
+  // Bougies : la collection groupe déjà par senteur, on garde tous les frères.
+  // Sinon (vaisselle…) : on ne garde que les autres produits du MÊME TYPE, pour
+  // matcher le « N autres modèles » de la carte (une assiette → les assiettes).
+  const siblings = collectionId
+    ? siblingsResponse.products.filter((p) => p.handle !== product.handle)
+    : sameTypeSiblings(product, siblingsResponse.products)
 
   return (
-    <KultProductTemplate
-      piece={piece}
-      related={related}
+    <ProductTemplate
+      product={product}
+      siblings={siblings}
       attributes={attributes}
-      trustBadges={trustBadges}
+      ambiance={ambiances[product.id] ?? null}
     />
   )
 }

@@ -34,6 +34,8 @@ module.exports = {
         marine: "#234A54",
         rose: "#DE8C76",
         leopard: "#C99A4E",
+        // — Lignes de grille de la page Collection (vert doux façon maquette) —
+        menthe: "#8FB08C",
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
