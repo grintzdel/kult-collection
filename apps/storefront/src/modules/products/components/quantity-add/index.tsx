@@ -79,7 +79,7 @@ const QuantityAdd = ({ variantId }: QuantityAddProps) => {
         type="button"
         onClick={handleAdd}
         disabled={unavailable || pending || isMutating}
-        className="w-fit rounded-circle bg-[#FCA4E0] px-[45.5px] py-[10px] text-[14px] font-medium text-ink transition-colors hover:brightness-95 disabled:cursor-not-allowed disabled:opacity-60"
+        className="w-fit rounded-circle bg-[#267F53] px-[45.5px] py-[10px] text-[12px] font-medium uppercase tracking-label text-ivory transition-[filter] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {unavailable ? "Indisponible" : pending ? "Ajout…" : "Ajouter au panier"}
       </button>

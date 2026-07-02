@@ -151,8 +151,10 @@ export default async function reseed_products({
           weight: product.weight,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: product.images.map((rel) => ({
-            url: `${STATIC_BASE}/static/${rel}`,
+          // On répète la première image 3 fois pour donner une galerie
+          // multi-images à chaque produit (mêmes visuels, 3 occurrences).
+          images: Array.from({ length: 3 }, () => ({
+            url: `${STATIC_BASE}/static/${product.images[0]}`,
           })),
           ...buildProductOptionsAndVariants(product, handle),
           sales_channels: [{ id: defaultSalesChannel.id }],

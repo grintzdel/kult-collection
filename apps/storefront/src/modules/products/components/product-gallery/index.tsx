@@ -9,8 +9,8 @@ type ProductGalleryProps = {
 }
 
 /**
- * Galerie fiche produit : image sélectionnée (grande) + rangée de miniatures.
- * La miniature active porte une bordure pleine #242121 (cf. maquette).
+ * Galerie fiche produit : image sélectionnée (grande) + rangée de miniatures
+ * (petits carrés alignés à gauche, bordure fine — cf. maquette).
  */
 const ProductGallery = ({ images, alt }: ProductGalleryProps) => {
   const [active, setActive] = useState(0)
@@ -18,10 +18,11 @@ const ProductGallery = ({ images, alt }: ProductGalleryProps) => {
   const main = gallery[active]
 
   return (
-    // Div 1 (images) — flex-col gap 48.5px
-    <div className="flex w-full flex-col gap-[48.5px]">
-      {/* Image produit sélectionnée */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-cream">
+    // Div 1 (images) — flex-col gap 22px, 50% de la largeur
+    <div className="flex w-full flex-col gap-[22px] small:w-1/2">
+      {/* Image produit sélectionnée — remplit la hauteur libre (desktop) pour
+          que le bas des miniatures s'aligne sur le bas de la carte infos */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-cream small:aspect-auto small:min-h-0 small:flex-1">
         {main && (
           <Image
             src={main}
@@ -34,29 +35,33 @@ const ProductGallery = ({ images, alt }: ProductGalleryProps) => {
         )}
       </div>
 
-      {/* Miniatures — flex-row gap 22px, bordure #242121 sur l'active */}
+      {/* Miniatures (toutes les images) — flex-row gap 22px, boîtes égales
+          qui remplissent la largeur, image contenue et centrée, bordure
+          marquée sur l'active */}
       {gallery.length > 1 && (
         <div className="flex flex-row gap-[22px]">
           {gallery.map((url, i) => (
             <button
-              key={url}
+              key={i}
               type="button"
               aria-label={`Vue ${i + 1}`}
               aria-current={active === i}
               onClick={() => setActive(i)}
-              className={`relative aspect-square w-[92px] shrink-0 overflow-hidden rounded-sm bg-cream transition-opacity ${
+              className={`relative aspect-square flex-1 basis-0 overflow-hidden rounded-sm bg-cream p-6 transition-opacity ${
                 active === i
                   ? "border border-[#242121]"
-                  : "opacity-80 hover:opacity-100"
+                  : "border border-[#242121]/15 hover:opacity-80"
               }`}
             >
-              <Image
-                src={url}
-                alt={`${alt} — vue ${i + 1}`}
-                fill
-                sizes="92px"
-                className="object-cover"
-              />
+              <span className="relative block h-full w-full">
+                <Image
+                  src={url}
+                  alt={`${alt} — vue ${i + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 30vw, 15vw"
+                  className="object-contain"
+                />
+              </span>
             </button>
           ))}
         </div>

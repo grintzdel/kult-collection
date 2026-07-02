@@ -37,7 +37,7 @@ const ProductInfo = ({
   variantId,
 }: ProductInfoProps) => {
   return (
-    <div className="flex w-full flex-col gap-[27px] rounded-sm border border-[#242121]/15 p-8 small:max-w-[460px]">
+    <div className="flex w-full flex-col gap-[27px] rounded-sm border border-[#242121]/15 p-8 small:w-1/2">
       {/* 1. Tag + pastille couleur */}
       {ambiance && <ProductTag value={ambiance.value} color={ambiance.color} />}
 
@@ -80,6 +80,11 @@ const ProductInfo = ({
 
       {/* 9 + 10. Quantité + CTA ajout au panier */}
       <QuantityAdd variantId={variantId} />
+
+      {/* 11. Mentions livraison */}
+      <p className="text-center text-xs text-ink/50">
+        Livraison offerte dès 35€ · Une bougie offerte dès 80€
+      </p>
     </div>
   )
 }
