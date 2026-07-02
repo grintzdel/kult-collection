@@ -24,31 +24,22 @@ Aucun modèle custom. On s'appuie sur `product_tag` (module Product natif) :
 
 - `product_tag.value` porte le nom de l'ambiance (`california`, etc.).
 
-### Liens
+### Associations
 
-- **Produit → tag** : relation native `product.tags` (many-to-many). Le tag d'un produit
-  représente son ambiance **surchargée**. La contrainte « une seule » est imposée par le
-  workflow d'assignation (assigner remplace l'ensemble des tags du produit).
-- **Catégorie → tag** : **nouveau module link**
-  `src/links/product-category-product-tag.ts`.
+- **Produit → tag (surcharge)** : relation **native** `product.tags` (many-to-many). Le
+  tag d'un produit représente son ambiance **surchargée**. La contrainte « une seule »
+  est imposée par le workflow d'assignation (assigner remplace l'ensemble des tags du
+  produit).
+- **Catégorie → tag (héritage)** : stocké dans le champ **natif**
+  `product_category.metadata.ambiance_tag_id` (l'id du tag). Une seule valeur par
+  catégorie → contrainte « une seule ambiance » gratuite.
 
-  ```typescript
-  import { defineLink } from "@medusajs/framework/utils"
-  import ProductModule from "@medusajs/medusa/product"
-
-  // Une catégorie a AU PLUS un tag ; un tag peut être réutilisé sur N catégories.
-  export default defineLink(
-    {
-      linkable: ProductModule.linkable.productCategory,
-      isList: true,
-    },
-    ProductModule.linkable.productTag
-  )
-  ```
-
-  La forme du lien (catégorie = côté liste, tag = côté simple) garantit **une ambiance
-  par catégorie** au niveau du schéma, tout en autorisant le partage d'un tag entre
-  plusieurs catégories.
+> **Pourquoi pas un module link catégorie↔tag ?** `product_tag` et `product_category`
+> appartiennent tous les deux au module Product natif. Un `defineLink` entre deux
+> entités du **même** module donne, côté `link.create`, deux clés identiques
+> (`Modules.PRODUCT`) qui entrent en collision. Les liens inter-modules sont conçus pour
+> relier des modules **différents**. On utilise donc le champ `metadata` natif de la
+> catégorie — robuste, pas de migration de lien, pas de table intermédiaire.
 
 > ⚠️ **Hypothèse assumée** : réutiliser les tags natifs signifie qu'assigner une ambiance
 > à un produit **remplace tous ses tags**. Les tags ne servent à rien d'autre dans cette
@@ -60,33 +51,30 @@ Fonction pure `src/lib/ambiance/resolve-ambiance.ts`, sans dépendance framework
 indépendamment. Utilisée côté admin (le widget affiche l'ambiance héritée).
 
 ```typescript
-export type Ambiance = { id: string; value: string }
+export type AmbianceTag = { id: string; value: string }
 
-export type ProductAmbianceInput = {
-  tags?: { id: string; value: string }[] | null
-  categories?: { product_tags?: { id: string; value: string }[] | null }[] | null
-}
-
-/** Ambiance effective : surcharge produit, sinon héritée de la 1re catégorie, sinon null. */
+/**
+ * Ambiance effective d'un produit : sa surcharge (1er tag) gagne ; sinon l'ambiance
+ * héritée de sa catégorie ; sinon null.
+ * @param productTags les tags natifs du produit (`product.tags`)
+ * @param categoryAmbiance l'ambiance de la catégorie, déjà hydratée (id + value)
+ */
 export const resolveProductAmbiance = (
-  product: ProductAmbianceInput
-): Ambiance | null => {
-  const override = product.tags?.[0]
+  productTags: AmbianceTag[] | null | undefined,
+  categoryAmbiance: AmbianceTag | null | undefined
+): AmbianceTag | null => {
+  const override = productTags?.[0]
   if (override) {
     return { id: override.id, value: override.value }
   }
-  for (const category of product.categories ?? []) {
-    const inherited = category.product_tags?.[0]
-    if (inherited) {
-      return { id: inherited.id, value: inherited.value }
-    }
-  }
-  return null
+  return categoryAmbiance ?? null
 }
 ```
 
-Helper de requête `src/lib/ambiance/query-ambiance.ts` : récupère un produit avec
-`tags` + `categories.product_tags` en un seul `query.graph()`.
+Helper de requête `src/lib/ambiance/query-ambiance.ts` : pour un produit, récupère ses
+`tags` + `categories.metadata` via `query.graph()`, lit `metadata.ambiance_tag_id` de la
+1re catégorie qui en a un, hydrate ce tag (id → value), puis appelle
+`resolveProductAmbiance`.
 
 ## Workflows (toute mutation passe par un workflow — règle Medusa)
 
@@ -96,12 +84,13 @@ Tags (natifs, `@medusajs/medusa/core-flows`) :
 - `updateProductTagsWorkflow` — renommer.
 - `deleteProductTagsWorkflow` — supprimer.
 
-Assignation (custom, `src/workflows/`) :
+Assignation (custom, `src/workflows/ambiance/`) :
 
 - `set-category-ambiance.ts` → `setCategoryAmbianceWorkflow`
   - Entrée : `{ category_id, tag_id: string | null }`.
-  - Étape : dismiss le lien tag↔catégorie existant, puis create le nouveau (ou rien si
-    `tag_id` est `null`). Ordre des modules conforme au `defineLink`.
+  - Étape : `updateProductCategoriesWorkflow` en écrivant
+    `metadata: { ambiance_tag_id: tag_id }` (ou `null` pour retirer). La fusion de
+    metadata est gérée par le workflow natif.
 - `set-product-ambiance.ts` → `setProductAmbianceWorkflow`
   - Entrée : `{ product_id, tag_id: string | null }`.
   - Étape : `updateProductsWorkflow` avec `tag_ids: [tag_id]` (ou `[]` pour retirer la
@@ -117,18 +106,27 @@ uniquement, validation Zod via middlewares, logique dans les workflows.
 - `POST /admin/ambiances` — créer `{ value }`.
 - `POST /admin/ambiances/:id` — renommer `{ value }`.
 - `DELETE /admin/ambiances/:id` — supprimer.
-- `POST /admin/ambiances/assign` — assigner
-  `{ target_type: "category" | "product", target_id: string, tag_id: string | null }`.
-  Dispatch vers `setCategoryAmbianceWorkflow` ou `setProductAmbianceWorkflow`.
+- `POST /admin/product-categories/:id/ambiance` — assigner à une catégorie
+  `{ tag_id: string | null }` → `setCategoryAmbianceWorkflow`.
+- `GET /admin/products/:id/ambiance` — ambiance effective résolue (pour le widget).
+- `POST /admin/products/:id/ambiance` — surcharge produit `{ tag_id: string | null }`
+  → `setProductAmbianceWorkflow`.
+
+> **Assignation RESTful, pas d'endpoint `assign` global.** Une route
+> `/admin/ambiances/assign` en POST entrerait en collision avec la route de mise à jour
+> `/admin/ambiances/:id` en POST (même méthode, `:id` capterait `assign`) au niveau des
+> middlewares. On imbrique donc l'assignation sous la ressource ciblée (catégorie /
+> produit), comme le fait déjà `products/[id]/attributes/`.
 
 Fichiers :
 
 ```
 src/api/admin/ambiances/
-├── middlewares.ts        # schémas Zod + validation
+├── middlewares.ts        # schémas Zod + enregistrement des matchers
 ├── route.ts              # GET (liste) + POST (create)
-├── [id]/route.ts         # POST (update) + DELETE
-└── assign/route.ts       # POST (assignation catégorie/produit)
+└── [id]/route.ts         # POST (update) + DELETE
+src/api/admin/products/[id]/ambiance/route.ts            # GET (résolu) + POST (surcharge)
+src/api/admin/product-categories/[id]/ambiance/route.ts  # POST (assignation catégorie)
 ```
 
 ## UI Admin
@@ -158,13 +156,14 @@ Dans `src/migration-scripts/initial-data-seed.ts`, après la création des caté
 
 1. Créer les 4 tags via `createProductTagsWorkflow` :
    `california`, `palm beach`, `cozy`, `méditerranée`.
-2. Lier les tags aux catégories (via `link.create`, ordre conforme au `defineLink`) :
+2. Écrire l'ambiance de chaque catégorie dans sa `metadata.ambiance_tag_id`
+   (via `updateProductCategoriesWorkflow`) :
    - Bougies → `cozy`
    - Bougies Gold → `california`
    - Parfums → `méditerranée`
    - Céramiques → `palm beach`
-3. (Démo) surcharger un produit avec une ambiance différente de sa catégorie via
-   `tag_ids` à la création, ou un `link.create` produit↔tag.
+3. (Démo) surcharger un produit avec une ambiance différente de sa catégorie en passant
+   `tag_ids: [<id>]` à la création du produit (ou via `setProductAmbianceWorkflow`).
 
 ## Tests
 
