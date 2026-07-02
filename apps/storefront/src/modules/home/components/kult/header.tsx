@@ -1,73 +1,169 @@
 "use client"
 
+import { useState } from "react"
+
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+
 import { useCart } from "./cart-context"
 
-const NAV_LINKS = [
-  { label: "Boutique", href: "/store" },
+const LEFT_LINKS = [
   { label: "Collections", href: "/collections" },
-  { label: "Savoir-faire", href: "#savoir-faire" },
-  { label: "Journal", href: "#journal" },
+  { label: "Notre Atelier", href: "/notre-atelier" },
 ]
+
+const RIGHT_LINKS = [
+  { label: "Nos Boutiques", href: "/nos-boutiques" },
+  { label: "Contact", href: "/contact" },
+]
+
+const NAV_LINK_CLASS =
+  "font-sans text-[11px] font-medium uppercase tracking-[0.18em] text-ink/80 transition-colors hover:text-ink"
 
 const KultHeader = () => {
   const { count, openCart } = useCart()
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="relative z-40 bg-ink text-ivory">
-      {/* Bandeau annonce */}
-      <div className="border-b border-ivory/10">
-        <p className="kult-container py-2.5 text-center font-mono text-[10px] uppercase tracking-label text-ivory/70">
-          Fait main à Grasse · Cire de soja végétale · Contenant réutilisable
-        </p>
-      </div>
-
-      {/* Navigation */}
-      <nav className="kult-container flex h-20 items-center justify-between">
-        <a href="/" className="flex items-baseline gap-2">
-          <span className="font-serif text-3xl leading-none">KULT</span>
-          <span className="eyebrow text-soleil">Maison</span>
-        </a>
-
-        <ul className="hidden items-center gap-9 small:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.label}>
-              <a
-                href={link.href}
-                className="font-mono text-[11px] uppercase tracking-label text-ivory/70 transition-colors hover:text-ivory"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex items-center gap-5">
-          <a
-            href="#"
-            className="hidden font-mono text-[11px] uppercase tracking-label text-ivory/70 transition-colors hover:text-ivory xsmall:inline"
-          >
-            Recherche
-          </a>
-          <a
-            href="/account"
-            className="hidden font-mono text-[11px] uppercase tracking-label text-ivory/70 transition-colors hover:text-ivory xsmall:inline"
-          >
-            Compte
-          </a>
+    <header className="sticky top-0 z-40 border-b border-ink/10 bg-ivory text-ink">
+      <div className="mx-auto grid h-16 w-full max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-10">
+        {/* — Gauche : navigation principale — */}
+        <div className="flex items-center gap-9">
           <button
             type="button"
-            onClick={openCart}
-            className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-label text-ivory transition-opacity hover:opacity-80"
+            aria-label="Ouvrir le menu"
+            onClick={() => setMobileOpen((v) => !v)}
+            className="flex items-center justify-center small:hidden"
           >
-            Panier
-            <span className="flex h-5 min-w-5 items-center justify-center rounded-circle bg-soleil px-1 text-[10px] text-ink">
-              {count}
-            </span>
+            <MenuIcon />
           </button>
+          <nav className="hidden items-center gap-9 small:flex">
+            {LEFT_LINKS.map((link) => (
+              <LocalizedClientLink
+                key={link.label}
+                href={link.href}
+                className={NAV_LINK_CLASS}
+              >
+                {link.label}
+              </LocalizedClientLink>
+            ))}
+          </nav>
         </div>
-      </nav>
+
+        {/* — Centre : logo maison — */}
+        <LocalizedClientLink
+          href="/"
+          className="justify-self-center font-serif text-[26px] leading-none tracking-[0.3em] text-ink"
+          data-testid="nav-store-link"
+        >
+          KULT
+        </LocalizedClientLink>
+
+        {/* — Droite : navigation secondaire + actions — */}
+        <div className="flex items-center justify-end gap-7">
+          <nav className="hidden items-center gap-7 small:flex">
+            {RIGHT_LINKS.map((link) => (
+              <LocalizedClientLink
+                key={link.label}
+                href={link.href}
+                className={NAV_LINK_CLASS}
+              >
+                {link.label}
+              </LocalizedClientLink>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-5">
+            <LocalizedClientLink
+              href="/search"
+              aria-label="Rechercher"
+              className="text-ink/80 transition-colors hover:text-ink"
+            >
+              <SearchIcon />
+            </LocalizedClientLink>
+            <LocalizedClientLink
+              href="/account"
+              aria-label="Mon compte"
+              data-testid="nav-account-link"
+              className="text-ink/80 transition-colors hover:text-ink"
+            >
+              <UserIcon />
+            </LocalizedClientLink>
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label="Ouvrir le panier"
+              data-testid="nav-cart-link"
+              className="relative text-ink/80 transition-colors hover:text-ink"
+            >
+              <BagIcon />
+              {count > 0 && (
+                <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-circle bg-soleil px-1 font-mono text-[9px] text-ink">
+                  {count}
+                </span>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* — Menu mobile — */}
+      {mobileOpen && (
+        <nav className="border-t border-ink/10 bg-ivory px-6 py-4 small:hidden">
+          <ul className="flex flex-col gap-4">
+            {[...LEFT_LINKS, ...RIGHT_LINKS].map((link) => (
+              <li key={link.label}>
+                <LocalizedClientLink
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={NAV_LINK_CLASS}
+                >
+                  {link.label}
+                </LocalizedClientLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   )
 }
+
+const ICON_PROPS = {
+  width: 20,
+  height: 20,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.5,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+}
+
+const SearchIcon = () => (
+  <svg {...ICON_PROPS} aria-hidden="true">
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5" />
+  </svg>
+)
+
+const UserIcon = () => (
+  <svg {...ICON_PROPS} aria-hidden="true">
+    <circle cx="12" cy="8" r="4" />
+    <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6" />
+  </svg>
+)
+
+const BagIcon = () => (
+  <svg {...ICON_PROPS} aria-hidden="true">
+    <path d="M6 8h12l-1 12H7L6 8Z" />
+    <path d="M9 8a3 3 0 0 1 6 0" />
+  </svg>
+)
+
+const MenuIcon = () => (
+  <svg {...ICON_PROPS} aria-hidden="true">
+    <path d="M4 7h16M4 12h16M4 17h16" />
+  </svg>
+)
 
 export default KultHeader
