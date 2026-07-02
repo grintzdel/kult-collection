@@ -1,30 +1,23 @@
-import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
-import { Hanken_Grotesk, Instrument_Serif, Space_Mono } from "next/font/google"
+
+import { getBaseURL } from "@lib/util/env"
+import { Libre_Baskerville, League_Spartan } from "next/font/google"
 import { CartProvider } from "@modules/home/components/kult/cart-context"
 import LenisProvider from "@modules/common/components/scroll/lenis-provider"
 import "styles/globals.css"
 
-// KULT — Serif pour l'émotion, mono pour le repère. Hanken pour le corps.
-const sans = Hanken_Grotesk({
+const sans = League_Spartan({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 })
 
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  display: "swap",
-})
-
-const mono = Space_Mono({
+const serif = Libre_Baskerville({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-mono",
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 })
 
@@ -43,7 +36,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     <html
       lang="fr"
       data-mode="light"
-      className={`${sans.variable} ${serif.variable} ${mono.variable}`}
+      className={`${sans.variable} ${serif.variable}`}
     >
       <body className="bg-ivory font-sans text-ink antialiased">
         <CartProvider>

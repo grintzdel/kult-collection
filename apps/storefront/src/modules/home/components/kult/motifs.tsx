@@ -1,45 +1,61 @@
-type Motif = {
-  name: string
-  tagline: string
-  surface: string
-}
+"use client"
 
-const MOTIFS: Motif[] = [
-  { name: "Damier", tagline: "Le jeu, en pots", surface: "motif-damier" },
-  { name: "Léopard", tagline: "Le grain sauvage", surface: "motif-leopard" },
-  { name: "Rayures", tagline: "Le plein soleil", surface: "motif-rayures" },
+import { useRef } from "react"
+
+const DESTINATIONS = [
+  { name: "California", image: "/kult/imgh1.png" },
+  { name: "Palm Beach", image: "/kult/imgh2.png" },
+  { name: "Riviera", image: "/kult/imgh3.png" },
+  { name: "Capri", image: "/kult/imgh4.png" },
 ]
 
 const KultMotifs = () => {
+  const sliderRef = useRef<HTMLDivElement>(null)
+
   return (
-    <section className="bg-marine text-ivory">
-      <div className="kult-container py-24 small:py-28">
-        <div className="text-center">
-          <span className="eyebrow text-ivory/50">Nos motifs</span>
-          <h2 data-split className="display mt-4 text-4xl small:text-5xl">
-            Damier, léopard,{" "}
-            <span className="italic text-soleil">rayures.</span>
+    <>
+      {/* sep3 - transition crème vers bleu */}
+      <div className="bg-[#fdf6ee]">
+        <img src="/kult/sep3.png" alt="separateur" className="w-full" />
+      </div>
+
+      <section className="bg-[#2563eb] py-32 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-10 mb-12">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="block w-6 h-0.5 bg-white"></span>
+            <span className="text-white text-xs uppercase tracking-widest">Votre carte postale</span>
+          </div>
+          <h2 className="font-serif text-5xl text-white">
+            Choisissez votre destination
           </h2>
         </div>
 
-        <div data-reveal-group className="mt-14 grid gap-6 small:grid-cols-3">
-          {MOTIFS.map((motif) => (
+        <div
+          ref={sliderRef}
+          className="flex gap-6 px-10 overflow-x-auto cursor-grab active:cursor-grabbing"
+          style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {DESTINATIONS.map((dest) => (
             <div
-              key={motif.name}
-              className="group relative aspect-square overflow-hidden rounded-large shadow-soft"
+              key={dest.name}
+              className="flex-shrink-0"
+              style={{ scrollSnapAlign: "start" }}
             >
-              <div
-                className={`absolute inset-0 ${motif.surface} transition-transform duration-700 ease-out group-hover:scale-105`}
+              <img
+                src={dest.image}
+                alt={dest.name}
+                className="h-[650px] w-auto object-contain rounded-lg"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-5">
-                <h3 className="font-serif text-2xl text-ivory">{motif.name}</h3>
-                <span className="eyebrow text-ivory/70">{motif.tagline}</span>
-              </div>
             </div>
           ))}
         </div>
+      </section>
+
+      {/* sep4 - transition bleu vers crème */}
+      <div className="bg-[#fdf6ee]">
+        <img src="/kult/sep4.png" alt="separateur" className="w-full" />
       </div>
-    </section>
+    </>
   )
 }
 

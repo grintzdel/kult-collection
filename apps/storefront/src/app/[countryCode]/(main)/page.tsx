@@ -8,7 +8,6 @@ import KultManifeste from "@modules/home/components/kult/manifeste"
 import KultMotifs from "@modules/home/components/kult/motifs"
 import KultNewsletter from "@modules/home/components/kult/newsletter"
 import { toPieces } from "@modules/home/components/kult/pieces"
-import KultQuote from "@modules/home/components/kult/quote"
 import KultSavoirFaire from "@modules/home/components/kult/savoir-faire"
 
 export const metadata: Metadata = {
@@ -41,7 +40,6 @@ export default async function Home(props: Props) {
       <KultCollection pieces={featured} />
       <KultMotifs />
       <KultSavoirFaire />
-      <KultQuote />
       <KultNewsletter />
     </>
   )

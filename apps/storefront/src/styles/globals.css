@@ -26,6 +26,12 @@
     @apply left-0;
   }
 
+  @keyframes shake {
+  0%, 100% { transform: rotate(6deg) translateX(0); }
+  25% { transform: rotate(6deg) translateX(-5px); }
+  75% { transform: rotate(6deg) translateX(5px); }
+}
+
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,

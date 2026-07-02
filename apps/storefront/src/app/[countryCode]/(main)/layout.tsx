@@ -1,9 +1,7 @@
 import { Metadata } from "next"
-
 import { getBaseURL } from "@lib/util/env"
 import { getProContext } from "@lib/data/pro"
 import KultCartDrawer from "@modules/home/components/kult/cart-drawer"
-import KultFooter from "@modules/home/components/kult/footer"
 import KultHeader from "@modules/home/components/kult/header"
 import ProBanner from "@modules/pro/components/pro-banner"
 import { ProProvider } from "@modules/pro/context/pro-provider"
@@ -24,7 +22,6 @@ export default async function PageLayout(props: {
       <ProBanner />
       <KultHeader />
       {props.children}
-      <KultFooter />
       <KultCartDrawer />
     </ProProvider>
   )

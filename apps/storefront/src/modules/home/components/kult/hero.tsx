@@ -1,41 +1,88 @@
-import KultCandle3D from "./candle-3d"
+"use client"
+
+import { useEffect, useState } from "react"
 
 const KultHero = () => {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <section data-hero-pin className="relative overflow-hidden bg-ivory">
-      <div className="kult-container grid items-center gap-12 py-16 small:grid-cols-2 small:py-24">
-        {/* Colonne texte */}
-        <div className="animate-kult-rise">
-          <span className="badge mb-7">
-            <span className="text-soleil">✦</span> Nouvelle collection · Amore
-          </span>
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Vidéo de fond */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/kult/hero.mp4" type="video/mp4" />
+      </video>
 
-          <h1 data-split className="display text-6xl text-ink small:text-7xl">
-            Une maison
-            <br />
-            pleine de{" "}
-            <span className="italic text-terracotta">soleil.</span>
-          </h1>
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30" />
 
-          <p className="mt-7 max-w-md text-base leading-[1.7] text-ink/70">
-            Des bougies en céramique coulées à la main, entre le Sud de la France
-            et la Californie. On commence par la couleur et la matière — la vente
-            vient après.
-          </p>
+      {/* Sticker tampon rond jaune - bas droite */}
+      <img
+        src="/kult/sticker3.png"
+        alt="Kult Palm Beach"
+        className="absolute bottom-20 right-10 z-10 w-32 opacity-90"
+      />
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a href="/store" className="btn-dark btn-lg">
-              Voir la collection
-            </a>
-            <a href="#savoir-faire" className="btn-link">
-              Découvrir l'univers ↓
-            </a>
-          </div>
+      {/* Sticker bleu - haut droite */}
+      <img
+        src="/kult/sticker2.png"
+        alt="Kult Collection"
+        className="absolute bottom-2 right-8 z-10 w-32 opacity-90"
+      />
+
+      {/* Sticker rose - milieu droite */}
+      <img
+        src="/kult/sticker1.png"
+        alt="Kult sticker"
+        className="absolute bottom-20 right-1 z-10 w-32 opacity-90"
+      />
+
+      {/* Contenu principal */}
+      <div className="relative z-10 flex h-full flex-col justify-start px-44 pt-48">
+        <h1 className="font-serif text-8xl leading-tight text-white max-w-2xl whitespace-nowrap">
+          Collect 
+          memories,
+          <br />
+          not objects
+        </h1>
+
+        <a href="/collections"
+          className="mt-10 inline-flex w-fit items-center gap-2 rounded-full bg-green-700 px-6 py-3 text-sm uppercase tracking-widest text-white"
+        >
+          Découvrir nos collections ⟶
+        </a>
+
+        {/* Tags en bas */}
+        <div className="absolute bottom-8 left-44 flex gap-4 text-green-400 text-xs uppercase tracking-widest">
+          <span>Artisanat</span>
+          <span>·</span>
+          <span>Céramique</span>
+          <span>·</span>
+          <span>Bougies</span>
+          <span>·</span>
+          <span>Art de table</span>
         </div>
-
-        {/* Colonne visuelle — 3D candle */}
-        <KultCandle3D />
       </div>
+
+      {/* Séparateur en bas */}
+      <img
+        src="/kult/separateur.png"
+        alt="separateur"
+        className="absolute bottom-0 left-0 right-0 w-full z-10"
+      />
     </section>
   )
 }
