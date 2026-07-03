@@ -44,8 +44,9 @@ const ProductCard = ({
     card.isFeatured ? badges?.featured : null,
     card.isNew ? badges?.new : null,
   ].filter((b): b is NonNullable<typeof b> => Boolean(b?.image_url))
-  // Taille cible ~150×100, object-contain pour garder le ratio du tampon.
-  const badgeSize = "h-[100px] w-[150px] object-contain"
+  // Tampon-badge : marqué sur la pièce mise en avant, plus discret sur les
+  // cartes standard. Ratio 3:2 conservé, object-contain pour ne pas déformer.
+  const badgeSize = featured ? "h-[100px] w-[150px]" : "h-[64px] w-[96px]"
 
   return (
     <article className="group flex h-full flex-col">
@@ -71,13 +72,15 @@ const ProductCard = ({
             </div>
           )}
 
+          {/* Badges ancrés au conteneur (fond ivoire), hors de la boîte image :
+              ils se posent dans la marge du coin plutôt que sur l'image. */}
           {activeBadges.map((badge) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={badge.type}
               src={badge.image_url as string}
               alt={badge.label}
-              className={`pointer-events-none absolute z-10 ${badgeSize} ${
+              className={`pointer-events-none absolute z-10 object-contain ${badgeSize} ${
                 POSITION_CLASSES[badge.position]
               }`}
             />
