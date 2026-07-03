@@ -13,6 +13,8 @@ import productsData from "../../data/kult/products.json";
 import { buildProductOptionsAndVariants } from "../lib/seed/variant-scheme";
 import { applyScentWiring } from "../lib/seed/apply-scents";
 import { applyAmbianceWiring } from "../lib/seed/apply-ambiances";
+import { applySelectionWiring } from "../lib/seed/apply-selection";
+import { applyCustomPieceWiring } from "../lib/seed/apply-custom-piece";
 import {
   querySubCategoryIdByName,
   resolveProductCategoryIds,
@@ -196,6 +198,12 @@ export default async function reseed_products({
 
   logger.info("Wiring ambiances (tags + colors + category assignment)...");
   await applyAmbianceWiring(container);
+
+  logger.info("Wiring selection collection (« Composez votre lot »)...");
+  await applySelectionWiring(container);
+
+  logger.info("Wiring custom-piece sections (category metadata)...");
+  await applyCustomPieceWiring(container);
 
   logger.info("Done.");
 }

@@ -5,6 +5,7 @@ import { getProductAmbiances } from "@lib/data/collection-ambiances"
 import { getProductBadges } from "@lib/data/product-badges"
 import { listCategories } from "@lib/data/categories"
 import { listProducts } from "@lib/data/products"
+import { getProContext } from "@lib/data/pro"
 import CollectionListTemplate from "@modules/collections/templates/collection-list-template"
 import {
   toCardModels,
@@ -64,10 +65,11 @@ export default async function CollectionsPage(props: Props) {
     },
   })
 
-  const [layout, ambianceMap, badges] = await Promise.all([
+  const [layout, ambianceMap, badges, proContext] = await Promise.all([
     getCollectionLayout(),
     getProductAmbiances(products.map((p) => p.id)),
     getProductBadges(),
+    getProContext(countryCode),
   ])
 
   // Filtre ambiance (côté serveur) : l'ambiance effective est résolue par
@@ -82,7 +84,11 @@ export default async function CollectionsPage(props: Props) {
   // Cartes : on écarte les pièces sans photo (ex. anciens aplats de couleur),
   // et on remonte la pièce mise en avant en tête (1ʳᵉ ligne, seule).
   const cards = withHighlightFirst(
-    toCardModels(filteredProducts, ambianceMap).filter((c) => c.image)
+    toCardModels(filteredProducts, ambianceMap, {
+      isPro: proContext.isPro,
+      config: proContext.config,
+      vatRate: proContext.vatRate,
+    }).filter((c) => c.image)
   )
 
   const activeCategoryLabel = findCategoryLabel(categories, activeCategory)

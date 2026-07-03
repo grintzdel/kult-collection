@@ -119,7 +119,12 @@ const ProductCard = ({
       </a>
 
       <div className="mt-4 flex items-center justify-between border-t border-ink/10 pt-3">
-        <span className="font-mono text-sm text-ink">{card.price}</span>
+        <span className="font-mono text-sm text-ink">
+          {card.price}
+          {card.priceSuffix && (
+            <span className="ml-1 text-ink/50">{card.priceSuffix}</span>
+          )}
+        </span>
         <QuickAddButton
           variantId={card.variantId}
           countryCode={countryCode}

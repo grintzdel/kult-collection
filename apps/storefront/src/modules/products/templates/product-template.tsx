@@ -2,12 +2,18 @@ import type { ProductAmbiance } from "@lib/data/collection-ambiances"
 import type { StoreAttribute } from "@lib/data/product-attributes"
 import { HttpTypes } from "@medusajs/types"
 import { toPiece } from "@modules/home/components/kult/pieces"
+import type { Piece } from "@modules/home/components/kult/pieces"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 import { pickLeafCategory } from "../lib/siblings"
+import type { CustomPieceContent } from "../lib/custom-piece"
 
 import ProductGallery from "../components/product-gallery"
 import ProductInfo from "../components/product-info"
+import ProductLot from "../components/product-lot"
+import CustomPiece from "../components/custom-piece"
+import BrandReminder from "../components/brand-reminder"
+import KultBanner from "../components/kult-banner"
 import type { ScentOption } from "../components/scent-selector"
 
 type ProductTemplateProps = {
@@ -16,6 +22,10 @@ type ProductTemplateProps = {
   siblings: HttpTypes.StoreProduct[]
   attributes: StoreAttribute[]
   ambiance: ProductAmbiance | null
+  /** sélection curée « Composez votre lot » (collection dédiée) */
+  lotPieces: Piece[]
+  /** contenu « pièce personnalisée » de la catégorie (null = section masquée) */
+  customPiece: CustomPieceContent | null
 }
 
 /** « Bougie Violette » -> « Violette » (repli si metadata.senteur absent). */
@@ -46,6 +56,8 @@ const ProductTemplate = ({
   siblings,
   attributes,
   ambiance,
+  lotPieces,
+  customPiece,
 }: ProductTemplateProps) => {
   const piece = toPiece(product)
   // Sous-catégorie feuille (« Tasse » plutôt que le parent « Art de la table »
@@ -78,6 +90,7 @@ const ProductTemplate = ({
     })
 
   return (
+    <>
     <section className="bg-ivory">
       <div className="content-container py-10 small:py-14">
         {/* Fil d'Ariane */}
@@ -104,7 +117,9 @@ const ProductTemplate = ({
           <ProductInfo
             subCategory={subCategory}
             scent={scent}
-            price={piece.price}
+            amount={piece.amount}
+            currencyCode={piece.currencyCode}
+            isTaxInclusive={piece.isTaxInclusive}
             ambiance={ambiance}
             description={piece.description}
             olfactiveNotes={olfactiveNotes}
@@ -114,6 +129,13 @@ const ProductTemplate = ({
         </div>
       </div>
     </section>
+
+      {/* Sections éditoriales — ordre : lot → personnalisation → manifeste → bannière */}
+      <ProductLot pieces={lotPieces} />
+      {customPiece && <CustomPiece content={customPiece} />}
+      <BrandReminder />
+      <KultBanner />
+    </>
   )
 }
 

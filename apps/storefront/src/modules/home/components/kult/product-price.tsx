@@ -1,14 +1,12 @@
 "use client"
 
 import { usePro } from "@modules/pro/context/pro-provider"
+import { resolveProPrice } from "@modules/pro/lib/resolve-pro-price"
 import { formatPrice } from "./pieces"
 
 /**
- * Prix produit KULT.
- * - Client B2C : affichage inchangé (montant net).
- * - Client pro (espace actif) : le toggle admin `display_ht` bascule l'affichage
- *   entre HT (net) et TTC (net × (1 + TVA)). La différence n'est visible que si
- *   une TVA est configurée pour le pays (sinon HT = TTC).
+ * Prix produit KULT. La logique pro (HT / TTC + suffixe) est centralisée dans
+ * {@link resolveProPrice}, partagée avec les cartes de la page collection.
  */
 const KultProductPrice = ({
   amount,
@@ -23,13 +21,11 @@ const KultProductPrice = ({
 }) => {
   const { isPro, config, vatRate } = usePro()
 
-  const rate = vatRate / 100
-  const net = isTaxInclusive ? amount / (1 + rate) : amount
-  const ttc = isTaxInclusive ? amount : amount * (1 + rate)
-
-  const proActive = isPro && config.active
-  const value = proActive && !config.display_ht ? ttc : proActive ? net : amount
-  const suffix = proActive ? (config.display_ht ? "HT" : "TTC") : ""
+  const { value, suffix } = resolveProPrice(amount, isTaxInclusive, {
+    isPro,
+    config,
+    vatRate,
+  })
 
   return (
     <span className={className}>

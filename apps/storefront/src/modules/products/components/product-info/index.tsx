@@ -1,7 +1,9 @@
 import type { ProductAmbiance } from "@lib/data/collection-ambiances"
 
+import ProductPriceDisplay from "../product-price-display"
 import ProductRating from "../product-rating"
 import ProductTag from "../product-tag"
+import { QuantityProvider } from "../quantity-context"
 import QuantityAdd from "../quantity-add"
 import ScentSelector, { type ScentOption } from "../scent-selector"
 
@@ -10,8 +12,12 @@ type ProductInfoProps = {
   subCategory: string
   /** ligne 2 (italique) — senteur, ex. « Crème solaire » */
   scent: string
-  /** prix formaté, ex. « 45 € » */
-  price: string
+  /** montant unitaire (variant), ex. 45 */
+  amount: number
+  /** code devise, ex. « eur » */
+  currencyCode: string
+  /** true si le montant inclut la taxe (TTC), false = net (HT) */
+  isTaxInclusive: boolean
   ambiance: ProductAmbiance | null
   description: string
   /** notes olfactives condensées, ex. « Noix de coco · Fleur d'oranger · Vanille » */
@@ -29,7 +35,9 @@ const Divider = () => <div className="border-t border-[#242121]/15" />
 const ProductInfo = ({
   subCategory,
   scent,
-  price,
+  amount,
+  currencyCode,
+  isTaxInclusive,
   ambiance,
   description,
   olfactiveNotes,
@@ -37,55 +45,63 @@ const ProductInfo = ({
   variantId,
 }: ProductInfoProps) => {
   return (
-    <div className="flex w-full flex-col gap-[27px] rounded-sm border border-[#242121]/15 p-8 small:w-1/2">
-      {/* 1. Tag + pastille couleur */}
-      {ambiance && <ProductTag value={ambiance.value} color={ambiance.color} />}
+    <QuantityProvider>
+      <div className="flex w-full flex-col gap-[27px] rounded-sm border border-[#242121]/15 p-8 small:w-1/2">
+        {/* 1. Tag + pastille couleur */}
+        {ambiance && (
+          <ProductTag value={ambiance.value} color={ambiance.color} />
+        )}
 
-      {/* 2. Nom + prix (flex-col gap 16px) */}
-      <div className="flex flex-col gap-[16px]">
-        <h1 className="font-serif text-[30px] leading-[1.12] text-ink">
-          {subCategory && <span className="block">{subCategory}</span>}
-          <span className="block italic">{scent}</span>
-        </h1>
-        <p className="font-serif text-[22px] text-ink">{price}</p>
-      </div>
+        {/* 2. Nom + prix (flex-col gap 16px) */}
+        <div className="flex flex-col gap-[16px]">
+          <h1 className="font-serif text-[30px] leading-[1.12] text-ink">
+            {subCategory && <span className="block">{subCategory}</span>}
+            <span className="block italic">{scent}</span>
+          </h1>
+          <ProductPriceDisplay
+            amount={amount}
+            currencyCode={currencyCode}
+            isTaxInclusive={isTaxInclusive}
+          />
+        </div>
 
-      {/* 3. Avis */}
-      <ProductRating />
+        {/* 3. Avis */}
+        <ProductRating />
 
-      {/* 4. Divider */}
-      <Divider />
+        {/* 4. Divider */}
+        <Divider />
 
-      {/* 5. Description */}
-      <div className="flex flex-col gap-2">
-        <span className="eyebrow text-ink/50">Description</span>
-        <p className="whitespace-pre-line text-sm leading-[1.7] text-ink/70">
-          {description}
+        {/* 5. Description */}
+        <div className="flex flex-col gap-2">
+          <span className="eyebrow text-ink/50">Description</span>
+          <p className="whitespace-pre-line text-sm leading-[1.7] text-ink/70">
+            {description}
+          </p>
+        </div>
+
+        {/* 6. Notes olfactives */}
+        {olfactiveNotes && (
+          <div className="flex flex-col gap-2">
+            <span className="eyebrow text-ink/50">Notes olfactives</span>
+            <p className="text-sm text-ink">{olfactiveNotes}</p>
+          </div>
+        )}
+
+        {/* 7. Divider */}
+        <Divider />
+
+        {/* 8. Odeurs (produits frères) */}
+        <ScentSelector activeLabel={scent} scents={scents} />
+
+        {/* 9 + 10. Quantité + CTA ajout au panier */}
+        <QuantityAdd variantId={variantId} />
+
+        {/* 11. Mentions livraison */}
+        <p className="text-center text-xs text-ink/50">
+          Livraison offerte dès 35€ · Une bougie offerte dès 80€
         </p>
       </div>
-
-      {/* 6. Notes olfactives */}
-      {olfactiveNotes && (
-        <div className="flex flex-col gap-2">
-          <span className="eyebrow text-ink/50">Notes olfactives</span>
-          <p className="text-sm text-ink">{olfactiveNotes}</p>
-        </div>
-      )}
-
-      {/* 7. Divider */}
-      <Divider />
-
-      {/* 8. Odeurs (produits frères) */}
-      <ScentSelector activeLabel={scent} scents={scents} />
-
-      {/* 9 + 10. Quantité + CTA ajout au panier */}
-      <QuantityAdd variantId={variantId} />
-
-      {/* 11. Mentions livraison */}
-      <p className="text-center text-xs text-ink/50">
-        Livraison offerte dès 35€ · Une bougie offerte dès 80€
-      </p>
-    </div>
+    </QuantityProvider>
   )
 }
 
