@@ -69,7 +69,7 @@ const KultHeader = () => {
   }, [])
 
   return (
-    <header className={`fixed top-8 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? "bg-[#FFF6EC] text-ink" : "bg-transparent text-white"}`}>
+    <header className={`fixed top-8 left-0 right-0 z-[100] transition-all duration-300 ${scrolled ? "bg-[#FFF6EC]" : "bg-black/20"}`}>
       <div className="mx-auto grid h-16 w-full max-w-[1440px] grid-cols-[1fr_auto_1fr] items-center px-6 md:px-10">
         {/* Gauche */}
         <div className="flex items-center gap-9">
@@ -86,7 +86,7 @@ const KultHeader = () => {
               <LocalizedClientLink
                 key={link.label}
                 href={link.href}
-                className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white/90"}`}
+                className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white"}`}
               >
                 {link.label}
               </LocalizedClientLink>
@@ -110,7 +110,7 @@ const KultHeader = () => {
               <LocalizedClientLink
                 key={link.label}
                 href={link.href}
-                className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white/90"}`}
+                className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white"}`}
               >
                 {link.label}
               </LocalizedClientLink>
@@ -121,7 +121,7 @@ const KultHeader = () => {
             <LocalizedClientLink
               href="/search"
               aria-label="Rechercher"
-              className={`transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white/80"}`}
+              className={`transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white"}`}
             >
               <SearchIcon />
             </LocalizedClientLink>
@@ -129,7 +129,7 @@ const KultHeader = () => {
               href="/account"
               aria-label="Mon compte"
               data-testid="nav-account-link"
-              className={`transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white/80"}`}
+              className={`transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white"}`}
             >
               <UserIcon />
             </LocalizedClientLink>
@@ -138,7 +138,7 @@ const KultHeader = () => {
               onClick={openCart}
               aria-label="Ouvrir le panier"
               data-testid="nav-cart-link"
-              className={`relative transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white/80"}`}
+              className={`relative transition-colors hover:opacity-80 ${scrolled ? "text-ink/80" : "text-white"}`}
             >
               <BagIcon />
               {count > 0 && (
@@ -160,7 +160,7 @@ const KultHeader = () => {
                 <LocalizedClientLink
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white/90"}`}
+                  className={`${NAV_LINK_CLASS} ${scrolled ? "text-ink/80" : "text-white"}`}
                 >
                   {link.label}
                 </LocalizedClientLink>
