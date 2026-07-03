@@ -34,6 +34,6 @@ RUN pnpm install --prod
 
 EXPOSE 9000
 
-# Run pending migrations, then start. Migrations are idempotent.
-# For multi-instance setups, move `medusa db:migrate` to a Coolify pre-deploy command instead.
-CMD ["sh", "-c", "npx medusa db:migrate && npx medusa start"]
+# Migrations are NOT run here — run them manually once (`npx medusa db:migrate`)
+# from the container Terminal. The container only starts the HTTP server.
+CMD ["npx", "medusa", "start"]
