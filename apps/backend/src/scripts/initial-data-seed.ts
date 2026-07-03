@@ -36,6 +36,11 @@ const STATIC_BASE = (
   process.env.MEDUSA_BACKEND_URL || "http://localhost:9000"
 ).replace(/\/$/, "");
 
+// Deploy seed: set SEED_WITHOUT_IMAGES=true to seed products without any image
+// (the `static/` media folder is not committed to git, so on the server the
+// image URLs would 404). Catalog is seeded with no images in that mode.
+const SEED_WITHOUT_IMAGES = process.env.SEED_WITHOUT_IMAGES === "true";
+
 // Builds a clean, URL-safe handle/SKU base from a product name.
 // Strips accents, replaces "&" with "et" and apostrophes/spaces with dashes.
 function slugify(input: string): string {
@@ -344,9 +349,11 @@ export default async function initial_data_seed({
           weight: product.weight,
           status: ProductStatus.PUBLISHED,
           shipping_profile_id: shippingProfile.id,
-          images: product.images.map((rel) => ({
-            url: `${STATIC_BASE}/static/${rel}`,
-          })),
+          images: SEED_WITHOUT_IMAGES
+            ? []
+            : product.images.map((rel) => ({
+                url: `${STATIC_BASE}/static/${rel}`,
+              })),
           ...buildProductOptionsAndVariants(product, handle),
           sales_channels: [
             {

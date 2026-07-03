@@ -9,16 +9,20 @@ export const PRO_PRICE_LIST_TITLE = "Tarif Pro"
 
 export type EnsureProPriceListInput = {
   variant_id: string
+  currency_code: string
 }
 
 /**
  * Garantit l'existence du groupe « Pros » et de la price list « Tarif Pro »
- * (scopée au groupe), et retourne les ids des prix pro existants pour le variant
- * (à remplacer). La règle de scoping est `customer.groups.id`.
+ * (scopée au groupe, type `sale` pour que le storefront reçoive `original_amount`
+ * + `price_list_type: "sale"` et affiche le prix barré), et retourne les ids des
+ * prix pro existants pour le variant (à remplacer) ainsi que le prix de base du
+ * variant pour la devise (nécessaire au calcul de la réduction en %).
+ * La règle de scoping est `customer.groups.id`.
  */
 export const ensureProPriceListStep = createStep(
   "ensure-pro-price-list",
-  async ({ variant_id }: EnsureProPriceListInput, { container }) => {
+  async ({ variant_id, currency_code }: EnsureProPriceListInput, { container }) => {
     const customer = container.resolve(Modules.CUSTOMER)
     const pricing = container.resolve(Modules.PRICING)
     const query = container.resolve(ContainerRegistrationKeys.QUERY)
@@ -43,6 +47,7 @@ export const ensureProPriceListStep = createStep(
           title: PRO_PRICE_LIST_TITLE,
           description: "Tarifs de gros réservés au groupe Pros",
           status: "active",
+          type: "sale",
           rules: { "customer.groups.id": [group.id] },
         },
       ])
@@ -58,16 +63,25 @@ export const ensureProPriceListStep = createStep(
     const priceSetId = data?.[0]?.price_set?.id
 
     let existingPriceIds: string[] = []
+    let baseAmount = 0
     if (priceSetId) {
-      const prices = await pricing.listPrices(
+      const existing = await pricing.listPrices(
         { price_list_id: [priceList.id], price_set_id: [priceSetId] },
         { take: 100 }
       )
-      existingPriceIds = prices.map((p) => p.id)
+      existingPriceIds = existing.map((p) => p.id)
+
+      // Prix de base du variant : hors price list, sans palier de quantité.
+      const setPrices = await pricing.listPrices(
+        { price_set_id: [priceSetId], currency_code: [currency_code] },
+        { take: 200, relations: ["price_list"] }
+      )
+      const base = setPrices.find((p) => !p.price_list && p.min_quantity == null)
+      baseAmount = base ? Number(base.amount) : 0
     }
 
     return new StepResponse(
-      { priceListId: priceList.id, existingPriceIds },
+      { priceListId: priceList.id, existingPriceIds, baseAmount },
       { createdList, priceListId: priceList.id }
     )
   },

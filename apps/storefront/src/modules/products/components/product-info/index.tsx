@@ -12,8 +12,12 @@ type ProductInfoProps = {
   subCategory: string
   /** ligne 2 (italique) — senteur, ex. « Crème solaire » */
   scent: string
-  /** montant unitaire (variant), ex. 45 */
+  /** montant unitaire (variant), prix effectif après réduction pro, ex. 45 */
   amount: number
+  /** prix de base avant réduction pro (barré si `onSale`) */
+  originalAmount: number
+  /** true si une réduction pro s'applique (prix barré à afficher) */
+  onSale: boolean
   /** code devise, ex. « eur » */
   currencyCode: string
   /** true si le montant inclut la taxe (TTC), false = net (HT) */
@@ -36,6 +40,8 @@ const ProductInfo = ({
   subCategory,
   scent,
   amount,
+  originalAmount,
+  onSale,
   currencyCode,
   isTaxInclusive,
   ambiance,
@@ -60,6 +66,8 @@ const ProductInfo = ({
           </h1>
           <ProductPriceDisplay
             amount={amount}
+            originalAmount={originalAmount}
+            onSale={onSale}
             currencyCode={currencyCode}
             isTaxInclusive={isTaxInclusive}
           />

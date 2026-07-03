@@ -42,19 +42,38 @@ export async function GET(
     return res.json({ tiers: [], price_list_id: priceList.id })
   }
 
-  const prices = await pricing.listPrices(
+  const proPrices = await pricing.listPrices(
     { price_list_id: [priceList.id], price_set_id: [priceSetId] },
     { take: 100 }
   )
 
-  const tiers = prices
-    .map((p) => ({
-      id: p.id,
-      amount: Number(p.amount),
-      currency_code: p.currency_code,
-      min_quantity: p.min_quantity ? Number(p.min_quantity) : 1,
-      max_quantity: p.max_quantity ? Number(p.max_quantity) : null,
-    }))
+  // Prix de base par devise (hors price list, sans palier) pour reconstruire le %.
+  const setPrices = await pricing.listPrices(
+    { price_set_id: [priceSetId] },
+    { take: 200, relations: ["price_list"] }
+  )
+  const baseAmountFor = (currency: string | undefined): number => {
+    const base = setPrices.find(
+      (p) =>
+        !p.price_list && p.currency_code === currency && p.min_quantity == null
+    )
+    return base ? Number(base.amount) : 0
+  }
+
+  const tiers = proPrices
+    .map((p) => {
+      const amount = Number(p.amount)
+      const base = baseAmountFor(p.currency_code)
+      const discount_percent =
+        base > 0 ? Math.round((1 - amount / base) * 100) : 0
+      return {
+        id: p.id,
+        discount_percent,
+        currency_code: p.currency_code,
+        min_quantity: p.min_quantity ? Number(p.min_quantity) : 1,
+        max_quantity: p.max_quantity ? Number(p.max_quantity) : null,
+      }
+    })
     .sort((a, b) => a.min_quantity - b.min_quantity)
 
   return res.json({ tiers, price_list_id: priceList.id })

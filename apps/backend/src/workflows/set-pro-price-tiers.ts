@@ -12,7 +12,8 @@ import { ensureProPriceListStep } from "./steps/ensure-pro-price-list"
 export type ProPriceTier = {
   min_quantity: number
   max_quantity?: number | null
-  amount: number
+  /** Réduction en % (0–100) appliquée au prix de base du variant. */
+  discount_percent: number
 }
 
 export type SetProPriceTiersInput = {
@@ -49,7 +50,11 @@ export const setProPriceTiersWorkflow = createWorkflow(
           {
             id: prep.priceListId,
             prices: input.tiers.map((tier) => ({
-              amount: tier.amount,
+              // amount = prix de base × (1 − réduction%), arrondi au centime.
+              amount:
+                Math.round(
+                  prep.baseAmount * (1 - tier.discount_percent / 100) * 100
+                ) / 100,
               currency_code: input.currency_code,
               variant_id: input.variant_id,
               min_quantity: tier.min_quantity,

@@ -17,9 +17,9 @@ import { sdk } from "../../../lib/client"
 
 type Variant = { id: string; title: string }
 type Product = { id: string; title: string; variants: Variant[] }
-type Tier = { min_quantity: number; amount: number }
+type Tier = { min_quantity: number; discount_percent: number }
 
-const emptyRow = (): Tier => ({ min_quantity: 1, amount: 0 })
+const emptyRow = (): Tier => ({ min_quantity: 1, discount_percent: 0 })
 
 /** Nombre de produits affichés par page dans la liste. */
 const PAGE_SIZE = 20
@@ -61,7 +61,7 @@ const B2BTarifsPage = () => {
         tiersData.tiers.length
           ? tiersData.tiers.map((t) => ({
               min_quantity: t.min_quantity,
-              amount: t.amount,
+              discount_percent: t.discount_percent,
             }))
           : [emptyRow()]
       )
@@ -76,10 +76,15 @@ const B2BTarifsPage = () => {
           variant_id: variant!.id,
           currency_code: currency.trim().toLowerCase() || "eur",
           tiers: rows
-            .filter((r) => r.min_quantity >= 1 && r.amount >= 0)
+            .filter(
+              (r) =>
+                r.min_quantity >= 1 &&
+                r.discount_percent >= 0 &&
+                r.discount_percent <= 100
+            )
             .map((r) => ({
               min_quantity: Number(r.min_quantity),
-              amount: Number(r.amount),
+              discount_percent: Number(r.discount_percent),
             })),
         },
       }),
@@ -100,9 +105,9 @@ const B2BTarifsPage = () => {
       <div className="px-6 py-4">
         <Heading level="h1">Tarifs pro (paliers de quantité)</Heading>
         <Text size="small" className="text-ui-fg-subtle">
-          Prix de gros HT par variante, dégressifs selon la quantité. Appliqués
-          automatiquement aux clients du groupe « Pros » via la price list « Tarif
-          Pro ».
+          Réduction en % sur le prix de base, dégressive selon la quantité.
+          Appliquée automatiquement aux clients du groupe « Pros » via la price
+          list « Tarif Pro ». Le prix barré s'affiche sur la fiche produit.
         </Text>
       </div>
 
@@ -206,7 +211,7 @@ const B2BTarifsPage = () => {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Quantité min.</Table.HeaderCell>
-                <Table.HeaderCell>Prix unitaire HT</Table.HeaderCell>
+                <Table.HeaderCell>Réduction (%)</Table.HeaderCell>
                 <Table.HeaderCell />
               </Table.Row>
             </Table.Header>
@@ -229,11 +234,12 @@ const B2BTarifsPage = () => {
                     <Input
                       type="number"
                       min={0}
-                      step="0.01"
-                      value={row.amount}
+                      max={100}
+                      step="1"
+                      value={row.discount_percent}
                       onChange={(e) =>
                         updateRow(index, {
-                          amount: e.target.valueAsNumber || 0,
+                          discount_percent: e.target.valueAsNumber || 0,
                         })
                       }
                     />

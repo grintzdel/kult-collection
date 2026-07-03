@@ -28,7 +28,8 @@ export const SetProPriceTiersSchema = z.object({
       z.object({
         min_quantity: z.number().int().min(1),
         max_quantity: z.number().int().min(1).nullish(),
-        amount: z.number().min(0),
+        // Réduction en % (0–100) appliquée au prix de base du variant.
+        discount_percent: z.number().min(0).max(100),
       })
     )
     .min(1),

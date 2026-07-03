@@ -17,8 +17,12 @@ export type Piece = {
   name: string
   /** prix formaté, ex: "23 €" */
   price: string
-  /** montant numérique du variant (ex: 23) */
+  /** montant numérique du variant, prix effectif après réduction pro (ex: 23) */
   amount: number
+  /** prix de base avant réduction pro (à barrer si `onSale`) */
+  originalAmount: number
+  /** true si une réduction pro s'applique (prix barré à afficher) */
+  onSale: boolean
   /** code devise (ex: "eur") */
   currencyCode: string
   /** id du variant à ajouter au panier Medusa */
@@ -90,11 +94,18 @@ export const toPiece = (
   const calculated = variant?.calculated_price as
     | {
         calculated_amount?: number
+        original_amount?: number
         currency_code?: string
         is_calculated_price_tax_inclusive?: boolean
+        calculated_price?: { price_list_type?: string }
       }
     | undefined
   const amount = calculated?.calculated_amount ?? 0
+  const originalAmount = calculated?.original_amount ?? amount
+  // Réduction pro active : price list de type « sale » et prix effectif inférieur.
+  const onSale =
+    calculated?.calculated_price?.price_list_type === "sale" &&
+    originalAmount > amount
   const currencyCode = calculated?.currency_code ?? "eur"
 
   const category = product.categories?.[0]
@@ -108,6 +119,8 @@ export const toPiece = (
     name: product.title ?? "Pièce",
     price: formatPrice(amount, currencyCode),
     amount,
+    originalAmount,
+    onSale,
     currencyCode,
     variantId: variant?.id ?? null,
     isTaxInclusive: calculated?.is_calculated_price_tax_inclusive ?? false,
