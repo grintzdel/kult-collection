@@ -129,7 +129,7 @@ const CategoryGroup = ({
 /**
  * Sidebar de filtres de la page Collection (maquette `Collection.pdf`).
  * Catégories & Ambiances = données réelles, pilotent l'URL (`?category=`,
- * `?ambiance=`, filtrage serveur). Couleur / Prix / Disponibilité = à venir.
+ * `?ambiance=`, filtrage serveur).
  */
 const FilterSection = ({
   categories,
@@ -236,18 +236,6 @@ const FilterSection = ({
             )
           })}
         </ul>
-      </Section>
-
-      <Section title="Couleur" defaultOpen={false}>
-        <p className="font-sans text-xs text-ink/30">Bientôt disponible</p>
-      </Section>
-
-      <Section title="Prix" defaultOpen={false}>
-        <p className="font-sans text-xs text-ink/30">Bientôt disponible</p>
-      </Section>
-
-      <Section title="Disponibilité" defaultOpen={false}>
-        <p className="font-sans text-xs text-ink/30">Bientôt disponible</p>
       </Section>
     </aside>
   )
