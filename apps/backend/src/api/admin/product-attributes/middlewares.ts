@@ -57,6 +57,16 @@ export const UpdateTrustBadgeSchema = z.object({
 })
 export type UpdateTrustBadgeSchema = z.infer<typeof UpdateTrustBadgeSchema>
 
+export const UpsertProductBadgeSchema = z.object({
+  type: z.enum(["featured", "new"]),
+  label: z.string().min(1).optional(),
+  image_url: z.string().url().nullish(),
+  position: z
+    .enum(["top-left", "top-right", "bottom-left", "bottom-right"])
+    .optional(),
+})
+export type UpsertProductBadgeSchema = z.infer<typeof UpsertProductBadgeSchema>
+
 export const productAttributeAdminMiddlewares: MiddlewareRoute[] = [
   {
     matcher: "/admin/product-attributes",
@@ -82,5 +92,10 @@ export const productAttributeAdminMiddlewares: MiddlewareRoute[] = [
     matcher: "/admin/trust-badges/:id",
     method: "POST",
     middlewares: [validateAndTransformBody(UpdateTrustBadgeSchema)],
+  },
+  {
+    matcher: "/admin/product-badges",
+    method: "POST",
+    middlewares: [validateAndTransformBody(UpsertProductBadgeSchema)],
   },
 ]

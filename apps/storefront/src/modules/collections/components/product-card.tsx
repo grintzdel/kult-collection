@@ -1,3 +1,4 @@
+import type { BadgePosition, ProductBadges } from "@lib/data/product-badges"
 import type { CardModel } from "../lib/to-card-model"
 import QuickAddButton from "./quick-add-button"
 
@@ -6,6 +7,16 @@ type ProductCardProps = {
   countryCode: string
   /** pièce mise en avant, seule sur sa ligne : grande image (maquette). */
   featured?: boolean
+  /** config globale des badges d'indication (image + coin) — null si aucune. */
+  badges?: ProductBadges
+}
+
+/** Coin d'ancrage du badge sur l'image produit (défaut backend : top-left). */
+const POSITION_CLASSES: Record<BadgePosition, string> = {
+  "top-left": "left-2 top-2",
+  "top-right": "right-2 top-2",
+  "bottom-left": "bottom-2 left-2",
+  "bottom-right": "bottom-2 right-2",
 }
 
 /**
@@ -15,11 +26,27 @@ type ProductCardProps = {
  * est nettement plus grande et centrée. Composant serveur ; seul le « + » est
  * client.
  */
-const ProductCard = ({ card, countryCode, featured = false }: ProductCardProps) => {
+const ProductCard = ({
+  card,
+  countryCode,
+  featured = false,
+  badges,
+}: ProductCardProps) => {
   const imageBox = featured
     ? "h-72 small:h-[26rem]"
     : "h-44 small:h-52"
   const titleSize = featured ? "text-2xl small:text-3xl" : "text-lg"
+
+  // Badges à afficher sur l'image : « phare » si le produit est mis en avant,
+  // « nouveau » si récent. Chacun au coin configuré côté admin (défaut : haut
+  // gauche). On n'affiche que ceux dont l'image est bien uploadée.
+  const activeBadges = [
+    card.isFeatured ? badges?.featured : null,
+    card.isNew ? badges?.new : null,
+  ].filter((b): b is NonNullable<typeof b> => Boolean(b?.image_url))
+  // Tampon-badge : marqué sur la pièce mise en avant, plus discret sur les
+  // cartes standard. Ratio 3:2 conservé, object-contain pour ne pas déformer.
+  const badgeSize = featured ? "h-[100px] w-[150px]" : "h-[64px] w-[96px]"
 
   return (
     <article className="group flex h-full flex-col">
@@ -44,6 +71,20 @@ const ProductCard = ({ card, countryCode, featured = false }: ProductCardProps) 
               <span className="halo-soleil h-24 w-24 rounded-circle opacity-70" />
             </div>
           )}
+
+          {/* Badges ancrés au conteneur (fond ivoire), hors de la boîte image :
+              ils se posent dans la marge du coin plutôt que sur l'image. */}
+          {activeBadges.map((badge) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={badge.type}
+              src={badge.image_url as string}
+              alt={badge.label}
+              className={`pointer-events-none absolute z-10 object-contain ${badgeSize} ${
+                POSITION_CLASSES[badge.position]
+              }`}
+            />
+          ))}
         </div>
 
         <div className={featured ? "pt-6" : "pt-4"}>

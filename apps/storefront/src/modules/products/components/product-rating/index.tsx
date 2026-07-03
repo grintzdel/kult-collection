@@ -27,7 +27,7 @@ const Star = ({ filled }: { filled: boolean }) => (
  */
 const ProductRating = ({ count = 0, value = 0 }: ProductRatingProps) => {
   return (
-    <div className="flex items-center gap-2 text-ink/40">
+    <div className="flex items-center gap-2 text-[#F6C842]">
       <div className="flex items-center gap-0.5">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} filled={i < Math.round(value)} />

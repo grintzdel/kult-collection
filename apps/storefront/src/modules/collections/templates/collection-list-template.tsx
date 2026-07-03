@@ -1,5 +1,6 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
+import type { ProductBadges } from "@lib/data/product-badges"
 import type { LayoutPattern } from "../lib/chunk-by-pattern"
 import type { CardModel } from "../lib/to-card-model"
 import CollectionGrid from "../components/collection-grid"
@@ -15,6 +16,7 @@ type CollectionListTemplateProps = {
   activeAmbianceLabel: string | null
   layout: LayoutPattern
   countryCode: string
+  badges?: ProductBadges
 }
 
 /**
@@ -30,6 +32,7 @@ const CollectionListTemplate = ({
   activeAmbianceLabel,
   layout,
   countryCode,
+  badges,
 }: CollectionListTemplateProps) => {
   // Fil d'Ariane piloté par les filtres actifs : « Collection · Bougies »,
   // « Collection · Bougies & Cozy », etc.
@@ -80,6 +83,7 @@ const CollectionListTemplate = ({
               cards={cards}
               layout={layout}
               countryCode={countryCode}
+              badges={badges}
             />
           </div>
         </div>

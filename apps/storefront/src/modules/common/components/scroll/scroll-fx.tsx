@@ -92,7 +92,10 @@ const ScrollFX = () => {
         })
       })
 
-      // Hero épinglé : la bougie tourne / zoome pendant le pin
+      // Hero « épinglé » via CSS `position: sticky` (cf. hero.tsx) : GSAP se
+      // contente de scruber `--scroll` pendant que la section colle en haut.
+      // Aucun `pin: true` — GSAP ne reparente jamais le DOM géré par React
+      // (sinon crash `removeChild` au démontage de la page).
       const heroPin = document.querySelector<HTMLElement>("[data-hero-pin]")
       const candle = document.querySelector<HTMLElement>("[data-candle]")
       if (heroPin && candle) {
@@ -103,7 +106,6 @@ const ScrollFX = () => {
             trigger: heroPin,
             start: "top top",
             end: "+=80%",
-            pin: true,
             scrub: 1,
           },
         })

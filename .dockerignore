@@ -1,0 +1,22 @@
+# Keep the Docker build context small. Context = monorepo root.
+**/node_modules
+**/.medusa
+**/dist
+**/build
+**/.next
+**/.turbo
+.git
+.idea
+.vscode
+
+# Local env — secrets are injected by Coolify at runtime, never baked into the image
+**/.env
+**/.env.*
+!**/.env.template
+
+# Heavy assets that are not needed to build/run the backend
+*.pdf
+medias/
+docs/
+**/*.log
+.DS_Store

@@ -28,6 +28,8 @@ export type CardModel = {
   variantId: string | null
   /** badge « new » (metadata.is_new) */
   isNew: boolean
+  /** badge « produit phare » (metadata.is_featured) */
+  isFeatured: boolean
   /** mise en avant (metadata.highlight) — rendue seule sur la 1ʳᵉ ligne */
   isHighlight: boolean
   /** sous-ligne : « N senteurs disponibles » (bougies), « N tailles disponibles »
@@ -182,6 +184,7 @@ export const toCardModel = (
     image,
     variantId: variant?.id ?? null,
     isNew: asBool(metadata.is_new),
+    isFeatured: asBool(metadata.is_featured),
     isHighlight: asBool(metadata.highlight),
     variantLabel: readCardSubline(product, sameTypeCount),
   }

@@ -28,7 +28,7 @@ const ScentSelector = ({ activeLabel, scents }: ScentSelectorProps) => {
   return (
     <div className="flex flex-col gap-4">
       <span className="eyebrow text-ink/50">
-        Odeur <span className="text-terracotta">{activeLabel}</span>
+        Odeur <span className="font-semibold text-ink">{activeLabel}</span>
       </span>
 
       <div className="flex flex-wrap gap-2.5">
@@ -37,7 +37,7 @@ const ScentSelector = ({ activeLabel, scents }: ScentSelectorProps) => {
             <span
               key={scent.handle}
               aria-current="true"
-              className="rounded-circle border border-soleil bg-soleil px-4 py-1.5 text-sm text-ink"
+              className="rounded-circle border border-[#FFCA42] bg-[#FFCA42] px-4 py-1.5 text-sm text-ink"
             >
               {scent.label}
             </span>
@@ -45,7 +45,7 @@ const ScentSelector = ({ activeLabel, scents }: ScentSelectorProps) => {
             <LocalizedClientLink
               key={scent.handle}
               href={`/products/${scent.handle}`}
-              className="rounded-circle border border-ink/15 px-4 py-1.5 text-sm text-ink/80 transition-colors hover:border-ink/40 hover:text-ink"
+              className="rounded-circle border border-[#FCA4E0] px-4 py-1.5 text-sm text-ink/80 transition-colors hover:bg-[#FCA4E0]/15 hover:text-ink"
             >
               {scent.label}
             </LocalizedClientLink>

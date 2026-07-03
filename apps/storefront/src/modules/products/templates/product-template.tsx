@@ -94,8 +94,9 @@ const ProductTemplate = ({
           </span>
         </nav>
 
-        {/* Bloc principal — flex-row gap 26px */}
-        <div className="mt-8 flex flex-col gap-[26px] small:flex-row small:items-start">
+        {/* Bloc principal — flex-row gap 26px, colonnes de hauteur égale
+            (les deux sections se terminent à la même ligne) */}
+        <div className="mt-8 flex flex-col gap-[26px] small:flex-row small:items-stretch">
           <ProductGallery
             images={piece.images}
             alt={`${subCategory} ${scent}`.trim()}
