@@ -122,7 +122,7 @@ const KultProductTemplate = ({
 
       <KultLeGeste />
       <KultRelated pieces={related} />
-      <KultNewsletter title="Les nouvelles pièces, avant tout le monde." />
+      <KultNewsletter />
     </>
   )
 }

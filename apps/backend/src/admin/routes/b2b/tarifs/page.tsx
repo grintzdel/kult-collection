@@ -21,31 +21,32 @@ type Tier = { min_quantity: number; amount: number }
 
 const emptyRow = (): Tier => ({ min_quantity: 1, amount: 0 })
 
+/** Nombre de produits affichés par page dans la liste. */
+const PAGE_SIZE = 20
+
 const B2BTarifsPage = () => {
   const queryClient = useQueryClient()
 
-  const [search, setSearch] = useState("")
-  const [debounced, setDebounced] = useState("")
+  const [offset, setOffset] = useState(0)
   const [product, setProduct] = useState<Product | null>(null)
   const [variant, setVariant] = useState<Variant | null>(null)
   const [currency, setCurrency] = useState("eur")
   const [rows, setRows] = useState<Tier[]>([emptyRow()])
 
-  useEffect(() => {
-    const t = setTimeout(() => setDebounced(search.trim()), 300)
-    return () => clearTimeout(t)
-  }, [search])
-
-  const { data: productsData } = useQuery<{ products: Product[] }>({
-    queryKey: ["pro-tier-products", debounced],
+  const { data: productsData } = useQuery<{ products: Product[]; count: number }>({
+    queryKey: ["pro-tier-products", offset],
     queryFn: () =>
       sdk.admin.product.list({
-        q: debounced,
-        limit: 10,
+        limit: PAGE_SIZE,
+        offset,
         fields: "id,title,variants.id,variants.title",
-      }) as unknown as Promise<{ products: Product[] }>,
-    enabled: debounced.length > 0,
+      }) as unknown as Promise<{ products: Product[]; count: number }>,
   })
+
+  const products = productsData?.products ?? []
+  const count = productsData?.count ?? 0
+  const canPrev = offset > 0
+  const canNext = offset + PAGE_SIZE < count
 
   const { data: tiersData } = useQuery<{ tiers: Tier[] }>({
     queryKey: ["pro-tiers", variant?.id],
@@ -105,19 +106,14 @@ const B2BTarifsPage = () => {
         </Text>
       </div>
 
-      {/* 1. Recherche produit */}
+      {/* 1. Liste des produits (paginée) */}
       <div className="flex flex-col gap-y-2 px-6 py-4">
         <Label size="small" weight="plus">
-          Produit
+          Produits
         </Label>
-        <Input
-          placeholder="Rechercher un produit…"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        {productsData?.products?.length ? (
-          <div className="flex flex-col gap-y-1 pt-1">
-            {productsData.products.map((p) => (
+        <div className="flex flex-col gap-y-1 pt-1">
+          {products.length ? (
+            products.map((p) => (
               <button
                 key={p.id}
                 type="button"
@@ -131,9 +127,39 @@ const B2BTarifsPage = () => {
               >
                 {p.title}
               </button>
-            ))}
+            ))
+          ) : (
+            <Text size="small" className="text-ui-fg-subtle">
+              Aucun produit.
+            </Text>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between pt-2">
+          <Text size="small" className="text-ui-fg-subtle">
+            {count === 0
+              ? "0 produit"
+              : `${offset + 1}–${Math.min(offset + PAGE_SIZE, count)} sur ${count}`}
+          </Text>
+          <div className="flex items-center gap-x-2">
+            <Button
+              size="small"
+              variant="secondary"
+              disabled={!canPrev}
+              onClick={() => setOffset((o) => Math.max(0, o - PAGE_SIZE))}
+            >
+              Précédent
+            </Button>
+            <Button
+              size="small"
+              variant="secondary"
+              disabled={!canNext}
+              onClick={() => setOffset((o) => o + PAGE_SIZE)}
+            >
+              Suivant
+            </Button>
           </div>
-        ) : null}
+        </div>
       </div>
 
       {/* 2. Sélection variante */}

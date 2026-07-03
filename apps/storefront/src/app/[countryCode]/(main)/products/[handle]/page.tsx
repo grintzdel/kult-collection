@@ -4,11 +4,16 @@ import { notFound } from "next/navigation"
 import { getProductAmbiances } from "@lib/data/collection-ambiances"
 import { getProductAttributes } from "@lib/data/product-attributes"
 import { getProductByHandle, listProducts } from "@lib/data/products"
+import { getCollectionByHandle } from "@lib/data/collections"
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
-import { toPiece } from "@modules/home/components/kult/pieces"
+import { toPiece, toPieces } from "@modules/home/components/kult/pieces"
 import { pickLeafCategoryId, sameTypeSiblings } from "@modules/products/lib/siblings"
+import { pickCustomPiece } from "@modules/products/lib/custom-piece"
 import ProductTemplate from "@modules/products/templates/product-template"
+
+/** Handle de la collection curée « Composez votre lot ». */
+const SELECTION_COLLECTION_HANDLE = "composez-votre-lot"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
@@ -71,13 +76,16 @@ export default async function ProductPage(props: Props) {
     notFound()
   }
 
-  // Frères : même collection (« bougies parfumées ») de préférence, sinon la
-  // SOUS-catégorie feuille du produit (ex. « Assiette » et non tout « Vaisselle »
-  // quand les catégories sont imbriquées).
-  const collectionId = product.collection_id
+  // Frères = « senteurs » : uniquement pour les bougies (elles portent
+  // `metadata.senteur` et vivent dans la collection « bougies parfumées »). Les
+  // autres produits (art de la table…) retombent sur leur SOUS-catégorie feuille
+  // — important car ils peuvent appartenir à d'autres collections curées
+  // (« Composez votre lot ») qui ne doivent PAS servir de groupe de senteurs.
+  const isScentGroup =
+    Boolean(product.metadata?.senteur) && Boolean(product.collection_id)
   const categoryId = pickLeafCategoryId(product.categories)
-  const scentFilter = collectionId
-    ? { collection_id: [collectionId] }
+  const scentFilter = isScentGroup
+    ? { collection_id: [product.collection_id as string] }
     : categoryId
       ? { category_id: [categoryId] }
       : {}
@@ -104,9 +112,27 @@ export default async function ProductPage(props: Props) {
   // Bougies : la collection groupe déjà par senteur, on garde tous les frères.
   // Sinon (vaisselle…) : on ne garde que les autres produits du MÊME TYPE, pour
   // matcher le « N autres modèles » de la carte (une assiette → les assiettes).
-  const siblings = collectionId
+  const siblings = isScentGroup
     ? siblingsResponse.products.filter((p) => p.handle !== product.handle)
     : sameTypeSiblings(product, siblingsResponse.products)
+
+  // Sélection curée « Composez votre lot » (même sur chaque page produit).
+  const selectionCollection = await getCollectionByHandle(
+    SELECTION_COLLECTION_HANDLE
+  )
+  let lotPieces = [] as ReturnType<typeof toPieces>
+  if (selectionCollection?.id) {
+    const {
+      response: { products: lotProducts },
+    } = await listProducts({
+      countryCode,
+      queryParams: { collection_id: [selectionCollection.id], limit: 8 },
+    })
+    lotPieces = toPieces(lotProducts.filter((p) => p.id !== product.id))
+  }
+
+  // Section « pièce personnalisée » : contenu de la catégorie (sinon masquée).
+  const customPiece = pickCustomPiece(product)
 
   return (
     <ProductTemplate
@@ -114,6 +140,8 @@ export default async function ProductPage(props: Props) {
       siblings={siblings}
       attributes={attributes}
       ambiance={ambiances[product.id] ?? null}
+      lotPieces={lotPieces}
+      customPiece={customPiece}
     />
   )
 }

@@ -2,7 +2,11 @@
 
 import { useState } from "react"
 
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { usePro } from "@modules/pro/context/pro-provider"
+
 import { useCart } from "@modules/home/components/kult/cart-context"
+import { useQuantity } from "../quantity-context"
 
 type QuantityAddProps = {
   /** variant à ajouter au panier (null = produit indisponible) */
@@ -12,12 +16,21 @@ type QuantityAddProps = {
 /**
  * Gestion de la quantité (stepper − N +) + CTA « Ajouter au panier ».
  * Branché sur le panier global (`useCart`) qui ouvre le drawer après ajout.
+ * La quantité est partagée avec l'affichage du prix via {@link useQuantity}.
+ *
+ * Cohérent avec la fiche produit KULT : un pro dont l'espace est actif mais
+ * dont l'achat en ligne est désactivé (option admin `online_purchase_enabled`)
+ * ne peut pas ajouter au panier — il est renvoyé vers la demande de devis.
  */
 const QuantityAdd = ({ variantId }: QuantityAddProps) => {
   const { addItem, isMutating } = useCart()
-  const [qty, setQty] = useState(1)
+  const { isPro, config } = usePro()
+  const { qty, setQty } = useQuantity()
   const [pending, setPending] = useState(false)
   const unavailable = !variantId
+
+  const proContactOnly =
+    isPro && config.active && !config.online_purchase_enabled
 
   const handleAdd = async () => {
     if (!variantId) {
@@ -29,6 +42,22 @@ const QuantityAdd = ({ variantId }: QuantityAddProps) => {
     } finally {
       setPending(false)
     }
+  }
+
+  if (proContactOnly) {
+    return (
+      <div className="flex flex-col gap-3">
+        <LocalizedClientLink
+          href="/pro#devis"
+          className="w-fit rounded-circle bg-[#267F53] px-[45.5px] py-[10px] text-[12px] font-medium uppercase tracking-label text-ivory transition-[filter] hover:brightness-110"
+        >
+          Demander un devis
+        </LocalizedClientLink>
+        <p className="text-sm text-ink/50">
+          Tarifs pro sur demande — notre équipe vous recontacte.
+        </p>
+      </div>
+    )
   }
 
   return (

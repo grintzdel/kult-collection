@@ -1,3 +1,4 @@
+const path = require("path")
 const checkEnvVariables = require("./check-env-variables")
 
 checkEnvVariables()
@@ -13,6 +14,10 @@ const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
  */
 const nextConfig = {
   reactStrictMode: true,
+  // Self-contained build output for Docker (traces exact deps, avoids pnpm symlink issues).
+  output: "standalone",
+  // Trace from the monorepo root so workspace deps are bundled correctly.
+  outputFileTracingRoot: path.join(__dirname, "../../"),
   logging: {
     fetches: {
       fullUrl: true,

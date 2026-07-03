@@ -3,6 +3,8 @@
 import { useState, useTransition } from "react"
 
 import { addToCart } from "@lib/data/cart"
+import { usePro } from "@modules/pro/context/pro-provider"
+import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 type QuickAddButtonProps = {
   variantId: string | null
@@ -15,10 +17,28 @@ type QuickAddButtonProps = {
  * Bouton « + » de la carte Collection (maquette) : ajout panier rapide de la
  * variante par défaut. Contenu (hors du lien de la carte) pour rester un vrai
  * `<button>`. État bref « ✓ » après ajout.
+ *
+ * Cohérent avec la fiche produit : un pro dont l'espace est actif mais dont
+ * l'achat en ligne est désactivé (option admin `online_purchase_enabled`) ne
+ * peut pas ajouter au panier — il est renvoyé vers la demande de devis.
  */
 const QuickAddButton = ({ variantId, countryCode, label }: QuickAddButtonProps) => {
+  const { isPro, config } = usePro()
+  const proContactOnly = isPro && config.active && !config.online_purchase_enabled
+
   const [isPending, startTransition] = useTransition()
   const [done, setDone] = useState(false)
+
+  if (proContactOnly) {
+    return (
+      <LocalizedClientLink
+        href="/pro#devis"
+        className="font-mono text-[11px] uppercase tracking-label text-ink/50 transition-colors hover:text-terracotta"
+      >
+        Sur devis
+      </LocalizedClientLink>
+    )
+  }
 
   const handleAdd = () => {
     if (!variantId || isPending) {

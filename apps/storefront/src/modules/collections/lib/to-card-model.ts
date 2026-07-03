@@ -1,5 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import type { ProductAmbiance } from "@lib/data/collection-ambiances"
+import { resolveProPrice, type ProPricing } from "@modules/pro/lib/resolve-pro-price"
 
 /**
  * Vue-modèle d'une carte produit de la page Collection (maquette `Collection.png`) :
@@ -20,8 +21,10 @@ export type CardModel = {
   ambianceLabel: string | null
   /** couleur (hex) de la pastille d'ambiance — null si aucune / non définie */
   ambianceColor: string | null
-  /** prix formaté, ex: "25 €" */
+  /** prix formaté, ex: "25 €" (ajusté HT/TTC si client pro) */
   price: string
+  /** suffixe pro : "" (B2C), "HT" ou "TTC" — affiché à côté du prix */
+  priceSuffix: string
   /** photo produit */
   image: string | null
   /** id de la variante par défaut (ajout panier rapide) */
@@ -153,15 +156,28 @@ const readCardSubline = (
 export const toCardModel = (
   product: HttpTypes.StoreProduct,
   ambiance: ProductAmbiance | null = null,
-  sameTypeCount = 0
+  sameTypeCount = 0,
+  pricing?: ProPricing
 ): CardModel => {
   const metadata = (product.metadata ?? {}) as Record<string, unknown>
   const variant = product.variants?.[0]
   const calculated = variant?.calculated_price as
-    | { calculated_amount?: number; currency_code?: string }
+    | {
+        calculated_amount?: number
+        currency_code?: string
+        is_calculated_price_tax_inclusive?: boolean
+      }
     | undefined
   const amount = calculated?.calculated_amount ?? 0
   const currencyCode = calculated?.currency_code ?? "eur"
+  const isTaxInclusive =
+    calculated?.is_calculated_price_tax_inclusive ?? false
+
+  // Ajustement pro (HT/TTC + suffixe) : sans contexte pro fourni, comportement
+  // B2C inchangé (montant net, aucun suffixe).
+  const { value: priceValue, suffix: priceSuffix } = pricing
+    ? resolveProPrice(amount, isTaxInclusive, pricing)
+    : { value: amount, suffix: "" }
 
   const image =
     product.thumbnail ?? product.images?.[0]?.url ?? null
@@ -180,7 +196,8 @@ export const toCardModel = (
     // catégorie) : libellé du tag + couleur de sa pastille. Null → pas de chip.
     ambianceLabel: ambiance?.value ?? null,
     ambianceColor: ambiance?.color ?? null,
-    price: formatPrice(amount, currencyCode),
+    price: formatPrice(priceValue, currencyCode),
+    priceSuffix,
     image,
     variantId: variant?.id ?? null,
     isNew: asBool(metadata.is_new),
@@ -192,7 +209,8 @@ export const toCardModel = (
 
 export const toCardModels = (
   products: HttpTypes.StoreProduct[] = [],
-  ambianceMap: Record<string, ProductAmbiance | null> = {}
+  ambianceMap: Record<string, ProductAmbiance | null> = {},
+  pricing?: ProPricing
 ): CardModel[] => {
   // Compte de produits par type (assiette, tasse…) sur le lot affiché : sert au
   // « N autres modèles ». Les types étant propres à une catégorie, le compte est
@@ -207,7 +225,8 @@ export const toCardModels = (
     toCardModel(
       product,
       ambianceMap[product.id] ?? null,
-      countByType[productTypeKey(product.title ?? "")] ?? 0
+      countByType[productTypeKey(product.title ?? "")] ?? 0,
+      pricing
     )
   )
 }

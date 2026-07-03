@@ -22,6 +22,8 @@ import productsData from "../../data/kult/products.json";
 import { buildProductOptionsAndVariants } from "../lib/seed/variant-scheme";
 import { applyScentWiring } from "../lib/seed/apply-scents";
 import { applyAmbianceWiring } from "../lib/seed/apply-ambiances";
+import { applySelectionWiring } from "../lib/seed/apply-selection";
+import { applyCustomPieceWiring } from "../lib/seed/apply-custom-piece";
 import {
   querySubCategoryIdByName,
   resolveProductCategoryIds,
@@ -362,6 +364,12 @@ export default async function initial_data_seed({
 
   // Câblage des ambiances : tags + couleurs + assignation catégories + surcharge démo.
   await applyAmbianceWiring(container);
+
+  // Sélection « Composez votre lot » : collection curée d'art de la table.
+  await applySelectionWiring(container);
+
+  // Sections « pièce personnalisée » : contenu éditorial par catégorie.
+  await applyCustomPieceWiring(container);
 
   logger.info("Seeding inventory levels.");
 
