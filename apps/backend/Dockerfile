@@ -34,6 +34,7 @@ RUN pnpm install --prod
 
 EXPOSE 9000
 
-# Migrations are NOT run here — run them manually once (`npx medusa db:migrate`)
-# from the container Terminal. The container only starts the HTTP server.
-CMD ["npx", "medusa", "start"]
+# Run migrations then start. The migrate step needs a free Postgres advisory lock:
+# if it ever hangs on "Running migrations...", kill ghost connections in the DB first
+# (psql: SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE pid <> pg_backend_pid();)
+CMD ["sh", "-c", "npx medusa db:migrate && npx medusa start"]
