@@ -2,6 +2,7 @@ import { Metadata } from "next"
 
 import { getCollectionLayout } from "@lib/data/collection-layout"
 import { getProductAmbiances } from "@lib/data/collection-ambiances"
+import { getProductBadges } from "@lib/data/product-badges"
 import { listCategories } from "@lib/data/categories"
 import { listProducts } from "@lib/data/products"
 import CollectionListTemplate from "@modules/collections/templates/collection-list-template"
@@ -63,9 +64,10 @@ export default async function CollectionsPage(props: Props) {
     },
   })
 
-  const [layout, ambianceMap] = await Promise.all([
+  const [layout, ambianceMap, badges] = await Promise.all([
     getCollectionLayout(),
     getProductAmbiances(products.map((p) => p.id)),
+    getProductBadges(),
   ])
 
   // Filtre ambiance (côté serveur) : l'ambiance effective est résolue par
@@ -95,6 +97,7 @@ export default async function CollectionsPage(props: Props) {
       activeAmbianceLabel={activeAmbiance?.label ?? null}
       layout={layout}
       countryCode={countryCode}
+      badges={badges}
     />
   )
 }

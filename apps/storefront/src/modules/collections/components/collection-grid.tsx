@@ -1,3 +1,4 @@
+import type { ProductBadges } from "@lib/data/product-badges"
 import { chunkByPattern, type LayoutPattern } from "../lib/chunk-by-pattern"
 import type { CardModel } from "../lib/to-card-model"
 import ProductCard from "./product-card"
@@ -6,6 +7,7 @@ type CollectionGridProps = {
   cards: CardModel[]
   layout: LayoutPattern
   countryCode: string
+  badges?: ProductBadges
 }
 
 /**
@@ -13,7 +15,12 @@ type CollectionGridProps = {
  * Les lignes et colonnes sont dessinées par des traits verts (`menthe`).
  * La 1ʳᵉ ligne (pattern = 1) porte la pièce mise en avant, seule et à gauche.
  */
-const CollectionGrid = ({ cards, layout, countryCode }: CollectionGridProps) => {
+const CollectionGrid = ({
+  cards,
+  layout,
+  countryCode,
+  badges,
+}: CollectionGridProps) => {
   if (cards.length === 0) {
     return (
       <p className="py-16 text-center font-serif text-2xl text-ink/60">
@@ -47,6 +54,7 @@ const CollectionGrid = ({ cards, layout, countryCode }: CollectionGridProps) => 
                   card={card}
                   countryCode={countryCode}
                   featured={isSingle}
+                  badges={badges}
                 />
               </div>
             ))}
